@@ -27,13 +27,14 @@ export const FormLogin = () => {
   });
 
   const handleLogin = (data) => {
+    console.log(data);
     axios
       .post("https://kenzie-habits.herokuapp.com/sessions/", data)
       .then((response) => {
         const token = response.data.access;
-        localStorage.setItem("@EH", token);
+        localStorage.setItem("@EH", JSON.stringify(token));
         setAuth(true);
-        history.push("/");
+        // history.push("/");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
