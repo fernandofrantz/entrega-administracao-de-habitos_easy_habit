@@ -5,16 +5,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const CreateHabits = () => {
-  // create habit
-  const handleFormCreateHabits = (data) => {
-    axios
-      .post("https://kenzie-habits.herokuapp.com/habits/", data, {
-        headers: { Authorization: `bearer ${token}` },
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  };
-
   //update habits
   const updateHabits = (dataToUpdate, habitId) => {
     axios
