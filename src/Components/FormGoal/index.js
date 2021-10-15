@@ -15,9 +15,6 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
     axios
       .post(`https://kenzie-habits.herokuapp.com/goals/`, data, {
         headers: { Authorization: "Bearer " + token },
-        params: {
-          category: "",
-        },
       })
       .then((response) => console.log(response.data))
       .catch((err) => console.log("nao criou"));
