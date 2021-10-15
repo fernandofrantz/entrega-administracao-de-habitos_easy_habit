@@ -18,7 +18,7 @@ function App() {
         >
           Learn React
         </a>
-        <FormGoal id={11} type={"register"} />
+        <FormGoal idGroup={22} idGoal={12} type={"register"} />
       </header>
     </div>
   );

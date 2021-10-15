@@ -4,20 +4,19 @@ import { useState } from "react";
 const FormGoal = ({ idGroup, idGoal, type }) => {
   const [title, setTitle] = useState("");
   const [dificult, setDificult] = useState("");
-
+  const token = JSON.parse(localStorage.getItem("@EH"));
   const createGoal = () => {
-    const token = JSON.parse(localStorage.getItem("@EH")) || "";
     const data = {
       title: title,
       difficulty: dificult,
+      how_much_achieved: 100,
       group: idGroup,
     };
-
     axios
-      .post(`https://kenzie-habits.herokuapp.com/goals/${idGoal}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+      .post(`https://kenzie-habits.herokuapp.com/goals/`, data, {
+        headers: { Authorization: "Bearer " + token },
       })
-      .then((response) => console.log("criou"))
+      .then((response) => console.log(response.data))
       .catch((err) => console.log("nao criou"));
   };
 
@@ -25,7 +24,12 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
     const data = {};
     if (title) data.title = title;
     if (dificult) data.difficulty = dificult;
-    console.log(data);
+    axios
+      .patch(`https://kenzie-habits.herokuapp.com/users/${idGoal}/`, data, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log("deu erro"));
   };
 
   return (
