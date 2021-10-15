@@ -15,6 +15,9 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
     axios
       .post(`https://kenzie-habits.herokuapp.com/goals/`, data, {
         headers: { Authorization: "Bearer " + token },
+        params: {
+          category: "",
+        },
       })
       .then((response) => console.log(response.data))
       .catch((err) => console.log("nao criou"));
@@ -24,6 +27,7 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
     const data = {};
     if (title) data.title = title;
     if (dificult) data.difficulty = dificult;
+    console.log(data);
     axios
       .patch(`https://kenzie-habits.herokuapp.com/users/${idGoal}/`, data, {
         headers: { Authorization: "Bearer " + token },
