@@ -7,7 +7,7 @@ export const GroupsContext = createContext()
 export const GroupsProvider = ({ children }) => {
 
     const [myGroups, setMyGroups] = useState([]);
-    const [allGroups, setAllGroups] = useState([]);
+    const [listGroup, setListGroup] = useState([]);
 
     useEffect(() => {
         api
@@ -22,8 +22,8 @@ export const GroupsProvider = ({ children }) => {
             .then(res => {
                 setMyGroups([...myGroups, res])
 
-                const removeSubiscrebedGroup = allGroups.filter(item => item.name !== res.name)
-                setAllGroups(removeSubiscrebedGroup)
+                const removeSubiscrebedGroup = listGroup.filter(item => item.name !== res.name)
+                setListGroup(removeSubiscrebedGroup)
             })
             .catch(error => console.log(error))
     }
@@ -41,13 +41,13 @@ export const GroupsProvider = ({ children }) => {
             .then(res => {
                 const filteredGroup = myGroups.filter(item => item.id !== res.results.id)
 
-                setAllGroups([filteredGroup])
+                setListGroup([filteredGroup])
             })
             .catch(error => console.log(error))
     }
 
     return (
-        <GroupsContext.Provider value={{ myGroups, setMyGroups, allGroups, setAllGroups, subscribeToGroup, createGroup, searchGroup }}>
+        <GroupsContext.Provider value={{ myGroups, setMyGroups, listGroup, setListGroup, subscribeToGroup, createGroup, searchGroup }}>
             {children}
         </GroupsContext.Provider>
     )
