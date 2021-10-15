@@ -1,44 +1,58 @@
+import axios from "axios";
 import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import { useHistory } from "react-router";
-import { api } from "../../Services/api";
+import { toast } from "react-toastify";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+//import { api } from "../../Services/api";
 
 export const FormLogin = () => {
   //const { setAuth } = useContext("userContext");
   const [auth, setAuth] = useState(false);
-  const [userName, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const handleLogin = () => {
-    const user = { username: userName, password: password };
-    api
-      .post("/sessions/", user)
+  const formSchema = yup.object().shape({
+    username: yup.string().required("Nome de usuário obrigatório"),
+    password: yup.string().required("senha obrigatoria"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  const handleLogin = (data) => {
+    axios
+      .post("https://kenzie-habits.herokuapp.com/sessions/", data)
       .then((response) => {
         const token = response.data.access;
         localStorage.setItem("@EH", token);
         setAuth(true);
         history.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        toast.error("usuário não cadastrado ou senha inválida");
+      });
   };
 
   return (
     <div>
-      <input
-        placeholder="Nome de usuario"
-        type="text"
-        value={userName}
-        onChange={(event) => setUsername(event.target.value)}
-        required
-      />
-      <input
-        placeholder="Senha"
-        type="text"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-        required
-      />
-      <button onClick={handleLogin}>Login</button>
+      <form onSubmit={handleSubmit(handleLogin)}>
+        <input
+          placeholder="Nome de usuario"
+          type="text"
+          {...register("username")}
+        />
+        {errors.username?.message}
+        <input placeholder="Senha" type="text" {...register("password")} />
+        {errors.password?.message}
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };
