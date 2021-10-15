@@ -4,6 +4,7 @@ import { Group } from "../Pages/Groups";
 import { Habit } from "../Pages/Habit";
 import { Homepage } from "../Pages/Homepage";
 import { Login } from "../Pages/Login";
+import { Perfil } from "../Pages/Perfil";
 import { Register } from "../Pages/Register";
 
 export const Routers = () => {
@@ -26,6 +27,9 @@ export const Routers = () => {
       </Route>
       <Route exact path="/group/:id">
         <DetailGroup />
+      </Route>
+      <Route exact path="/pefil">
+        <Perfil />
       </Route>
     </Switch>
   );
