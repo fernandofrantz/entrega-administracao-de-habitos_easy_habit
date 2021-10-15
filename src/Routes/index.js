@@ -28,7 +28,7 @@ export const Routers = () => {
       <Route exact path="/group/:id">
         <DetailGroup />
       </Route>
-      <Route exact path="/pefil">
+      <Route exact path="/perfil">
         <Perfil />
       </Route>
     </Switch>

@@ -1,9 +1,10 @@
-import { FormLogin } from "../../Components/FormLogin";
+// import { FormLogin } from "../../Components/FormLogin";
 
 export const Login = () => {
   return (
     <div>
-      <FormLogin />
+      {/* <FormLogin /> */}
+      Formulário de login
     </div>
   );
 };

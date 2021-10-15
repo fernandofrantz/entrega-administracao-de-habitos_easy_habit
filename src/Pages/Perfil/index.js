@@ -1,3 +1,9 @@
+import NavigationMenu from "../../Components/NavigationMenu";
+
 export const Perfil = () => {
-  return <div>pefil</div>;
+  return <div>
+    <h2>Perfil</h2>
+    <NavigationMenu/>
+
+  </div>;
 };
