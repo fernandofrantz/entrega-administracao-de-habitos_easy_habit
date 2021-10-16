@@ -12,6 +12,7 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
       how_much_achieved: 100,
       group: idGroup,
     };
+
     axios
       .post(`https://kenzie-habits.herokuapp.com/goals/`, data, {
         headers: { Authorization: "Bearer " + token },
