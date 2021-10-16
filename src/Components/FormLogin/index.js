@@ -5,8 +5,7 @@ import * as yup from "yup";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-//import { api } from "../../Services/api";
+import { api } from "../../Services/api";
 
 export const FormLogin = () => {
   //const { setAuth } = useContext("userContext");
@@ -28,13 +27,13 @@ export const FormLogin = () => {
 
   const handleLogin = (data) => {
     console.log(data);
-    axios
-      .post("https://kenzie-habits.herokuapp.com/sessions/", data)
+    api
+      .post("/sessions/", data)
       .then((response) => {
         const token = response.data.access;
         localStorage.setItem("@EH", JSON.stringify(token));
         setAuth(true);
-        // history.push("/");
+        history.push("/");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
