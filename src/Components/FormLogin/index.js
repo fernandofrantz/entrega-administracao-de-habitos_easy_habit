@@ -6,10 +6,10 @@ import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { api } from "../../Services/api";
+import { useUser } from "../../Providers/User";
 
 export const FormLogin = () => {
-  //const { setAuth } = useContext("userContext");
-  const [auth, setAuth] = useState(false);
+  const { Login } = useUser();
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -25,7 +25,7 @@ export const FormLogin = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleLogin = (data) => {
+  /* const handleLogin = (data) => {
     console.log(data);
     api
       .post("/sessions/", data)
@@ -38,11 +38,11 @@ export const FormLogin = () => {
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
       });
-  };
+  }; */
 
   return (
     <div>
-      <form onSubmit={handleSubmit(handleLogin)}>
+      <form onSubmit={handleSubmit(Login)}>
         <input
           placeholder="Nome de usuario"
           type="text"
