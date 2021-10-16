@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
-import { FormLogin } from "./Components/FormLogin";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { Routers } from "./Routes"
 
 function App() {
   return (
@@ -17,20 +17,8 @@ function App() {
         draggable
         pauseOnHover
       />
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <FormLogin />
-      </header>
+      <Routers />
+        
     </div>
   );
 }
