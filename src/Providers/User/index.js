@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
     };
   */
 
-  /* 
+  /* const history = useHistory();
   const Login = (data) => {
     console.log(data);
     api
@@ -33,8 +33,7 @@ export const UserProvider = ({ children }) => {
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
       });
-  };  
-  */
+  }; */
 
   const Logout = () => {
     setAuth(false);

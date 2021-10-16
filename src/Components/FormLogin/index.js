@@ -9,8 +9,9 @@ import { api } from "../../Services/api";
 import { useUser } from "../../Providers/User";
 
 export const FormLogin = () => {
-  const { Login } = useUser();
+  // const { Login } = useUser();
   const history = useHistory();
+  const [auth, setAuth] = useState(false);
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nome de usuário obrigatório"),
@@ -25,7 +26,7 @@ export const FormLogin = () => {
     resolver: yupResolver(formSchema),
   });
 
-  /* const handleLogin = (data) => {
+  const handleLogin = (data) => {
     console.log(data);
     api
       .post("/sessions/", data)
@@ -38,11 +39,11 @@ export const FormLogin = () => {
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
       });
-  }; */
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(Login)}>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <input
           placeholder="Nome de usuario"
           type="text"
