@@ -1,11 +1,15 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast, ToastContainer } from "react-toastify";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
-import axios from "axios";
-export const RegisterLots = ({ setAutenticaçao }) => {
+import { api } from "../../Services/api";
+import jwt_decode from "jwt-decode";
+export const RegisterLots = () => {
+  const [names, setNames] = useState("");
+  const [passwords, setPasswords] = useState("");
+  const [emails, setEmails] = useState("");
   const formSchema = yup.object().shape({
     username: yup
       .string()
@@ -29,11 +33,19 @@ export const RegisterLots = ({ setAutenticaçao }) => {
       email: evt.email,
       password: evt.password,
     };
-    axios
-      .post("https://kenzie-habits.herokuapp.com/users/", evts)
-      .then((Result) => {
-        console.log(Result);
+    api
+      .post("/users/", evts)
+      .then((ob) => {
         toast.success("Conta criada com sucesso!");
+
+        const ToLogin = { username: evt.username, password: evt.password };
+        api.post("/sessions/", ToLogin).then((response) => {
+          const token = response.data.access;
+          console.log(token);
+          localStorage.setItem("@EH", JSON.stringify(token));
+
+          // history.push("/");
+        });
       })
       .catch((Result) => {
         toast.error(Result + "");
@@ -49,31 +61,76 @@ export const RegisterLots = ({ setAutenticaçao }) => {
 
   return (
     <div>
-      <div className="Register">
-        <ToastContainer />
-        <h3>Formulario de inscrição</h3>
-        <form className="form" onSubmit={handleSubmit(send)}>
-          <input placeholder="Nome" {...register("username")} />
-          <br />
-          <input placeholder="E-mail" {...register("email")} />
-          <br />
-          <input
-            placeholder="Senha"
-            type="password"
-            maxLength="18"
-            {...register("password")}
-          />
-          <br />
-          <input
-            placeholder="Confirmar Senha"
-            type="password"
-            maxLength="18"
-            {...register("confirmPassword")}
-          />
-          <br />
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
+      {localStorage.getItem("@EH") === null ? (
+        <div className="Register">
+          <h3>Formulario de inscrição</h3>
+          <form className="form" onSubmit={handleSubmit(send)}>
+            <input placeholder="Nome" {...register("username")} />
+            <br />
+            <input placeholder="E-mail" {...register("email")} />
+            <br />
+            <input
+              placeholder="Senha"
+              type="password"
+              maxLength="18"
+              {...register("password")}
+            />
+            <br />
+            <input
+              placeholder="Confirmar Senha"
+              type="password"
+              maxLength="18"
+              {...register("confirmPassword")}
+            />
+            <br />
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      ) : (
+        <div className="Edit">
+          <form
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              const modifItem = {
+                username: names,
+                password: passwords,
+                email: emails,
+              };
+
+              const Token = JSON.parse(localStorage.getItem("@EH"));
+              const decode = jwt_decode(Token).user_id;
+              console.log(Token);
+              api
+                .patch(`/users/${decode}/`, modifItem, {
+                  headers: { Authorization: `Bearer ${Token}` },
+                })
+                .then((_) => {
+                  toast.success("Modificado com sucesso");
+                });
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Editar Nome"
+              name="username"
+              onChange={(evt) => setNames(evt.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Editar Senha"
+              name="password"
+              onChange={(evt) => setPasswords(evt.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="editar email"
+              name="email"
+              onChange={(evt) => setEmails(evt.target.value)}
+            />
+            <button type="submit">Editar</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
