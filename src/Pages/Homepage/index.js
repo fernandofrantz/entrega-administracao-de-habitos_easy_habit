@@ -1,9 +1,18 @@
 import NavigationMenu from "../../Components/NavigationMenu";
 
 export const Homepage = () => {
-  return <div>
-    <h2>Homepage apresentação dos hábitos do dia e do dia seguinte</h2>
+  let newDate = new Date();
+  const weekDay = newDate.getDay();
 
-    <NavigationMenu/>
-  </div>;
+  return (
+    <div>
+      <h2>Yours Habits</h2>
+
+      <main>
+        <div></div>
+      </main>
+
+      <NavigationMenu />
+    </div>
+  );
 };
