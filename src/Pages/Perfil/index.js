@@ -5,7 +5,7 @@ export const Perfil = () => {
   return (
     <div>
       <h2>Perfil</h2>
-      <FormRegister type={"edit"} />
+      {/* <FormRegister type={"edit"} /> */}
       <NavigationMenu />
     </div>
   );
