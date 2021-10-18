@@ -1,26 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const UserContext = createContext([]);
 
 export const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
-  const Login = () => {
+  useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@EH"));
+  },[])
+  
+  const Login = () => {
     if (token) {
       setAuth(true);
     }
-  };
+  }, []);
 
   const Logout = () => {
     setAuth(false);
     localStorage.clear();
   };
 
-
-
   return (
     <UserContext.Provider value={{ Login, Logout, auth, setAuth }}>
+    {/* <UserContext.Provider value={{ Logout, auth, setAuth }}> */}
       {children}
     </UserContext.Provider>
   );

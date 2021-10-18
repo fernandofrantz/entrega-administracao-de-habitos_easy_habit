@@ -1,6 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { Routers } from "./Routes"
+import { Routers } from "./Routes";
 
 function App() {
   return (
@@ -17,7 +17,6 @@ function App() {
         pauseOnHover
       />
       <Routers />
-        
     </div>
   );
 }

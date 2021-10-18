@@ -2,12 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
+
 import NavigationMenu from "../../Components/NavigationMenu";
+import { CardHabits } from "../../Components/CardHabits";
+import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
 
 export const Homepage = () => {
   const { auth } = useUser();
   const [habits, setHabits] = useState([]);
+  const { habits } = useHabits();
   const history = useHistory()
   
   let newDate = new Date();
@@ -46,22 +50,27 @@ export const Homepage = () => {
           <h2>Today's habits</h2>
         </div>
         <div>
+          <ul>
+
           {habits
             .filter(
               (item) =>
-                item.frequency === weekDay || item.frequency === "Diária"
-            )
-            .map((item) => (
-              <div>
-                <h4>{item.category}</h4>
-                <h3>{item.title}</h3>
-              </div>
+              item.frequency === weekDay || item.frequency === "Diária"
+              )
+              .map((item) => (
+                <li key={item.id}>
+                <CardHabits item={item} editable={true}/>
+              </li>
             ))}
+            </ul>
+            {/* INCLUIR MÉTODO SORT */}
         </div>
 
         <div>
           <h2>Tomorrow's habits</h2>
           <div>
+            <ul>
+
             {habits
               .filter((item) => {
                 if (weekDay === 6) {
@@ -70,26 +79,36 @@ export const Homepage = () => {
                   return (
                     item.frequency === weekDay + 1 ||
                     item.frequency === "Diária"
-                  );
-                }
-              })
-              .map((item) => (
-                <div>
-                  <h4>{item.category}</h4>
-                  <h3>{item.title}</h3>
-                  <div>
-                    <Link to={`/habit/${item.id}`}>
-                      <MdModeEdit />
-                    </Link>
-                    <MdDelete onClick={()=>deleteHabit(item.id)}/>
-
-                  </div>
-                </div>
+                    );
+                  }
+                })
+                .map((item) => (
+                  <li key={item.id}>
+                <CardHabits item={item} editable={true}/>
+              </li>
               ))}
+              </ul>
           </div>
         </div>
       </main>
 
+  {/* const [todayDate, setTodayDate] = useState("");
+
+  const weekDay = [
+    "Domingo",
+    "Segunda-Feira",
+    "Terça-Feira",
+    "Quarta-Feira",
+    "Quinta-Feira",
+    "Sexta-Feira",
+    "Sábado",
+  ];
+  useEffect(() => {
+    const day = new Date();
+    setTodayDate(weekDay[day.getDay()]);
+  }, []); */}
+
+    
       <NavigationMenu />
     </div>
   );

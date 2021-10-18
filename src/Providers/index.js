@@ -1,16 +1,13 @@
-import { GroupsProvider } from "./Groups"
-import { UserProvider } from "./User"
+import { GroupsProvider } from "./Groups";
+import { HabitProvider } from "./Habits";
+import { UserProvider } from "./User";
 
-
-const Providers = ({children}) =>{
-
-    return(
-        <UserProvider>
-            <GroupsProvider>
-                {children}
-            </GroupsProvider>
-        </UserProvider>
-    )
-}
-
-export default Providers;
+export const Providers = ({ children }) => {
+  return (
+    <HabitProvider>
+      <UserProvider>
+        <GroupsProvider>{children}</GroupsProvider>
+      </UserProvider>
+    </HabitProvider>
+  );
+};
