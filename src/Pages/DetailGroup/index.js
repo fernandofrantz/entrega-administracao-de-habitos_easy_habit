@@ -1,0 +1,111 @@
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router";
+import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
+import FormGoal from "../../Components/FormGoals";
+import NavigationMenu from "../../Components/NavigationMenu";
+import { api } from "../../Services/api";
+import { CardGoals } from "../../Components/CardGoals";
+import { useGroups } from "../../Providers/Groups";
+import { FormGroup } from "../../Components/FormGroup";
+
+export const DetailGroup = () => {
+  const { id } = useParams();
+  const history = useHistory();
+
+  const [goals, setGoals] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [showOptionCreate, setShowOptionCreate] = useState(false);
+  const [showEditOption, setShowEditOption] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [nameGroup, setNameGroup] = useState("");
+  const [categoryGroup, setcategoryGroup] = useState("");
+  const [descriptionGroup, setDescriptionGroup] = useState("");
+  const { listGroup, setMyGroups, setListGroup, myGroups } = useGroups();
+
+  const token = JSON.parse(localStorage.getItem("@EH")) || "";
+
+  useEffect(() => {
+    api
+      .get(`/groups/${id}/`, null, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((response) => {
+        setGoals(response.data.goals);
+        const { user_id } = jwt_decode(token);
+        const listUser = response.data.users_on_group;
+        const creatorGroup = response.data.creator.id;
+        setNameGroup(response.data.name);
+        setcategoryGroup(response.data.category);
+        setDescriptionGroup(response.data.description);
+        const [searchMyUser] = listUser.filter((item) => item.id === user_id);
+        if (searchMyUser) setShowOptionCreate(true);
+        if (creatorGroup === user_id) setShowEditOption(true);
+      })
+      .catch(() => console.log("erro ao buscar pelos goals"));
+  }, []);
+
+  const subscribeToGroup = (groupId) => {
+    api
+      .post(`/groups/${groupId}/subscribe/`, null, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Sucesso ao se inscrever");
+        setShowOptionCreate(true);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
+  return (
+    <div>
+      <button onClick={() => history.push("/group")}>voltar</button>
+      {showEditOption && (
+        <button onClick={() => setShowEditForm(!showEditForm)}>Editar</button>
+      )}
+      {showEditForm && (
+        <FormGroup type={"edit"} idGroup={id} setNameGroup={setNameGroup} />
+      )}
+      <h2>{nameGroup}</h2>
+      {!showOptionCreate && (
+        <button onClick={() => subscribeToGroup(id)}>inscrever</button>
+      )}
+      <h2>{descriptionGroup}</h2>
+
+      <h2> Meta Desafios </h2>
+
+      <ul>
+        {goals.map((item, index) => (
+          <li key={index}>
+            <div>
+              <CardGoals
+                item={item}
+                setGoals={setGoals}
+                goals={goals}
+                editable={showOptionCreate}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {showOptionCreate && (
+        <button onClick={() => setShowForm(!showForm)}>criar meta</button>
+      )}
+      {showForm && (
+        <FormGoal
+          idGroup={id}
+          type={"register"}
+          setGoals={setGoals}
+          goals={goals}
+          showForm={showForm}
+        />
+      )}
+      {showOptionCreate && (
+        <button onClick={() => setShowForm(!showForm)}>criar Atividade</button>
+      )}
+
+      <NavigationMenu />
+    </div>
+  );
+};
