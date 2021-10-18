@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
   const Login = () => {
-    const token = JSON.parse(localStorage.getItem("@ADM_HABIT:token"));
+    const token = JSON.parse(localStorage.getItem("@EH"));
     if (token) {
       setAuth(true);
     }
@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ Login, Logout, auth }}>
+    <UserContext.Provider value={{ Login, Logout, auth, setAuth }}>
       {children}
     </UserContext.Provider>
   );

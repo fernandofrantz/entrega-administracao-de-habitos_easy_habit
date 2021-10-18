@@ -34,7 +34,8 @@ export const FormLogin = () => {
         const token = response.data.access;
         localStorage.setItem("@EH", JSON.stringify(token));
         setAuth(true);
-        // history.push("/");
+        history.push("/");
+        console.log("feitologin");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
