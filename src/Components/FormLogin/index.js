@@ -1,15 +1,23 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { api } from "../../Services/api";
-import { useUser } from "../../Providers/User";
+// import { api } from "../../Services/api";
+// import { useUser } from "../../Providers/User";
+
+// export const FormLogin = () => {
+//   const { setAuth } = useUser();
+//   const history = useHistory();
+
+//import { api } from "../../Services/api";
 
 export const FormLogin = () => {
-  const { setAuth } = useUser();
-  const history = useHistory();
+  //const { setAuth } = useContext("userContext");
+  //const [auth, setAuth] = useState(false);
+  //const history = useHistory();
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nome de usuário obrigatório"),
@@ -25,14 +33,21 @@ export const FormLogin = () => {
   });
 
   const handleLogin = (data) => {
-    api
-      .post("/sessions/", data)
+    // api
+    //   .post("/sessions/", data)
+    //   .then((response) => {
+    //     const token = response.data.access;
+    //     localStorage.setItem("@EH", JSON.stringify(token));
+    //     setAuth(true);
+    //     history.push("/");
+    //     console.log("feitologin");
+    axios
+      .post("https://kenzie-habits.herokuapp.com/sessions/", data)
       .then((response) => {
         const token = response.data.access;
-        localStorage.setItem("@EH", JSON.stringify(token));
-        setAuth(true);
-        history.push("/");
-        console.log("feitologin");
+        localStorage.setItem("@EH", token);
+        // setAuth(true);
+        //  history.push("/");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");

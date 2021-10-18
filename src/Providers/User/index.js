@@ -5,12 +5,16 @@ export const UserContext = createContext([]);
 export const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
+
   // useEffect(() => {
   //   const token = JSON.parse(localStorage.getItem("@EH"));
   // },[]);
   
+//   const Login = () => {
+//     const token = JSON.parse(localStorage.getItem("@EH"));
+
   const Login = () => {
-    const token = JSON.parse(localStorage.getItem("@EH"));
+    const token = JSON.parse(localStorage.getItem("@ADM_HABIT:token"));
     if (token) {
       setAuth(true);
     }

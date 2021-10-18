@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { toast } from "react-toastify";
@@ -108,4 +109,18 @@ export const DetailGroup = () => {
       <NavigationMenu />
     </div>
   );
+=======
+import { useParams } from "react-router";
+import NavigationMenu from "../../Components/NavigationMenu";
+
+export const DetailGroup = () => {
+  const { id } = useParams();
+  return <div>
+    <h2>
+      detalhe do grupo {id}
+      </h2>
+    <NavigationMenu/>
+
+      </div>;
+>>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
 };
