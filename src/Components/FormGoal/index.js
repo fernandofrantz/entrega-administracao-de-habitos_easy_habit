@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { api } from "./../../Services/api";
 
-const FormGoal = ({ idGroup, idGoal, type }) => {
+const FormGoal = ({ idGroup, idGoal, type, setGoals, goals, setShowForm }) => {
   const [title, setTitle] = useState("");
   const [dificult, setDificult] = useState("");
   const token = JSON.parse(localStorage.getItem("@EH"));
+
   const createGoal = () => {
     const data = {
       title: title,
@@ -13,11 +15,14 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
       group: idGroup,
     };
 
-    axios
-      .post(`https://kenzie-habits.herokuapp.com/goals/`, data, {
+    api
+      .post(`/goals/`, data, {
         headers: { Authorization: "Bearer " + token },
       })
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        setGoals([...goals, response.data]);
+        setShowForm(false);
+      })
       .catch((err) => console.log("nao criou"));
   };
 
@@ -25,12 +30,15 @@ const FormGoal = ({ idGroup, idGoal, type }) => {
     const data = {};
     if (title) data.title = title;
     if (dificult) data.difficulty = dificult;
-    console.log(data);
-    axios
-      .patch(`https://kenzie-habits.herokuapp.com/users/${idGoal}/`, data, {
+
+    api
+      .patch(`/users/${idGoal}/`, data, {
         headers: { Authorization: "Bearer " + token },
       })
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        const newGols = goals.filter((item) => item.id !== idGoal);
+        setGoals([...newGols, response.data]);
+      })
       .catch((err) => console.log("deu erro"));
   };
 
