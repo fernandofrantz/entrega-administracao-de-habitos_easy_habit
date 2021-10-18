@@ -83,7 +83,6 @@ export const Homepage = () => {
   if (!auth) {
     history.push("/login");
   }
-  console.log("habits homepage", habits);
   return (
     <div>
       <h2>Yours Habits</h2>
