@@ -67,10 +67,27 @@ export const FormRegister = ({ type }) => {
       .catch((err) => toast.error("Não foi possivel modificar os dados"));
   };
 
+  // const formSchema = yup.object().shape({
+  //   nname: yup.string().min(8),
+  //   eemail: yup.string().email(),
+  //   ppassword: yup
+  //     .string()
+  //     .matches(
+  //       /^(?=.*\d)(?=.*[a-z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
+  //       "Should contain at least one letter, one number and a symbol."
+  //     ),
+  // });
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({ resolver: yupResolver(formSchema) });
+
   return (
     <div>
       <input
-        placeholder="nome de usuario"
+        placeholder="username"
         type="text"
         value={nameuser}
         onChange={(event) => setNameuser(event.target.value)}
@@ -92,7 +109,7 @@ export const FormRegister = ({ type }) => {
           required
         />
       )}
-      <button onClick={type === "register" ? register : edit}>
+      <button onClick={type === "register" ? register : edit} type="submit">
         {type === "register" ? "Cadastrar" : "Editar"}
       </button>
     </div>
