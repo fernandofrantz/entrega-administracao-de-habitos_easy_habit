@@ -17,7 +17,7 @@ export const GroupsProvider = ({ children }) => {
     //{ params: { null: null } },
     if (token) {
       api
-        .get("/groups/subscriptions/", null, {
+        .get("/groups/subscriptions/", {
           headers: { Authorization: "Bearer " + token },
         })
         .then((res) => {
@@ -35,7 +35,7 @@ export const GroupsProvider = ({ children }) => {
       .then((res) => {
         setMyGroups([...myGroups, res]);
 
-        const removeSubiscrebedGroup = listGroup.filter(
+  const removeSubiscrebedGroup = listGroup.filter(
           (item) => item.name !== res.name
         );
         setListGroup(removeSubiscrebedGroup);

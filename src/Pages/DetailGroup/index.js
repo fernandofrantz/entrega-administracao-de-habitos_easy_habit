@@ -8,6 +8,7 @@ import { api } from "../../Services/api";
 import { CardGoals } from "../../Components/CardGoals";
 import { useGroups } from "../../Providers/Groups";
 import { FormGroup } from "../../Components/FormGroup";
+import { FormGoalEdit } from "../../Components/FormGoalEdit";
 
 export const DetailGroup = () => {
   const { id } = useParams();
@@ -52,6 +53,18 @@ export const DetailGroup = () => {
       })
       .then(() => {
         toast.success("Sucesso ao se inscrever");
+        setShowOptionCreate(true);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
+  const handleUnsubscribe = (groupId) => {
+    api
+      .delete(`/groups/${groupId}/unsubscribe/`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Unsubscribed successfully");
         setShowOptionCreate(true);
       })
       .catch(() => toast.error("Erro ao se inscrever no grupo"));
@@ -103,6 +116,9 @@ export const DetailGroup = () => {
       )}
       {showOptionCreate && (
         <button onClick={() => setShowForm(!showForm)}>criar Atividade</button>
+      )}
+      {showOptionCreate && (
+        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
       )}
 
       <NavigationMenu />

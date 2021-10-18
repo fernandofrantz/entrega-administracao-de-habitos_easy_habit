@@ -53,11 +53,12 @@ import NavigationMenu from "../../Components/NavigationMenu";
 import { CardHabits } from "../../Components/CardHabits";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
+import { co } from "co";
 
 export const Homepage = () => {
   const { auth } = useUser();
-  const [habits, setHabits] = useState([]);
-  // const { habits } = useHabits();
+  // const [habits, setHabits] = useState([]);
+  const { habits } = useHabits();
   const history = useHistory();
   let newDate = new Date();
   const weekDay = newDate.getDay();
@@ -67,22 +68,26 @@ export const Homepage = () => {
       .get("https://kenzie-habits.herokuapp.com/habits/personal/", {
         Authorization: "Bearer " + token,
       })
-      .then((response) => {
-        setHabits(response);
-      })
+      // .then((response) => {
+      //   setHabits(response);
+      // })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   const deleteHabit = (id) => {
     axios.delete(`https://kenzie-habits.herokuapp.com/habits/${id}/`);
   };
+
   if (!auth) {
     history.push("/login");
   }
+  console.log("habits homepage", habits);
   return (
     <div>
       <h2>Yours Habits</h2>
+      <h3>{weekDay}</h3>
       <main>
         <div>
           <h2>Today's habits</h2>
@@ -92,7 +97,7 @@ export const Homepage = () => {
             {habits
               .filter(
                 (item) =>
-                  item.frequency === weekDay || item.frequency === "Diária"
+                  item.frequency === weekDay || item.frequency === "daily"
               )
               .map((item) => (
                 <li key={item.id}>
