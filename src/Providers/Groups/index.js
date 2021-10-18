@@ -9,12 +9,25 @@ export const GroupsProvider = ({ children }) => {
     const [myGroups, setMyGroups] = useState([]);
     const [listGroup, setListGroup] = useState([]);
 
+    const token = JSON.parse(localStorage.getItem("@EH")) || "";
+
     useEffect(() => {
-        api
-            .get("/groups/subscriptions/")
-            .then(res => setMyGroups([res]))
-            .catch(error => console.log(error))
-    }, [])
+        getSubscribes();
+      }, []);
+    
+    const getSubscribes = () => {
+        //{ params: { null: null } },
+        if (token) {
+            api
+                .get("/groups/subscriptions/", null, {
+                    headers: { Authorization: "Bearer " + token },
+                })
+                .then((res) => {
+                    setMyGroups(res.data);
+                })
+                .catch((error) => console.log(error));
+        }
+    };
 
     const subscribeToGroup = (groupId) => {
         api
@@ -30,24 +43,46 @@ export const GroupsProvider = ({ children }) => {
 
     const createGroup = (data) => {
         api
-            .post("/groups/", data)
-            .then(res => setMyGroups([...myGroups, res]))
+            .post("/groups/", data, {
+                headers: { Authorization: "Bearer" + token }
+            })
+            .then(res => setMyGroups([...myGroups, res.data]))
             .catch(error => console.log(error))
     }
+
+    const editGroup = (idGroup, data) => {
+        api
+          .patch(`/groups/${idGroup}/`, data, {
+            headers: { Authorization: "Bearer " + token },
+          })
+          .then((res) => {
+            setMyGroups([...myGroups, res.data]);
+          })
+          .catch((error) => console.log(error));
+      };
 
     const searchGroup = (category) => {
         api
-            .get("/groups/", category)
-            .then(res => {
-                const filteredGroup = myGroups.filter(item => item.id !== res.results.id)
-
-                setListGroup([filteredGroup])
+            .get(`/groups/`, { 
+                params: { category: category ? category : null } 
             })
-            .catch(error => console.log(error))
+            .then((res) => {
+                setListGroup(res.data.results);
+            })
+            .catch((error) => console.log(error));
     }
 
     return (
-        <GroupsContext.Provider value={{ myGroups, setMyGroups, listGroup, setListGroup, subscribeToGroup, createGroup, searchGroup }}>
+        <GroupsContext.Provider value={{ 
+            getSubscribes, 
+            myGroups, 
+            setMyGroups, 
+            listGroup, 
+            setListGroup,  
+            createGroup, 
+            editGroup, 
+            searchGroup 
+        }}>
             {children}
         </GroupsContext.Provider>
     )
