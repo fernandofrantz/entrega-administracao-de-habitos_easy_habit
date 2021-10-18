@@ -1,6 +1,4 @@
 import { FormLogin } from "../../Components/FormLogin";
-import { useHistory } from "react-router-dom";
-import { useUser } from "../../Providers/User";
 
 export const Login = () => {
   const history = useHistory();
@@ -13,19 +11,6 @@ export const Login = () => {
   return (
     <div>
       <FormLogin />
-      Formulário de login
-
-      
-      <button
-        onClick={() => {
-          
-          setAuth(true);
-          history.push("/");
-        }}
-      >
-        Auth
-      </button>
-
     </div>
   );
 };
