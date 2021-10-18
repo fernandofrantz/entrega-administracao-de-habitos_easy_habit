@@ -5,13 +5,14 @@ import * as yup from "yup";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUser } from "../../Providers/User";
 
 //import { api } from "../../Services/api";
 
 export const FormLogin = () => {
-  //const { setAuth } = useContext("userContext");
+  const { setAuth } = useUser();
   //const [auth, setAuth] = useState(false);
-  //const history = useHistory();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nome de usuário obrigatório"),
@@ -31,9 +32,11 @@ export const FormLogin = () => {
       .post("https://kenzie-habits.herokuapp.com/sessions/", data)
       .then((response) => {
         const token = response.data.access;
-        localStorage.setItem("@EH", token);
-        // setAuth(true);
-        //  history.push("/");
+
+        localStorage.clear();
+        localStorage.setItem("@EH", JSON.stringify(token));
+        setAuth(true);
+        history.push("/");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");

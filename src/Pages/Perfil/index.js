@@ -1,12 +1,13 @@
-import { FormRegister } from "../../Components/formRegister";
-import NavigationMenu from "../../Components/NavigationMenu";
+// import EditProfile from "../../Components/EditProfile";
 
-export const Perfil = () => {
-  return (
-    <div>
-      <h2>Perfil</h2>
-      {/* <FormRegister type={"edit"} /> */}
-      <NavigationMenu />
-    </div>
-  );
-};
+// const Perfil = () => {
+//   return (
+//     <>
+//       <div>
+//         <h4>Edit profile</h4>
+//         {/* <EditProfile /> */}
+//       </div>
+//     </>
+//   );
+// };
+// export default Perfil;
