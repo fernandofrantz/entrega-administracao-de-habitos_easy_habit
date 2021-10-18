@@ -16,7 +16,7 @@ export const Login = () => {
       Formulário de login
 
       
-      {/* <button
+      <button
         onClick={() => {
           
           setAuth(true);
@@ -24,7 +24,7 @@ export const Login = () => {
         }}
       >
         Auth
-      </button> */}
+      </button>
 
     </div>
   );
