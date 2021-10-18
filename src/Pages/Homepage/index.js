@@ -11,7 +11,7 @@ import { useUser } from "../../Providers/User";
 export const Homepage = () => {
   const { auth } = useUser();
   const [habits, setHabits] = useState([]);
-  const { habits } = useHabits();
+  // const { habits } = useHabits();
   const history = useHistory()
   
   let newDate = new Date();
@@ -19,7 +19,7 @@ export const Homepage = () => {
 
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("@EH:token"));
+    const token = JSON.parse(localStorage.getItem("@EH"));
     axios
       .get("https://kenzie-habits.herokuapp.com/habits/personal/", {
         Authorization: "Bearer " + token,

@@ -9,12 +9,13 @@ export const Login = () => {
     <div>
       <FormLogin />
       Formulário de login
-      <button
+      {/* <button
         onClick={() => {
           localStorage.setItem(
             "@EH",
             JSON.stringify(
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0OTM0OTc0LCJqdGkiOiIwMjQ5ZTBkNDcxNjk0OWQ1OGI5OTVhODk3YjEyZWRjOCIsInVzZXJfaWQiOjcyMH0.fHP3satJJJdRdwyibTHZelYcbx1-XGcSrnYbHQ-2LJo"
+              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0OTk4NDQ5LCJqdGkiOiI4YzgwNjg5YzhiMTc0YTU2OTFlNTI3N2UxNzdjODAyOSIsInVzZXJfaWQiOjc0MH0.TSLFNSuo0DUcoXSrKfOxfcFJ2LMHatuRSOASCVIfIvs"
+              
             )
           );
           setAuth(true);
@@ -22,7 +23,7 @@ export const Login = () => {
         }}
       >
         Auth
-      </button>
+      </button> */}
     </div>
   );
 };
