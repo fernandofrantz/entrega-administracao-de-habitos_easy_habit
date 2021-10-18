@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { CardGroup } from "../../Components/CardGroup";
 import { FormGroup } from "../../Components/FormGroup";
@@ -50,15 +49,4 @@ export const Group = () => {
       <NavigationMenu />
     </div>
   );
-=======
-import NavigationMenu from "../../Components/NavigationMenu";
-
-export const Group = () => {
-  return <div>
-    <h2>página de todos os grupos</h2>
-
-    <NavigationMenu/>
-
-  </div>;
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
 };

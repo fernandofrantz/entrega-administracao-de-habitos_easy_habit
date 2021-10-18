@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { CardHabits } from "../../Components/CardHabits";
 import { FormHabits } from "../../Components/FormHabits";
@@ -26,14 +25,4 @@ export const Habit = () => {
       <NavigationMenu />
     </div>
   );
-=======
-import NavigationMenu from "../../Components/NavigationMenu";
-
-export const Habit = () => {
-  return <div>
-    <h2>Página de todos os hábitos do usuário</h2>
-    <NavigationMenu/>
-
-  </div>;
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
 };

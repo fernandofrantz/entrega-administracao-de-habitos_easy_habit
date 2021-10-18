@@ -1,7 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { MdModeEdit, MdDelete } from "react-icons/md";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import NavigationMenu from "../../Components/NavigationMenu";
 import { CardHabits } from "../../Components/CardHabits";
@@ -10,33 +7,11 @@ import { useUser } from "../../Providers/User";
 
 export const Homepage = () => {
   const { auth } = useUser();
-  const [habits, setHabits] = useState([]);
-  // const { habits } = useHabits();
+  const { habits } = useHabits();
   const history = useHistory()
   
   let newDate = new Date();
   const weekDay = newDate.getDay();
-
-
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("@EH"));
-    axios
-      .get("https://kenzie-habits.herokuapp.com/habits/personal/", {
-        Authorization: "Bearer " + token,
-      })
-      .then((response) => {
-        setHabits(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const deleteHabit = (id) =>{
-    axios
-    .delete(`https://kenzie-habits.herokuapp.com/habits/${id}/`)
-  }
-
 
   if(!auth){
     history.push("/login")
@@ -91,22 +66,6 @@ export const Homepage = () => {
           </div>
         </div>
       </main>
-
-  {/* const [todayDate, setTodayDate] = useState("");
-
-  const weekDay = [
-    "Domingo",
-    "Segunda-Feira",
-    "Terça-Feira",
-    "Quarta-Feira",
-    "Quinta-Feira",
-    "Sexta-Feira",
-    "Sábado",
-  ];
-  useEffect(() => {
-    const day = new Date();
-    setTodayDate(weekDay[day.getDay()]);
-  }, []); */}
 
     
       <NavigationMenu />

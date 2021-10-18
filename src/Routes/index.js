@@ -12,10 +12,6 @@ export const Routers = () => {
     <Switch>
       <Route exact path="/">
         <Homepage />
-<<<<<<< HEAD
-=======
-        <div></div>
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
       </Route>
       <Route exact path="/login">
         <Login />
@@ -30,17 +26,10 @@ export const Routers = () => {
         <Group />
       </Route>
       <Route exact path="/group/:id">
-<<<<<<< HEAD
         <DetailGroup />
       </Route>
       <Route exact path="/perfil">
         <Perfil />
-=======
-        {/* <DetailGroup /> */}
-      </Route>
-      <Route exact path="/perfil">
-        {/* <Perfil /> */}
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
       </Route>
     </Switch>
   );

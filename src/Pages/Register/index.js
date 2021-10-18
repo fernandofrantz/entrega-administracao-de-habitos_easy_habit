@@ -1,17 +1,18 @@
-<<<<<<< HEAD
-import { FormRegister } from "../../Components/formRegister";
-=======
 import { RegisterLots } from "../../Components/registro/Registers";
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
+import { useUser } from "../../Providers/User";
+import { useHistory } from "react-router-dom";
 
 export const Register = () => {
+  const { auth } = useUser();
+  const history = useHistory();
+
+  if (auth) {
+    history.pushState("/");
+  }
+
   return (
     <div>
-<<<<<<< HEAD
-      <FormRegister type="register" />
-=======
       <RegisterLots />
->>>>>>> 96859fa11cb64152f39b0dd203ef48fa376a15eb
     </div>
   );
 };
