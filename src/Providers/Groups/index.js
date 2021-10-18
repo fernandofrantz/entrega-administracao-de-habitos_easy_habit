@@ -17,7 +17,7 @@ export const GroupsProvider = ({ children }) => {
     //{ params: { null: null } },
     if (token) {
       api
-        .get("/groups/subscriptions/", null, {
+        .get("/groups/subscriptions/", {
           headers: { Authorization: "Bearer " + token },
         })
         .then((res) => {
