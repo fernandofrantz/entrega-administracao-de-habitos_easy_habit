@@ -35,7 +35,6 @@ export const FormCreateHabits = () => {
       .then((response) => toast.success("criado com sucesso"))
       .catch((err) => toast.error(err + ""));
   };
-
   const {
     register,
     handleSubmit,
@@ -69,7 +68,7 @@ export const FormCreateHabits = () => {
         <laber> Monday </laber>
         <input
           type="checkbox"
-          value="Monday"
+          value="1"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -86,7 +85,7 @@ export const FormCreateHabits = () => {
         <laber> Tuesday </laber>
         <input
           type="checkbox"
-          value="Tuesday"
+          value="2"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -103,7 +102,7 @@ export const FormCreateHabits = () => {
         <laber> Wednesday </laber>
         <input
           type="checkbox"
-          value="Wednesday"
+          value="3"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -120,7 +119,7 @@ export const FormCreateHabits = () => {
         <laber> Tursday </laber>
         <input
           type="checkbox"
-          value="Tursday"
+          value="4"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -137,7 +136,7 @@ export const FormCreateHabits = () => {
         <laber> Friday </laber>
         <input
           type="checkbox"
-          value="Friday"
+          value="5"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -154,7 +153,7 @@ export const FormCreateHabits = () => {
         <laber> Saturday </laber>
         <input
           type="checkbox"
-          value="Saturday"
+          value="6"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;
@@ -171,7 +170,7 @@ export const FormCreateHabits = () => {
         <laber> Sunday </laber>
         <input
           type="checkbox"
-          value="Sunday"
+          value="0"
           onClick={(evt) => {
             const localInfo = list.find((element) => {
               return element === evt.target.value;

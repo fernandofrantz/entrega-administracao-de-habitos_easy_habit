@@ -4,8 +4,8 @@ import { Body, LogoutCircle, Main } from "./styles";
 import { MdLogout } from "react-icons/md";
 import { useUser } from "../../Providers/User";
 import { useEffect, useState } from "react";
-import { axios } from "axios";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 export const Perfil = () => {
   const { Logout } = useUser();
@@ -56,7 +56,6 @@ export const Perfil = () => {
           <>
             <h2>{name}</h2>
             <h4>{email}</h4>
-            <h5>edit profile </h5>
           </>
         )}
         <h4 onClick={() => setEditMode(true)}>Edit profile</h4>
