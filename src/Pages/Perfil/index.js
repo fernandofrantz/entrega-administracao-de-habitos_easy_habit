@@ -1,9 +1,13 @@
-import NavigationMenu from "../../Components/NavigationMenu";
+// import EditProfile from "../../Components/EditProfile";
 
-export const Perfil = () => {
-  return <div>
-    <h2>Perfil</h2>
-    <NavigationMenu/>
-
-  </div>;
-};
+// const Perfil = () => {
+//   return (
+//     <>
+//       <div>
+//         <h4>Edit profile</h4>
+//         {/* <EditProfile /> */}
+//       </div>
+//     </>
+//   );
+// };
+// export default Perfil;
