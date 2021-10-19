@@ -23,12 +23,6 @@ export const Habit = () => {
       <button onClick={() => setShowForm(!showForm)}> Criar habito </button>
       {showForm && <FormCreateHabits />}
       <ul>
-        {/* {habits &&
-          habits.map((item, index) => (
-            <li key={index}>
-              <CardHabits item={item} editable />
-            </li>
-          ))} */}
         {categorys &&
           categorys.map((item) => (
             <ContainerHabits item={item} list={habits} />
