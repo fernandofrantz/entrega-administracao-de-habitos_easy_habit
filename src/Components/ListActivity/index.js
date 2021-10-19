@@ -25,9 +25,6 @@ const ListActivity = ({ showOptionCreate, handleUnsubscribe }) => {
       {showOptionCreate && (
         <button onClick={() => setShowFormActivity(!showFormActivity)}>criar atividade</button>
       )}
-      {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
-      )}
       {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
       </section>
     </>
