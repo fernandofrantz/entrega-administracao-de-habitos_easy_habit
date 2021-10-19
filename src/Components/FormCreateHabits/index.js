@@ -11,8 +11,9 @@ export const FormCreateHabits = () => {
     title: yup.string().required("Title required"),
     category: yup.string().required("Category required"),
     dificulty: yup.string().required("Dificulty required"),
-    frequency: yup.string().required("Frequency required"),
   });
+
+  const [list, setList] = useState([]);
 
   const handleCreateHabit = (data) => {
     const Token = JSON.parse(localStorage.getItem("@EH"));
@@ -20,12 +21,12 @@ export const FormCreateHabits = () => {
       title: data.title,
       category: data.category,
       difficulty: data.dificulty,
-      frequency: data.frequency,
+      frequency: list.toString(),
       achieved: false,
       how_much_achieved: 0,
       user: jwt_decode(Token).user_id,
     };
-
+    console.log(finalInfo);
     api
       .post("/habits/", finalInfo, {
         headers: { Authorization: `Bearer ${Token}` },
@@ -48,6 +49,7 @@ export const FormCreateHabits = () => {
     toast.error(errors.dificulty?.message);
     toast.error(errors.frequency?.message);
   }, [errors]);
+
   return (
     <div className="criarHabito">
       <h3>Criar novo habito</h3>
@@ -56,19 +58,132 @@ export const FormCreateHabits = () => {
         <br />
         <input placeholder="Category" type="text" {...register("category")} />
         <br />
-        <select placeholder="Dificulty" type="text" {...register("dificulty")}>
+        <select type="text" {...register("dificulty")}>
           <option></option>
           <option value="easy">Facil</option>
           <option value="medium">Medio</option>
           <option value="hard">Dificil</option>
         </select>
         <br />
-        <select placeholder="Frequency" type="text" {...register("frequency")}>
-          <option></option>
-          <option value="diary">dia</option>
-          <option value="week">mes</option>
-          <option value="month">ano</option>
-        </select>
+        <laber> Monday </laber>
+        <input
+          type="checkbox"
+          value="Monday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Tuesday </laber>
+        <input
+          type="checkbox"
+          value="Tuesday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Wednesday </laber>
+        <input
+          type="checkbox"
+          value="Wednesday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Tursday </laber>
+        <input
+          type="checkbox"
+          value="Tursday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Friday </laber>
+        <input
+          type="checkbox"
+          value="Friday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Saturday </laber>
+        <input
+          type="checkbox"
+          value="Saturday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
+        <laber> Sunday </laber>
+        <input
+          type="checkbox"
+          value="Sunday"
+          onClick={(evt) => {
+            const localInfo = list.find((element) => {
+              return element === evt.target.value;
+            });
+
+            if (localInfo !== undefined) {
+              const localItem = list.filter((element) => {
+                return element !== evt.target.value;
+              });
+              setList(localItem);
+            } else setList(list.concat(evt.target.value));
+          }}
+        />
         <br />
         <button type="submit">Create habit</button>
       </form>
