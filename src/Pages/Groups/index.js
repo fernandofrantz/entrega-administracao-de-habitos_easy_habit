@@ -10,9 +10,9 @@ export const Group = () => {
   const { searchGroup, listGroup, myGroups, getSubscribes } = useGroups();
   const [showFormGroup, setShowFormGroup] = useState(false);
 
-  useEffect(() => {
-    getSubscribes();
-  }, []);
+  // useEffect(() => {
+  //   getSubscribes();
+  // }, []);
 
   return (
     <div>

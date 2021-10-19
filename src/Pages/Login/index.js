@@ -6,10 +6,10 @@ export const Login = () => {
   const history = useHistory();
   const { auth, setAuth } = useUser();
 
-  if(auth){
+  if (auth) {
     history.push("/");
   }
-  
+
   return (
     <div>
       <FormLogin />

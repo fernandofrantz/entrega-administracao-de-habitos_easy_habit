@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 import { useUser } from "../../Providers/User";
 import { useHistory } from "react-router-dom";
 
- const RegisterLots = () => {
+const RegisterLots = () => {
   const [names, setNames] = useState("");
   const [passwords, setPasswords] = useState("");
   const [emails, setEmails] = useState("");
