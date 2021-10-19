@@ -13,7 +13,7 @@ export const CardGoals = ({ item, editable }) => {
       {editable && (
         <>
           <button onClick={() => setShowFormEdit(!showFormEdit)}>Edit</button>
-          <button onClick={() => deleteGoal(item.id)}>delete</button>
+          <button onClick={() => deleteGoal(item.id)}>Delete</button>
         </>
       )}
       {showFormEdit && <FormGoal idGoal={item.id} type={"edit"} />}

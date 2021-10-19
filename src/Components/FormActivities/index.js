@@ -8,8 +8,7 @@ const FormActivities = ({ idGroup, idActivity, type }) => {
             setTitle, 
             setRealizationTime, 
             createActivity, 
-            editActivity, 
-            deleteActivity } = useContext(ActivityContext)
+            editActivity } = useContext(ActivityContext)
     
     return (
         <>
@@ -21,12 +20,14 @@ const FormActivities = ({ idGroup, idActivity, type }) => {
                                 value={title}
                                 type="text"
                                 onChange={e => setTitle(e.target.value)}
+                                required
                             />
                             <input
                                 placeholder="Tempo de realização"
                                 value={realizationTime}
                                 type="datetime-local"
                                 onChange={e => setRealizationTime(e.target.value)}
+                                required
                             />
                             <button onClick={() => createActivity(idGroup)}> Criar </button>
                         </section>
@@ -46,9 +47,8 @@ const FormActivities = ({ idGroup, idActivity, type }) => {
                                 value={realizationTime}
                                 type="datetime-local"
                                 onChange={e => setRealizationTime(e.target.value)}
-                            />
+                        />
                         <button onClick={() => editActivity(idActivity)} > Editar </button>
-                        <button onClick={() => deleteActivity(idActivity)}> excluir </button>
                     </section>     
             }
         </>

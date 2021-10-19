@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router";
 import { GoalsContext } from "../../Providers/Goals";
 import { CardGoals } from "../CardGoals";
