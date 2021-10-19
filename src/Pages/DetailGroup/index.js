@@ -65,7 +65,7 @@ export const DetailGroup = () => {
       })
       .then(() => {
         toast.success("Unsubscribed successfully");
-        setShowOptionCreate(true);
+        setShowOptionCreate(false);
       })
       .catch(() => toast.error("Erro ao se inscrever no grupo"));
   };
