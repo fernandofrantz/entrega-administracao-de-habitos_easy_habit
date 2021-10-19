@@ -1,13 +1,12 @@
-import { RegisterLots } from "../../Components/registro/Registers";
 import { useUser } from "../../Providers/User";
-import { useHistory } from "react-router-dom";
+import RegisterLots from "../../Components/formRegister";
+import { useHistory } from "react-router";
 
 export const Register = () => {
-  const { auth } = useUser();
   const history = useHistory();
-
+  const { Login, auth, setAuth } = useUser();
   if (auth) {
-    history.pushState("/");
+    history.push("/");
   }
 
   return (

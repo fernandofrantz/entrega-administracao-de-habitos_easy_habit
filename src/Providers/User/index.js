@@ -5,20 +5,12 @@ export const UserContext = createContext([]);
 export const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
-
-  // useEffect(() => {
-  //   const token = JSON.parse(localStorage.getItem("@EH"));
-  // },[]);
-  
-//   const Login = () => {
-//     const token = JSON.parse(localStorage.getItem("@EH"));
-
-  const Login = () => {
-    const token = JSON.parse(localStorage.getItem("@ADM_HABIT:token"));
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("@EH"));
     if (token) {
       setAuth(true);
     }
-  };
+  }, []);
 
   const Logout = () => {
     setAuth(false);
@@ -26,8 +18,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ Login, Logout, auth, setAuth }}>
-    {/* <UserContext.Provider value={{ Logout, auth, setAuth }}> */}
+    <UserContext.Provider value={{ Logout, auth, setAuth }}>
       {children}
     </UserContext.Provider>
   );

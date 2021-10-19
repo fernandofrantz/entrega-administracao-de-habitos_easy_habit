@@ -14,18 +14,6 @@ export const Login = () => {
     <div>
       <FormLogin />
       Formulário de login
-
-      
-      {/* <button
-        onClick={() => {
-          
-          setAuth(true);
-          history.push("/");
-        }}
-      >
-        Auth
-      </button> */}
-
     </div>
   );
 };

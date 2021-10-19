@@ -48,6 +48,18 @@ const FormGoal = ({
       .catch((err) => console.log("deu erro"));
   };
 
+  const deleteGoal = (goalId) => {
+    api
+      .delete(`/goals/${goalId}/`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((response) => {
+        const newGols = goals.filter((item) => item.id !== goalId);
+        setGoals([...newGols, response.data]);
+      })
+      .catch((err) => console.log("deu erro"));
+  };
+
   return (
     <div>
       <input
@@ -68,6 +80,9 @@ const FormGoal = ({
       <button onClick={type === "register" ? createGoal : editeGoal}>
         {type === "register" ? "Cadastrar" : "Editar"}
       </button>
+      {type === "register" ? null : (
+        <button onClick={() => deleteGoal(idGoal)}>delete</button>
+      )}
     </div>
   );
 };
