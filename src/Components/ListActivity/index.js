@@ -1,20 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { useParams } from "react-router";
 import { CardActivities } from "../../Components/CardActivities";
 import FormActivities from "../../Components/FormActivities";
 import { ActivityContext } from "../../Providers/Activity";
 
-const ListActivity = ({ showOptionCreate }) => {
-  const [showFormActivity, setShowFormActivity] = useState(false);
+const ListActivity = ({ showOptionCreate, handleUnsubscribe }) => {
 
   const { id } = useParams();
 
-  const { activities } = useContext(ActivityContext);
+  const { activities, showFormActivity, setShowFormActivity } = useContext(ActivityContext);
 
   return (
     <>
       <ul>
-        {activities.map((item) => (
+        {activities.map(item => (
           <li key={item.id}>
             <div>
               <CardActivities item={item} editable={showOptionCreate} />
@@ -23,12 +22,13 @@ const ListActivity = ({ showOptionCreate }) => {
         ))}
       </ul>
       <section>
-        {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
-        {showOptionCreate && (
-          <button onClick={() => setShowFormActivity(!showFormActivity)}>
-            Criar Atividade
-          </button>
-        )}
+      {showOptionCreate && (
+        <button onClick={() => setShowFormActivity(!showFormActivity)}>criar atividade</button>
+      )}
+      {showOptionCreate && (
+        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
+      )}
+      {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
       </section>
     </>
   );

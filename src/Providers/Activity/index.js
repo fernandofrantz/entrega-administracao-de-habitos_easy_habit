@@ -8,6 +8,7 @@ export const ActivityProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [realizationTime, setRealizationTime] = useState("");
   const [activities, setActivities] = useState([]);
+  const [showFormActivity, setShowFormActivity] = useState(false)
 
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
@@ -25,8 +26,7 @@ export const ActivityProvider = ({ children }) => {
       .then((res) => {
         setActivities([...activities, res.data]);
         toast.success("Atividade criada com sucesso!");
-        console.log(res.data, "DATA");
-        console.log(activities, "ACTIVI");
+        setShowFormActivity(false)
       })
       .catch((_) => toast.error("Não foi possível criar a atividade"));
   };
@@ -34,19 +34,16 @@ export const ActivityProvider = ({ children }) => {
   const editActivity = (idActivity) => {
     const data = {};
     if (title) data.title = title;
-    if (realizationTime) data.realizationTime = realizationTime;
+    if (realizationTime) data.realization_time = realizationTime;
 
     api
       .patch(
-        `/activities/${idActivity}/`,
-        {
-          headers: { Authorization: "Bearer " + token },
-        },
-        data
+        `/activities/${idActivity}/`, data, {
+          headers: { Authorization: "Bearer " + token }
+        }
       )
       .then((res) => {
         const edited = activities.filter((item) => item.id !== idActivity);
-        console.log(res.data);
         setActivities([...edited, res.data]);
         toast.success("Atividade editada com sucesso!");
       })
@@ -58,10 +55,10 @@ export const ActivityProvider = ({ children }) => {
       .delete(`/activities/${idActivity}/`, {
         headers: { Authorization: "Bearer " + token },
       })
-      .then((res) => {
-        console.log(res);
-        setActivities(res.data);
-        toast.success("Atividade deletada");
+      .then((_) => {
+        const deleted = activities.filter(item => item.id !== idActivity)
+        setActivities([...deleted]);
+        toast.success("Atividade excluída");
       })
       .catch((_) => toast.error("Não foi possível deletar a atividade"));
   };
@@ -76,6 +73,8 @@ export const ActivityProvider = ({ children }) => {
         deleteActivity,
         setTitle,
         setRealizationTime,
+        showFormActivity,
+        setShowFormActivity,
       }}
     >
       {children}
