@@ -1,5 +1,5 @@
 import { useUser } from "../../Providers/User";
-import RegisterLots from "../../Components/FormRegister";
+import RegisterLots from "../../Components/formRegister";
 import { useHistory } from "react-router";
 
 export const Register = () => {

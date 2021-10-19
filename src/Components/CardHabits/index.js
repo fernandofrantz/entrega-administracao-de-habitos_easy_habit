@@ -1,26 +1,40 @@
 import { useState } from "react";
 import { useHabits } from "../../Providers/Habits";
 import { MdModeEdit, MdDelete } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { buttonsBox, CategoryBox, Container } from "./styles";
-import { FormCreateHabits } from "../FormCreateHabits";
+import { FormHabitsEdit } from "../EditHabts/Index";
 
 export const CardHabits = ({ item, editable }) => {
   const [showForm, setShowForm] = useState(false);
   const { deleteHabits } = useHabits();
   return (
-    <Container>
-      <CategoryBox>{/* <h3>{item.category}</h3> */}</CategoryBox>
+    <div>
+      <h3>{item.category}</h3>
       <h2>{item.title}</h2>
-      {/* {showForm && <FormHabits type={"edit"} idHabit={item.id} />} */}
-      {showForm && <FormCreateHabits type={"edit"} idHabit={item.id} />}
+      {showForm && <FormHabitsEdit idHabit={item.id} />}
       {editable && (
-        <buttonsBox>
-          <MdModeEdit onClick={() => setShowForm(!showForm)} />
-
-          <MdDelete onClick={() => deleteHabits(item.id)} />
-        </buttonsBox>
+        <>
+          <div>
+            <MdModeEdit onClick={() => setShowForm(!showForm)} />
+          </div>
+          <div>
+            <MdDelete onClick={() => deleteHabits(item.id)} />
+          </div>
+        </>
       )}
-    </Container>
+    </div>
   );
 };
+
+// <Container>
+//       <CategoryBox>{/* <h3>{item.category}</h3> */}</CategoryBox>
+//       <h2>{item.title}</h2>
+//       {/* {showForm && <FormHabits type={"edit"} idHabit={item.id} />} */}
+//       {showForm && <FormCreateHabits type={"edit"} idHabit={item.id} />}
+//       {editable && (
+//         <buttonsBox>
+//           <MdModeEdit onClick={() => setShowForm(!showForm)} />
+
+//           <MdDelete onClick={() => deleteHabits(item.id)} />
+//         </buttonsBox>
+//       )}
+//     </Container>
