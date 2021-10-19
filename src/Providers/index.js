@@ -8,9 +8,7 @@ export const Providers = ({ children }) => {
     <HabitProvider>
       <UserProvider>
         <GroupsProvider>
-          <ActivityProvider>
-            {children}
-          </ActivityProvider>
+          <ActivityProvider>{children}</ActivityProvider>
         </GroupsProvider>
       </UserProvider>
     </HabitProvider>
