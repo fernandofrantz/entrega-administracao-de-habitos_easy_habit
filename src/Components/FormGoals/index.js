@@ -1,50 +1,15 @@
-import { useState } from "react";
-import { api } from "../../Services/api";
+import { useContext } from "react";
+import { GoalsContext } from "../../Providers/Goals";
 
-const FormGoal = ({
-  idGroup,
-  idGoal,
-  type,
-  setGoals,
-  goals,
-  setShowForm,
-}) => {
-  const [title, setTitle] = useState("");
-  const [dificult, setDificult] = useState("");
-  const token = JSON.parse(localStorage.getItem("@EH"));
 
-  const createGoal = () => {
-    const data = {
-      title: title,
-      difficulty: dificult,
-      how_much_achieved: 100,
-      group: idGroup,
-    };
-    api
-      .post(`/goals/`, data, {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((response) => {
-        setGoals([...goals, response.data]);
-        setShowForm(false);
-      })
-      .catch((err) => console.log("nao criou"));
-  };
-
-  const editeGoal = () => {
-    const data = {};
-    if (title) data.title = title;
-    if (dificult) data.difficulty = dificult;
-    api
-      .patch(`/goals/${idGoal}/`, data, {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((response) => {
-        const newGols = goals.filter((item) => item.id !== idGoal);
-        setGoals([...newGols, response.data]);
-      })
-      .catch((err) => console.log("deu erro"));
-  };
+const FormGoal = ({ idGroup, idGoal, type, setShowForm}) => {
+ 
+  const { title,  
+          setTitle, 
+          dificult, 
+          setDificult, 
+          createGoal, 
+          editeGoal} = useContext(GoalsContext);
 
   return (
     <div>
@@ -63,7 +28,7 @@ const FormGoal = ({
         required={type === "register" ? true : false}
       />
 
-      <button onClick={type === "register" ? createGoal : editeGoal}>
+      <button onClick={() => {type === "register" ? createGoal(idGroup) : editeGoal(idGoal)}}>
         {type === "register" ? "Cadastrar" : "Editar"}
       </button>
     </div>

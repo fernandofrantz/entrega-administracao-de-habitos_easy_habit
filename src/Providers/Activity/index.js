@@ -39,9 +39,9 @@ export const ActivityProvider = ({ children }) => {
         if (realizationTime) data.realizationTime = realizationTime;
     
         api
-            .patch(`/activities/${idActivity}/`, data, {
+            .patch(`/activities/${idActivity}/`, {
                 headers: { Authorization: "Bearer " + token },  
-            })
+            }, data,)
             .then((res) => {
                 const edited = activities.filter(item => item.id !== idActivity);
                 console.log(res.data)   
