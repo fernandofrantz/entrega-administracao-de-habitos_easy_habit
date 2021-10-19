@@ -3,18 +3,13 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
-import jwt_decode from "jwt-decode";
-import { useUser } from "../../Providers/User";
 import { useHistory } from "react-router-dom";
 
 const RegisterLots = () => {
-  const [names, setNames] = useState("");
-  const [passwords, setPasswords] = useState("");
-  const [emails, setEmails] = useState("");
-  const { setAuth } = useUser();
+
   const history = useHistory();
   const formSchema = yup.object().shape({
     username: yup
@@ -50,7 +45,7 @@ const RegisterLots = () => {
         toast.success("Account created successfully!");
         const ToLogin = { username: evt.username, password: evt.password };
         api.post("/sessions/", ToLogin).then((response) => {
-          const token = response.data.access;
+          // const token = response.data.access;
 
           history.push("/login");
         });

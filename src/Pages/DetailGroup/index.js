@@ -6,9 +6,9 @@ import FormGoal from "../../Components/FormGoals";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { api } from "../../Services/api";
 import { CardGoals } from "../../Components/CardGoals";
-import { useGroups } from "../../Providers/Groups";
+// import { useGroups } from "../../Providers/Groups";
 import { FormGroup } from "../../Components/FormGroup";
-import { FormGoalEdit } from "../../Components/FormGoalEdit";
+// import { FormGoalEdit } from "../../Components/FormGoalEdit";
 
 export const DetailGroup = () => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ export const DetailGroup = () => {
   const [nameGroup, setNameGroup] = useState("");
   const [categoryGroup, setcategoryGroup] = useState("");
   const [descriptionGroup, setDescriptionGroup] = useState("");
-  const { listGroup, setMyGroups, setListGroup, myGroups } = useGroups();
+  // const { listGroup, setMyGroups, setListGroup, myGroups } = useGroups();
 
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 

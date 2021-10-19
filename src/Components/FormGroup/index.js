@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useGroups } from "../../Providers/Groups";
-import axios from "axios";
 
 export const FormGroup = ({ type, idGroup, setNameGroup }) => {
   const [groupName, setGroupName] = useState("");
