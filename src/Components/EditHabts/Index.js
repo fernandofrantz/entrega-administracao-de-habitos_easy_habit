@@ -21,10 +21,13 @@ export const FormHabitsEdit = ({ idHabit }) => {
 
   const edit = () => {
     const data = {};
-    if (title) data.title = title;
+   if (title) data.title = title;
     if (category) data.category = category;
     if (difficulty !== "") data.difficulty = difficulty;
+    else delete data.difficulty;
     if (frequency.length !== 0) data.frequency = frequency.toString();
+    else delete data.frequency;
+
 
     updateHabits(data, idHabit);
   };
