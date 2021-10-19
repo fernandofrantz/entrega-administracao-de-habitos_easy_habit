@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
+
 export const FormCreateHabits = () => {
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
