@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
@@ -6,15 +6,16 @@ import FormGoal from "../../Components/FormGoals";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { api } from "../../Services/api";
 import { CardGoals } from "../../Components/CardGoals";
-import { useGroups } from "../../Providers/Groups";
 import { FormGroup } from "../../Components/FormGroup";
-import { FormGoalEdit } from "../../Components/FormGoalEdit";
+import { ActivityContext } from "../../Providers/Activity";
+import ListActivity from "../../Components/ListActivity";
 
 export const DetailGroup = () => {
   const { id } = useParams();
   const history = useHistory();
 
   const [goals, setGoals] = useState([]);
+
   const [showForm, setShowForm] = useState(false);
   const [showOptionCreate, setShowOptionCreate] = useState(false);
   const [showEditOption, setShowEditOption] = useState(false);
@@ -22,7 +23,8 @@ export const DetailGroup = () => {
   const [nameGroup, setNameGroup] = useState("");
   const [categoryGroup, setcategoryGroup] = useState("");
   const [descriptionGroup, setDescriptionGroup] = useState("");
-  const { listGroup, setMyGroups, setListGroup, myGroups } = useGroups();
+
+  const { setActivities } = useContext(ActivityContext);
 
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
@@ -33,6 +35,7 @@ export const DetailGroup = () => {
       })
       .then((response) => {
         setGoals(response.data.goals);
+        setActivities(response.data.activities);
         const { user_id } = jwt_decode(token);
         const listUser = response.data.users_on_group;
         const creatorGroup = response.data.creator.id;
@@ -43,7 +46,7 @@ export const DetailGroup = () => {
         if (searchMyUser) setShowOptionCreate(true);
         if (creatorGroup === user_id) setShowEditOption(true);
       })
-      .catch(() => console.log("erro ao buscar pelos goals"));
+      .catch((_) => console.log("erro ao buscas metas e atividades"));
   }, []);
 
   const subscribeToGroup = (groupId) => {
@@ -114,12 +117,8 @@ export const DetailGroup = () => {
           showForm={showForm}
         />
       )}
-      {showOptionCreate && (
-        <button onClick={() => setShowForm(!showForm)}>criar Atividade</button>
-      )}
-      {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
-      )}
+
+      <ListActivity showOptionCreate={showOptionCreate} />
 
       <NavigationMenu />
     </div>
