@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { api } from "../../Services/api";
 
@@ -9,7 +8,6 @@ const FormGoal = ({
   setGoals,
   goals,
   setShowForm,
-  editable,
 }) => {
   const [title, setTitle] = useState("");
   const [dificult, setDificult] = useState("");
