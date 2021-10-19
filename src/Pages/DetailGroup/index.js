@@ -133,21 +133,18 @@ import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
-import FormGoal from "../../Components/FormGoals";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { api } from "../../Services/api";
-import { CardGoals } from "../../Components/CardGoals";
 import { FormGroup } from "../../Components/FormGroup";
 import { ActivityContext } from "../../Providers/Activity";
 import ListActivity from "../../Components/ListActivity";
+import ListGoals from "../../Components/ListGoals";
+import { GoalsContext } from "../../Providers/Goals";
 
 export const DetailGroup = () => {
   const { id } = useParams();
   const history = useHistory();
 
-  const [goals, setGoals] = useState([]);
-
-  const [showForm, setShowForm] = useState(false);
   const [showOptionCreate, setShowOptionCreate] = useState(false);
   const [showEditOption, setShowEditOption] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -156,6 +153,7 @@ export const DetailGroup = () => {
   const [descriptionGroup, setDescriptionGroup] = useState("");
 
   const { setActivities } = useContext(ActivityContext);
+  const { setGoals } = useContext(GoalsContext);
 
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
@@ -213,44 +211,22 @@ export const DetailGroup = () => {
       {showEditForm && (
         <FormGroup type={"edit"} idGroup={id} setNameGroup={setNameGroup} />
       )}
+
       <h2>{nameGroup}</h2>
       {!showOptionCreate && (
         <button onClick={() => subscribeToGroup(id)}>inscrever</button>
       )}
+
       <h2>{descriptionGroup}</h2>
 
       <h2> Meta Desafios </h2>
 
-      <ul>
-        {goals.map((item, index) => (
-          <li key={index}>
-            <div>
-              <CardGoals
-                item={item}
-                setGoals={setGoals}
-                goals={goals}
-                editable={showOptionCreate}
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
+      <ListGoals
+        handleUnsubscribe={handleUnsubscribe}
+        showOptionCreate={showOptionCreate}
+      />
 
-      {showOptionCreate && (
-        <button onClick={() => setShowForm(!showForm)}>criar meta</button>
-      )}
-      {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
-      )}
-      {showForm && (
-        <FormGoal
-          idGroup={id}
-          type={"register"}
-          setGoals={setGoals}
-          goals={goals}
-          showForm={showForm}
-        />
-      )}
+      <h2>atividads</h2>
 
       <ListActivity showOptionCreate={showOptionCreate} />
 

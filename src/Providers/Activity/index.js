@@ -37,11 +37,16 @@ export const ActivityProvider = ({ children }) => {
     if (realizationTime) data.realizationTime = realizationTime;
 
     api
-      .patch(`/activities/${idActivity}/`, data, {
-        headers: { Authorization: "Bearer " + token },
-      })
+      .patch(
+        `/activities/${idActivity}/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        },
+        data
+      )
       .then((res) => {
         const edited = activities.filter((item) => item.id !== idActivity);
+        console.log(res.data);
         setActivities([...edited, res.data]);
         toast.success("Atividade editada com sucesso!");
       })
