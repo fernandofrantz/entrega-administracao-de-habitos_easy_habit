@@ -8,9 +8,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  >h2{
-      font-size: 1.5rem;
-      font-weight: lighter;
+  > h2 {
+    font-size: 1.5rem;
+    font-weight: lighter;
   }
 `;
 

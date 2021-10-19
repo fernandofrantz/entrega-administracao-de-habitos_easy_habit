@@ -34,7 +34,7 @@ export const ActivityProvider = ({ children }) => {
   const editActivity = (idActivity) => {
     const data = {};
     if (title) data.title = title;
-    if (realizationTime) data.realizationTime = realizationTime;
+    if (realizationTime) data.realization_time = realizationTime;
 
     api
       .patch(
