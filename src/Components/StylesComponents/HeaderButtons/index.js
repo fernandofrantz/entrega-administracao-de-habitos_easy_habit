@@ -1,11 +1,11 @@
 import { ColoredButton } from "./styles";
 
 
-function HeaderButtons({children, icon, backGroundColor}){
+function HeaderButtons({children, icon: Icon, backGroundColor}){
     return (
         
-        <ColoredButton>
-        {children} {icon}
+        <ColoredButton backGroundColor={backGroundColor}>
+        {children} {Icon && <Icon/>}
         </ColoredButton>
     )
 }

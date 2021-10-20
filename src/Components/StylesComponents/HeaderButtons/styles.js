@@ -8,5 +8,8 @@ background-color: ${props => props.backGroundColor};
 font-size: 0.75rem;
 font-weight: 400;
 border: none;
+display: flex;
+align-items: center;
+justify-content: space-around;
 
 `

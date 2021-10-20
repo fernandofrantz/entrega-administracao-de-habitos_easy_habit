@@ -4,17 +4,15 @@ export const Body = styled.article   `
 width: 100vw;
 height: 100vh;
 box-sizing: border-box;
-
-
-
 `
 
-export const Header = styled.header `  
-width: 100vw;
-height: 5.5rem;
-padding: 2.10rem 2.10rem 0;
-
+export const Main = styled.main ` 
+width: 100%;
+padding: 2.1rem;
+box-sizing: border-box;
 `
+
+
 
 export const Section = styled.section ` 
 max-height: 100%;
@@ -22,7 +20,7 @@ width: 80vw;
 overflow: auto;
 margin: 0 auto;
 padding-top: 1.7rem;
-border-top: 1px solid black;
+/* border-top: 1px solid black; */
 `
 
 export const SectionCategories = styled.section ` 
