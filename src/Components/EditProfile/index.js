@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
+import { Form } from "./styles";
 
 const EditProfile = () => {
   const [names, setNames] = useState("");
@@ -10,7 +11,7 @@ const EditProfile = () => {
 
   return (
     <div className="Edit">
-      <form
+      <Form
         onSubmit={(evt) => {
           evt.preventDefault();
           const modifItem = {
@@ -52,7 +53,7 @@ const EditProfile = () => {
           onChange={(evt) => setEmails(evt.target.value)}
         />
         <button type="submit">Editar</button>
-      </form>
+      </Form>
     </div>
   );
 

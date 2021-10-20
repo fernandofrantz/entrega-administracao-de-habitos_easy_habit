@@ -36,7 +36,7 @@ export const LogoutCircle = styled.div`
 `;
 
 export const Main = styled.main`
-  margin: 7rem auto 0;
+  margin: 4rem auto 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,13 +74,13 @@ export const Main = styled.main`
     cursor: pointer;
   }
 
-  >button{
+  > button {
     width: fit-content;
     height: fit-content;
     background: transparent;
     color: black;
     border: none;
-    >svg{
+    > svg {
       height: 1.5rem;
       width: 1.5rem;
       cursor: pointer;

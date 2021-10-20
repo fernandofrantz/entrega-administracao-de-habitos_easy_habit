@@ -13,8 +13,6 @@ import {
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
 import ContainerHabits from "../../Components/ContainerHabits";
 
-
-
 export const Habit = () => {
   const { auth } = useUser();
   const { habits } = useHabits();
@@ -28,7 +26,6 @@ export const Habit = () => {
   const categorys = habits
     .map((item) => item.category)
     .filter((item, index, arr) => arr.indexOf(item) === index);
-
 
   return (
     <Body>
@@ -64,14 +61,18 @@ export const Habit = () => {
                 ))}
             </ul> */}
 
-{/* #9fdaef */}
-{/* #e88a8a */}
-            
-        {categorys &&
-          categorys.map((item, index) => (
-            <ContainerHabits key={index} category={item} list={habits} backGroundColor={"#9fdaef "}/>
-          ))}
-      
+            {/* #9fdaef */}
+            {/* #e88a8a */}
+
+            {categorys &&
+              categorys.map((item, index) => (
+                <ContainerHabits
+                  key={index}
+                  category={item}
+                  list={habits}
+                  backGroundColor={"#9fdaef "}
+                />
+              ))}
           </SectionCategories>
         </Section>
       </Main>
