@@ -31,12 +31,15 @@ export const Habit = () => {
     <Body>
       <Main>
         <Header>
+          <button onClick={() => setShowForm(!showForm)}>asadasd</button>
+
           <HeaderButtons
-            children={`Create a habit`}
+            children={`Create habit`}
             icon={GoPlus}
             backGroundColor={"#BCDFAB"}
             onClick={() => setShowForm(!showForm)}
           />
+
           <HeaderButtons
             children={"Categories"}
             icon={GoTriangleDown}
@@ -47,11 +50,7 @@ export const Habit = () => {
         <BlackLine />
         <Section>
           <SectionCategories>
-            {showForm && (
-              <>
-                <FormCreateHabits />
-              </>
-            )}
+            {showForm && <FormCreateHabits />}
             {/* <ul>
               {habits &&
                 habits.map((item, index) => (
