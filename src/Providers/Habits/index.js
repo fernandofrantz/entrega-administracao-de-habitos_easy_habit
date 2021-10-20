@@ -23,7 +23,6 @@ export const HabitProvider = ({ children }) => {
       })
       .then((response) => {
         setHabits([...habits, response.data]);
-        console.log(response.data);
       })
       .catch((err) => console.log(err));
   };

@@ -1,20 +1,21 @@
 import { CardHabits } from "../CardHabits";
+import { CategoryTitle, HabitsByCategory, CategoryBox } from "./styles";
 
-export const ContainerHabits = ({ item, list }) => {
+export const ContainerHabits = ({ category, list, backGroundColor }) => {
   return (
-    <>
-      <h2>{item}</h2>
+    <CategoryBox>
+      <CategoryTitle backGroundColor={backGroundColor}>{category}</CategoryTitle>
 
-      <ul>
+      <HabitsByCategory>
         {list
-          .filter((items) => items.category === item)
-          .map((item, index) => (
-            <li key={index}>
-              <CardHabits item={item} editable />
+          .filter((items) => items.category === category)
+          .map((item) => (
+            <li key={item.id}>
+              <CardHabits item={item} editable backGroundColor={backGroundColor}/>
             </li>
           ))}
-      </ul>
-    </>
+      </HabitsByCategory>
+    </CategoryBox>
   );
 };
 

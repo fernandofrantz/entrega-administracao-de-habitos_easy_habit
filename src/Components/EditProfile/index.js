@@ -21,7 +21,7 @@ const EditProfile = () => {
           if (modifItem.username === "") delete modifItem.username;
           if (modifItem.password === "") delete modifItem.password;
           if (modifItem.email === "") delete modifItem.email;
-          console.log(modifItem);
+          // console.log(modifItem);
           const Token = JSON.parse(localStorage.getItem("@EH"));
           const decode = jwt_decode(Token).user_id;
           api

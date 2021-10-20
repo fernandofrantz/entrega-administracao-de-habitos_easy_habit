@@ -1,28 +1,19 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { CardHabits } from "../../Components/CardHabits";
 import { FormCreateHabits } from "../../Components/FormCreateHabits";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
-import { GoPlus, GoChevronDown, GoTriangleDown } from "react-icons/go";
+import { GoPlus, GoTriangleDown } from "react-icons/go";
 import { Body, Main, Section, SectionCategories } from "./styles";
 import {
   BlackLine,
   Header,
 } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
-=======
-import { useState, useEffect } from "react";
-import { CardHabits } from "../../Components/CardHabits";
-import NavigationMenu from "../../Components/NavigationMenu";
-import { useHabits } from "../../Providers/Habits";
-import { useUser } from "../../Providers/User";
-import { FormCreateHabits } from "../../Components/FormCreateHabits";
-import { Container } from "../../Components/CardHabits/styles";
 import ContainerHabits from "../../Components/ContainerHabits";
->>>>>>> 2d990dbc750f66b097df111a8bcb2f2597b4630b
+
+
 
 export const Habit = () => {
   const { auth } = useUser();
@@ -38,7 +29,6 @@ export const Habit = () => {
     .map((item) => item.category)
     .filter((item, index, arr) => arr.indexOf(item) === index);
 
-  console.log(categorys);
 
   return (
     <Body>
@@ -73,12 +63,15 @@ export const Habit = () => {
                   </li>
                 ))}
             </ul> */}
-            <ul>
+
+{/* #9fdaef */}
+{/* #e88a8a */}
+            
         {categorys &&
-          categorys.map((item) => (
-            <ContainerHabits item={item} list={habits} />
+          categorys.map((item, index) => (
+            <ContainerHabits key={index} category={item} list={habits} backGroundColor={"#9fdaef "}/>
           ))}
-      </ul>
+      
           </SectionCategories>
         </Section>
       </Main>

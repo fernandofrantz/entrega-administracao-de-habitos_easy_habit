@@ -8,6 +8,7 @@ box-sizing: border-box;
 
 export const Main = styled.main ` 
 width: 100%;
+max-height: 100%;
 padding: 2.1rem;
 box-sizing: border-box;
 `
@@ -17,7 +18,6 @@ box-sizing: border-box;
 export const Section = styled.section ` 
 max-height: 100%;
 width: 80vw;
-overflow: auto;
 margin: 0 auto;
 padding-top: 1.7rem;
 /* border-top: 1px solid black; */
@@ -25,14 +25,15 @@ padding-top: 1.7rem;
 
 export const SectionCategories = styled.section ` 
 width: 100%;
+min-height: 375px;
 border-radius: 15px;
 background-color: 
 #EDEDED;
+overflow: auto;
 
 `
 
 export const DivCategory = styled.div ` 
-border-radius: 15px 15px 0 0;
 >h2{
     background-color: ${props=> props.backGroundColor};
     font-size: 12px;

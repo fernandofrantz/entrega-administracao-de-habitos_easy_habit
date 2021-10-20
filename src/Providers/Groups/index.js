@@ -50,7 +50,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((res) => {
         setMyGroups([...myGroups, res.data]);
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
   };

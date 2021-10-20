@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
+import { ContainerForm } from "./styles";
 export const FormCreateHabits = () => {
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
@@ -26,7 +27,7 @@ export const FormCreateHabits = () => {
       how_much_achieved: 0,
       user: jwt_decode(Token).user_id,
     };
-    console.log(finalInfo);
+    // console.log(finalInfo);
     api
       .post("/habits/", finalInfo, {
         headers: { Authorization: `Bearer ${Token}` },
@@ -50,7 +51,7 @@ export const FormCreateHabits = () => {
   }, [errors]);
 
   return (
-    <div className="criarHabito">
+    <ContainerForm className="criarHabito">
       <h3>Criar novo habito</h3>
       <form onSubmit={handleSubmit(handleCreateHabit)}>
         <input placeholder="Habit title" type="text" {...register("title")} />
@@ -186,6 +187,6 @@ export const FormCreateHabits = () => {
         <br />
         <button type="submit">Create habit</button>
       </form>
-    </div>
+    </ContainerForm>
   );
 };

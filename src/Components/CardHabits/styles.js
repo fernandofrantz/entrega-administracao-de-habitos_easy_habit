@@ -19,12 +19,11 @@ export const Container = styled.div`
 
 export const HabitBox = styled.div``;
 
-export const CategoryBox = styled.div`
+export const CategoryColor = styled.div`
   width: 35px;
   height: 35px;
-  background-color: #e88a8a;
+  background-color: ${props=> props.backGroundColor};
   border-radius: 5px 0 0 5px;
-  color: #e88a8a;
   
 `;
 
