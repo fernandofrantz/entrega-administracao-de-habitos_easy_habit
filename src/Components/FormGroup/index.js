@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { useGroups } from "../../Providers/Groups";
+import { FormPage } from "./style";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
-export const FormGroup = ({ type, idGroup, setNameGroup }) => {
+export const FormGroup = ({
+  type,
+  idGroup,
+  setNameGroup,
+  setShowFormGroup,
+}) => {
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -29,31 +36,40 @@ export const FormGroup = ({ type, idGroup, setNameGroup }) => {
   };
 
   return (
-    <div>
-      <input
-        placeholder="nome do grupo"
-        type="text"
-        value={groupName}
-        onChange={(event) => setGroupName(event.target.value)}
-        required={type === "register" ? true : false}
-      />
-      <input
-        placeholder="Descrição do grupo"
-        type="text"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-        required={type === "register" ? true : false}
-      />
-      <input
-        placeholder="categoria"
-        type="text"
-        value={category}
-        onChange={(event) => setCategory(event.target.value)}
-        required={type === "register" ? true : false}
-      />
-      <button onClick={type === "register" ? newGroup : newEditGroup}>
-        {type === "register" ? "Cadastrar" : "Editar"}
-      </button>
-    </div>
+    <FormPage>
+      <div className="iconContainer" onClick={() => setShowFormGroup(false)}>
+        <IoMdArrowRoundBack />
+      </div>
+
+      <form onSubmit={type === "register" ? newGroup : newEditGroup}>
+        <div className="effect"></div>
+        <div className="inputContainer">
+          <input
+            placeholder="Title"
+            type="text"
+            value={groupName}
+            onChange={(event) => setGroupName(event.target.value)}
+            required={type === "register" ? true : false}
+          />
+          <input
+            placeholder="Description"
+            type="text"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            required={type === "register" ? true : false}
+          />
+          <input
+            placeholder="category"
+            type="text"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            required={type === "register" ? true : false}
+          />
+        </div>
+        <button type="submit">
+          {type === "register" ? "Create new group" : "Editar"}
+        </button>
+      </form>
+    </FormPage>
   );
 };
