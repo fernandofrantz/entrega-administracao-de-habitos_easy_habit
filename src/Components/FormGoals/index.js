@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 
-const FormGoal = ({ idGroup, idGoal, type, setShowForm }) => {
+const FormGoal = ({ idGroup, idGoal, type }) => {
   const { title, 
           setTitle, 
           dificult, 

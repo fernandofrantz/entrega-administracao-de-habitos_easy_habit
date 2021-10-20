@@ -11,7 +11,7 @@ export const CardActivities = ({ item, editable }) => {
   return (
     <div>
       <div>{item.title}</div>
-      <p> {item.realization_time} </p>
+      <p> { item.realization_time } </p>
       {editable && (
         <>
           <button onClick={() => setShowFormEdit(!showFormEdit)}> Editar </button>
@@ -19,7 +19,7 @@ export const CardActivities = ({ item, editable }) => {
         </>
       )}
 
-
+      
       {showFormEdit && <FormActivities idActivity={item.id} type={"edit"} />}
     </div>
   );
