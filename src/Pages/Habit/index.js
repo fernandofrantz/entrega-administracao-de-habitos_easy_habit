@@ -16,7 +16,7 @@ export const Habit = () => {
     .map((item) => item.category)
     .filter((item, index, arr) => arr.indexOf(item) === index);
 
-  console.log(categorys);
+  //console.log(categorys);
 
   return (
     <div>

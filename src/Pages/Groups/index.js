@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CardGroup } from "../../Components/CardGroup";
+import ContainerGroup from "../../Components/ContainerGroups";
 import { FormGroup } from "../../Components/FormGroup";
 import { List } from "../../Components/List";
 import NavigationMenu from "../../Components/NavigationMenu";
@@ -9,6 +10,10 @@ export const Group = () => {
   const [searchCategory, setSearchCategory] = useState("");
   const { searchGroup, listGroup, myGroups, getSubscribes } = useGroups();
   const [showFormGroup, setShowFormGroup] = useState(false);
+
+  const categorys = myGroups
+    .map((item) => item.category)
+    .filter((item, index, arr) => arr.indexOf(item) === index);
 
   useEffect(() => {
     getSubscribes();
@@ -23,14 +28,12 @@ export const Group = () => {
       {showFormGroup && <FormGroup type={"register"} />}
       <h2>Meus grupos</h2>
 
-      <List>
-        {myGroups &&
-          myGroups.map((item, index) => (
-            <li key={index}>
-              <CardGroup item={item} />
-            </li>
+      <ul>
+        {categorys &&
+          categorys.map((item) => (
+            <ContainerGroup item={item} list={myGroups} />
           ))}
-      </List>
+      </ul>
       <input
         placeholder="Buscar por categoria"
         type="text"
