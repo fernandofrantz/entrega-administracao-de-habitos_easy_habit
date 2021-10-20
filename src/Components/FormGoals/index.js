@@ -1,39 +1,45 @@
 import { useContext } from "react";
 import { GoalsContext } from "../../Providers/Goals";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { FormPage } from "./style";
 
 const FormGoal = ({ idGroup, idGoal, type, setShowForm }) => {
-  const { title, 
-          setTitle, 
-          dificult, 
-          setDificult, 
-          createGoal, 
-          editeGoal } = useContext(GoalsContext);
+  const { title, setTitle, dificult, setDificult, createGoal, editeGoal } =
+    useContext(GoalsContext);
 
   return (
-    <div>
-      <input
-        placeholder="Titulo da Meta"
-        type="text"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-        required={type === "register" ? true : false}
-      />
-      <input
-        placeholder="Dificuldade"
-        type="text"
-        value={dificult}
-        onChange={(event) => setDificult(event.target.value)}
-        required={type === "register" ? true : false}
-      />
-
-      <button
-        onClick={() => {
+    <FormPage>
+      <div className="iconContainer" onClick={() => setShowForm(false)}>
+        <IoMdArrowRoundBack />
+      </div>
+      <form
+        onSubmit={() => {
           type === "register" ? createGoal(idGroup) : editeGoal(idGoal);
         }}
       >
-        {type === "register" ? "Cadastrar" : "Editar"}
-      </button>
-    </div>
+        <div className="effect"></div>
+        <div className="inputContainer">
+          <input
+            placeholder="Title"
+            type="text"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            required={type === "register" ? true : false}
+          />
+          <input
+            placeholder="Difficulty"
+            type="text"
+            value={dificult}
+            onChange={(event) => setDificult(event.target.value)}
+            required={type === "register" ? true : false}
+          />
+        </div>
+
+        <button type="submit">
+          {type === "register" ? "Create new goal" : "Edit"}
+        </button>
+      </form>
+    </FormPage>
   );
 };
 

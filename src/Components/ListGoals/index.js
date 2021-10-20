@@ -27,7 +27,9 @@ const ListGoals = ({ showOptionCreate, handleUnsubscribe }) => {
       {showOptionCreate && (
         <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
       )}
-      {showForm && <FormGoal idGroup={id} type={"register"} />}
+      {showForm && (
+        <FormGoal idGroup={id} type={"register"} setShowForm={setShowForm} />
+      )}
     </>
   );
 };
