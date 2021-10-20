@@ -20,8 +20,8 @@ export const FormPage = styled.div`
   form {
     background-color: #ededed;
     width: 100%;
-    max-width: 300px;
-    height: 500px;
+    max-width: 270px;
+    height: 373px;
     position: relative;
     border-radius: 15px;
     .inputContainer {
