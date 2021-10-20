@@ -1,17 +1,18 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUser } from "../../Providers/User";
 
 //import { api } from "../../Services/api";
 
 export const FormLogin = () => {
-  //const { setAuth } = useContext("userContext");
+  const { setAuth } = useUser();
   //const [auth, setAuth] = useState(false);
-  //const history = useHistory();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nome de usuário obrigatório"),
@@ -31,27 +32,36 @@ export const FormLogin = () => {
       .post("https://kenzie-habits.herokuapp.com/sessions/", data)
       .then((response) => {
         const token = response.data.access;
-        localStorage.setItem("@EH", token);
-        // setAuth(true);
-        //  history.push("/");
+
+        localStorage.clear();
+        localStorage.setItem("@EH", JSON.stringify(token));
+        setAuth(true);
+        history.push("/");
       })
       .catch(() => {
         toast.error("usuário não cadastrado ou senha inválida");
       });
   };
+  useEffect(() => {
+    toast.error(errors.password?.message);
+    toast.error(errors.username?.message);
+  }, [errors]);
 
   return (
-    <div>
+    <div className="formLogin">
+      <h1>Login</h1>
       <form onSubmit={handleSubmit(handleLogin)}>
         <input
           placeholder="Nome de usuario"
           type="text"
           {...register("username")}
         />
-        {errors.username?.message}
+        <br />
+
         <input placeholder="Senha" type="text" {...register("password")} />
-        {errors.password?.message}
-        <button type="submit">Login</button>
+
+        <br />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

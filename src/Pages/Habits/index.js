@@ -1,4 +1,4 @@
-// create habits
+// create habit
 // must recieve token by parameter
 
 import axios from "axios";
