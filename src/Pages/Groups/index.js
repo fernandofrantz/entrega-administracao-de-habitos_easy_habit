@@ -25,7 +25,9 @@ export const Group = () => {
       <button onClick={() => setShowFormGroup(!showFormGroup)}>
         Criar grupo
       </button>
-      {showFormGroup && <FormGroup type={"register"} />}
+      {showFormGroup && (
+        <FormGroup type={"register"} setShowFormGroup={setShowFormGroup} />
+      )}
       <h2>Meus grupos</h2>
 
       <ul>
