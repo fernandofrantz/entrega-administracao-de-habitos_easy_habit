@@ -4,9 +4,14 @@ import { Body, LogoutCircle, Main } from "./styles";
 import { MdLogout, MdCancel } from "react-icons/md";
 import { useUser } from "../../Providers/User";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import userGray from "../../assets/userPic.png"
+=======
+import jwt_decode from "jwt-decode";
+import axios from "axios";
+>>>>>>> 2d990dbc750f66b097df111a8bcb2f2597b4630b
 
 export const Perfil = () => {
   const { Logout } = useUser();
