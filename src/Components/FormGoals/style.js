@@ -46,12 +46,12 @@ export const FormPage = styled.div`
     .effect {
       width: 100%;
       height: 30px;
-      background-color: #c986ff;
+      background-color: #87c3d6;
       border-radius: 15px 15px 0 0;
     }
 
     button {
-      background-color: #c986ff;
+      background-color: #87c3d6;
       position: absolute;
       bottom: 15px;
       border: none;
