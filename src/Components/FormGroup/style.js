@@ -10,6 +10,7 @@ export const FormPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .iconContainer {
     position: absolute;
@@ -20,12 +21,13 @@ export const FormPage = styled.div`
   form {
     background-color: #ededed;
     width: 100%;
-    max-width: 300px;
-    height: 500px;
+    max-width: 270px;
+    height: 373px;
     position: relative;
     border-radius: 15px;
+
     .inputContainer {
-      margin-top: 90px;
+      margin-top: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
