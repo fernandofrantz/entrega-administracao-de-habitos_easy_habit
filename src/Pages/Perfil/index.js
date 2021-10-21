@@ -44,7 +44,7 @@ export const Perfil = () => {
         {editMode ? (
           <>
             <EditProfile />
-            <button onClick={() => setEditMode(false)}><MdCancel/></button>
+            <button onClick={() => setEditMode(false)}>Cancel</button>
           </>
         ) : (
           <>
