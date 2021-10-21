@@ -86,3 +86,4 @@ const RegisterLots = () => {
 };
 
 export default RegisterLots;
+
