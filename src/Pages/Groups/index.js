@@ -8,7 +8,14 @@ import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
 import { useGroups } from "../../Providers/Groups";
 import { Header } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import { Body, Main, Section, SectionCategories } from "../Habit/styles";
-import { ContainerInput, HeaderStyled, InputSearch, UlStyled } from "./style";
+import {
+  ContainerInput,
+  H2,
+  HeaderStyled,
+  InputSearch,
+  Li,
+  UlStyled,
+} from "./style";
 import { GoPlus } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 
@@ -74,30 +81,29 @@ export const Group = () => {
                 setShowFormGroup={setShowFormGroup}
               />
             )}
-            <h2>Meus grupos</h2>
 
-            <ul>
-              {categorys &&
-                categorys.map((item, index) => {
-                  const themeSelect = colors[index];
-                  return (
-                    <li key={index}>
-                      <ContainerGroup
-                        item={item}
-                        list={myGroups}
-                        themColor={themeSelect}
-                      />
-                    </li>
-                  );
-                })}
-            </ul>
+            <H2>Meus grupos</H2>
+            {categorys &&
+              categorys.map((item, index) => {
+                const themeSelect = colors[index];
+                return (
+                  <li key={index}>
+                    <ContainerGroup
+                      item={item}
+                      list={myGroups}
+                      themColor={themeSelect}
+                    />
+                  </li>
+                );
+              })}
 
+            <H2>Your search:</H2>
             <List>
               {listGroup &&
                 listGroup.map((item, index) => (
-                  <li key={index}>
+                  <Li key={index}>
                     <CardGroup item={item} />
-                  </li>
+                  </Li>
                 ))}
             </List>
           </SectionCategories>
