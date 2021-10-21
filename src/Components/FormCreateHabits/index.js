@@ -6,10 +6,15 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
-import { CheckboxDiv, ColoredButton, ContainerForm, InputHabits } from "./styles";
+import {
+  CheckboxDiv,
+  ColoredButton,
+  ContainerForm,
+  InputHabits,
+} from "./styles";
 import HeaderButtons from "../StylesComponents/HeaderButtons";
 
-export const FormCreateHabits = ({setShowForm}) => {
+export const FormCreateHabits = ({ setShowForm }) => {
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
     category: yup.string().required("Category required"),
@@ -36,7 +41,7 @@ export const FormCreateHabits = ({setShowForm}) => {
       .then((response) => toast.success("criado com sucesso"))
       .catch((err) => toast.error(err + ""));
 
-      setShowForm(false);
+    setShowForm(false);
   };
   const {
     register,
@@ -125,7 +130,6 @@ export const FormCreateHabits = ({setShowForm}) => {
                   setList(localItem);
                 } else setList(list.concat(evt.target.value));
               }}
-              
             />
           </div>
           <div>
@@ -208,7 +212,9 @@ export const FormCreateHabits = ({setShowForm}) => {
         </CheckboxDiv>
 
         <br />
-        <ColoredButton type="submit" backGroundColor={'rgb(148,83,200)'}>Add habit</ColoredButton>
+        <ColoredButton type="submit" backGroundColor={"rgb(148,83,200)"}>
+          Add habit
+        </ColoredButton>
       </form>
     </ContainerForm>
   );

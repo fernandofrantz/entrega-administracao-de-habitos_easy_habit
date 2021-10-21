@@ -6,15 +6,13 @@ import { useUser } from "../../Providers/User";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import userGray from "../../assets/userPic.png"
+import userGray from "../../assets/userPic.png";
 
 export const Perfil = () => {
   const { Logout } = useUser();
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
- 
 
   useEffect(() => {
     const { user_id } = jwt_decode(JSON.parse(localStorage.getItem("@EH")));
@@ -50,7 +48,7 @@ export const Perfil = () => {
           <>
             <h2>{name}</h2>
             <h4>{email}</h4>
-            <h5 onClick={()=> setEditMode(true)}>edit profile </h5>
+            <h5 onClick={() => setEditMode(true)}>edit profile </h5>
           </>
         )}
       </Main>

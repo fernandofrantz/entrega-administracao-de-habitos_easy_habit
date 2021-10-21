@@ -4,7 +4,7 @@ import { CardActivities } from "../../Components/CardActivities";
 import FormActivities from "../../Components/FormActivities";
 import { ActivityContext } from "../../Providers/Activity";
 
-const ListActivity = ({ showOptionCreate, handleUnsubscribe }) => {
+const ListActivity = ({ showOptionCreate }) => {
   const { id } = useParams();
 
   const { activities, showFormActivity, setShowFormActivity } =

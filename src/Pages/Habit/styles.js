@@ -13,7 +13,6 @@ export const Main = styled.main`
   box-sizing: border-box;
 `;
 
-
 export const SectionCategories = styled.section`
   margin-top: 1.7rem;
   width: 100%;
@@ -35,4 +34,11 @@ export const DivCategory = styled.div`
     padding-left: 12px;
     text-align: left;
   }
+`;
+
+export const Section = styled.section`
+  max-height: 100%;
+  width: 80vw;
+  margin: 0 auto;
+  padding-top: 1.7rem;
 `;

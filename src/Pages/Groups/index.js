@@ -8,7 +8,14 @@ import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
 import { useGroups } from "../../Providers/Groups";
 import { Header } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import { Body, Main, Section, SectionCategories } from "../Habit/styles";
-import { ContainerInput, HeaderStyled, InputSearch } from "./style";
+import {
+  ContainerInput,
+  H2,
+  HeaderStyled,
+  InputSearch,
+  Li,
+  UlStyled,
+} from "./style";
 import { GoPlus } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 
@@ -50,7 +57,8 @@ export const Group = () => {
             children={`Create Group`}
             icon={GoPlus}
             backGroundColor={"#BCDFAB"}
-            onClick={() => setShowFormGroup(!showFormGroup)}
+            buttonFunction={setShowFormGroup}
+            param={!showFormGroup}
           />
           <ContainerInput>
             <InputSearch
@@ -65,38 +73,43 @@ export const Group = () => {
             </button>
           </ContainerInput>
         </Header>
+        <Section>
+          <SectionCategories>
+            {showFormGroup && (
+              <FormGroup
+                type={"register"}
+                setShowFormGroup={setShowFormGroup}
+              />
+            )}
 
-        <SectionCategories>
-          {showFormGroup && (
-            <FormGroup type={"register"} setShowFormGroup={setShowFormGroup} />
-          )}
-          <h2>Meus grupos</h2>
+            <H2>My gruops</H2>
+            <List>
+              {categorys &&
+                categorys.map((item, index) => {
+                  const themeSelect = colors[index];
+                  return (
+                    <li key={index}>
+                      <ContainerGroup
+                        item={item}
+                        list={myGroups}
+                        themColor={themeSelect}
+                      />
+                    </li>
+                  );
+                })}
+            </List>
 
-          <ul>
-            {categorys &&
-              categorys.map((item, index) => {
-                const themeSelect = colors[index];
-                return (
-                  <li key={index}>
-                    <ContainerGroup
-                      item={item}
-                      list={myGroups}
-                      themColor={themeSelect}
-                    />
-                  </li>
-                );
-              })}
-          </ul>
-
-          <List>
-            {listGroup &&
-              listGroup.map((item, index) => (
-                <li key={index}>
-                  <CardGroup item={item} />
-                </li>
-              ))}
-          </List>
-        </SectionCategories>
+            <H2>Your search:</H2>
+            <List>
+              {listGroup &&
+                listGroup.map((item, index) => (
+                  <Li key={index}>
+                    <CardGroup item={item} />
+                  </Li>
+                ))}
+            </List>
+          </SectionCategories>
+        </Section>
       </Main>
       <NavigationMenu />
     </Body>

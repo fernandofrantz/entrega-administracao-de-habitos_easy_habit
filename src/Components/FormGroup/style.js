@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const FormPage = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  min-height: 100vh;
+  position: absolute;
+  top: 90px;
+  height: 375px;
+  width: 100%;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .iconContainer {
     position: absolute;
@@ -17,15 +17,22 @@ export const FormPage = styled.div`
     left: 15px;
   }
 
-  form {
+ main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+form {
     background-color: #ededed;
     width: 100%;
-    max-width: 300px;
-    height: 500px;
+    max-width: 270px;
+    height: 373px;
     position: relative;
     border-radius: 15px;
+
     .inputContainer {
-      margin-top: 90px;
+      margin-top: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,6 +67,13 @@ export const FormPage = styled.div`
       width: 240px;
       left: 50%;
       transform: translate(-50%);
+      font-family: sora , sans-serif;
+      font-size: 12px;
+      font-weight: 400;
     }
   }
+`;
+
+export const Form = styled.form`
+  margin-right: 60px;
 `;

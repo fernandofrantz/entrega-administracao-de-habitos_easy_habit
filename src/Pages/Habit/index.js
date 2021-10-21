@@ -51,7 +51,6 @@ export const Habit = () => {
         <BlackLine />
         <SectionCategories>
           {showForm && <FormCreateHabits setShowForm={setShowForm} />}
-
           {categorys &&
             categorys.map((item, index) => (
               <ContainerHabits

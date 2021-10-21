@@ -9,7 +9,6 @@ export const GroupsProvider = ({ children }) => {
   const [listGroup, setListGroup] = useState([]);
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
-
   const getSubscribes = () => {
     if (token) {
       api
@@ -26,7 +25,6 @@ export const GroupsProvider = ({ children }) => {
   useEffect(() => {
     getSubscribes();
   }, []);
-
 
   const createGroup = (data) => {
     api

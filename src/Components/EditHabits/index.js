@@ -193,7 +193,6 @@ const FormEditHabits = ({ idHabit, setShowForm }) => {
           backGroundColor={"#C986FF"}
           buttonFunction={edit}
         />
-        {/* <button onClick={edit}>Edit </button> */}
         <MdClose onClick={() => setShowForm(false)}></MdClose>
       </ButtonsDiv>
     </ContainerEditForm>

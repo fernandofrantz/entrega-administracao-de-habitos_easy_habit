@@ -4,7 +4,6 @@ import { GiStairsGoal } from "react-icons/gi";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { CardStyled, GroupName, TitleGroup } from "./style";
 import { useState } from "react";
-
 export const CardGroup = ({ item, themColor }) => {
   const history = useHistory();
   const handleDirection = (id) => {

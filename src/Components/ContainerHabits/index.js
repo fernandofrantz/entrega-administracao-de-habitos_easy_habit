@@ -1,12 +1,27 @@
 import { CardHabits } from "../CardHabits";
-import { CategoryTitle, HabitsByCategory, CategoryBox } from "./styles";
+import { CategoryTitle, HabitsByCategory, CategoryBox, Li } from "./styles";
 
-const ContainerHabits = ({ category, list, sequence, setShowEditForm, homePage }) => {
-  const arrayColors = [ '#e88a8a', '#9fdaef', '#FFE6A6', '#85CC85', '#FFB8A6', '#9174AC', ];
+const ContainerHabits = ({
+  category,
+  list,
+  sequence,
+  setShowEditForm,
+  homePage,
+}) => {
+  const arrayColors = [
+    "#e88a8a",
+    "#9fdaef",
+    "#FFE6A6",
+    "#85CC85",
+    "#FFB8A6",
+    "#9174AC",
+  ];
 
   return (
     <CategoryBox>
-      <CategoryTitle backGroundColor={arrayColors[sequence]}>{category}</CategoryTitle>
+      <CategoryTitle backGroundColor={arrayColors[sequence]}>
+        {category}
+      </CategoryTitle>
 
       <HabitsByCategory>
         {homePage ?

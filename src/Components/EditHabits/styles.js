@@ -20,7 +20,7 @@ export const ContainerEditForm = styled.article`
 `;
 
 export const CheckboxDiv = styled.div`
-margin-top: 16px;
+  margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -36,22 +36,22 @@ margin-top: 16px;
       font-weight: 400;
       font-size: 12px;
     }
-    >input{
+    > input {
       accent-color: rgb(148, 83, 200);
     }
   }
 `;
 
-export const ButtonsDiv = styled.div `
-display: flex;
-justify-content: space-between;
-align-items: center;
->svg{
-  color: rgb(148,83,200);
+export const ButtonsDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > svg {
+    color: rgb(148, 83, 200);
     height: 14px;
     width: 14px;
     border: 1px solid rgba(148, 83, 200);
     border-radius: 10px;
     padding: 8px;
-}
-`
+  }
+`;
