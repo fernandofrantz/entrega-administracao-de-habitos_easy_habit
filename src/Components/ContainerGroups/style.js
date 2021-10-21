@@ -11,6 +11,9 @@ export const GroupCategory = styled.div`
   color: white;
   border-radius: 10px 10px 0 0;
   margin-top: 15px;
-  padding: 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
   background-color: ${({ color }) => color};
 `;

@@ -6,7 +6,7 @@ import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
 import { GoPlus, GoTriangleDown } from "react-icons/go";
-import { Body, Main, Section, SectionCategories } from "./styles";
+import { Body, Main, SectionCategories } from "./styles";
 import {
   BlackLine,
   Header,
@@ -66,19 +66,19 @@ export const Habit = () => {
           />
         </Header>
         <BlackLine />
-          <SectionCategories>
-            {showForm && <FormCreateHabits />}
+        <SectionCategories>
+          {showForm && <FormCreateHabits />}
 
-            {categorys &&
-              categorys.map((item, index) => (
-                <ContainerHabits
-                  key={index}
-                  category={item}
-                  list={habits}
-                  sequence={index}
-                />
-              ))}
-          </SectionCategories>
+          {categorys &&
+            categorys.map((item, index) => (
+              <ContainerHabits
+                key={index}
+                category={item}
+                list={habits}
+                sequence={index}
+              />
+            ))}
+        </SectionCategories>
       </Main>
 
       <NavigationMenu />
