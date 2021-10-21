@@ -25,7 +25,7 @@ const ListGoals = ({ showOptionCreate, handleUnsubscribe }) => {
         <button onClick={() => setShowForm(!showForm)}>criar meta</button>
       )}
       {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsub</button>
+        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
       )}
       {showForm && (
         <FormGoal idGroup={id} type={"register"} setShowForm={setShowForm} />
