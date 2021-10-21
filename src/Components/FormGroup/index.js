@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useGroups } from "../../Providers/Groups";
 import { FormPage } from "./style";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { useParams } from "react-router";
 
 export const FormGroup = ({
   type,
-  idGroup,
   setNameGroup,
   setShowFormGroup,
 }) => {
@@ -14,6 +14,8 @@ export const FormGroup = ({
   const [category, setCategory] = useState("");
 
   const { createGroup, editGroup } = useGroups();
+
+  const { id } = useParams();
 
   const newGroup = () => {
     const data = {
@@ -32,7 +34,7 @@ export const FormGroup = ({
     }
     if (description) data.description = description;
     if (category) data.category = category;
-    editGroup(idGroup, data);
+    editGroup(id, data);
   };
 
   return (

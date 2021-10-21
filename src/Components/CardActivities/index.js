@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { ActivityContext } from "../../Providers/Activity";
+import { ButtonsBox, Container } from "../CardHabits/styles";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 import FormActivities from "../FormActivities";
 
 export const CardActivities = ({ item, editable }) => {
@@ -9,19 +11,19 @@ export const CardActivities = ({ item, editable }) => {
   const { deleteActivity } = useContext(ActivityContext)
 
   return (
-    <div>
-      <div>{item.title}</div>
+    <Container>
+      <h2>{item.title}</h2>
       <p> {item.realization_time} </p>
       {editable && (
-        <>
-          <button onClick={() => setShowFormEdit(!showFormEdit)}> Editar </button>
-          <button onClick={() => deleteActivity(item.id)}> Delete </button>
-        </>
+        <ButtonsBox>
+          <MdModeEdit onClick={() => setShowFormEdit(!showFormEdit)} />
+          <MdDelete style={{ marginLeft: "1rem" }} onClick={() => deleteActivity(item.id)} />
+        </ButtonsBox>
       )}
 
 
       {showFormEdit && <FormActivities idActivity={item.id} type={"edit"} />}
-    </div>
+    </Container>
   );
 };
 

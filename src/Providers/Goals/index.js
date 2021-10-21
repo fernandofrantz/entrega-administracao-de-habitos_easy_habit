@@ -11,6 +11,7 @@ export const GoalsProvider = ({ children }) => {
   const [showForm, setShowForm] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("@EH"));
+  console.log(showForm)
 
   const createGoal = (idGroup) => {
     const data = {
@@ -35,7 +36,7 @@ export const GoalsProvider = ({ children }) => {
   const editGoal = (idGoal) => {
     const data = {};
     if (title) data.title = title;
-    if (dificult) data.dificult = dificult;
+    if (dificult) data.difficulty = dificult;
 
     api
       .patch(`/goals/${idGoal}/`, data, {
@@ -44,10 +45,12 @@ export const GoalsProvider = ({ children }) => {
       .then((res) => {
         const newGols = goals.filter((item) => item.id !== idGoal);
         setGoals([...newGols, res.data]);
+        console.log(goals)
         toast.success("Meta editada com sucesso!");
       })
       .catch((_) => toast.error("Não foi possível editar a meta."));
   };
+  
 
   const deleteGoal = (goalId) => {
     api
