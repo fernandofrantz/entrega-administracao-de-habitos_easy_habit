@@ -91,7 +91,9 @@ export const LoginPageStyle = styled.div`
         font-size: 110%;
       }
       .link {
-        font-size: 0%;
+        font-size: 95%;
+        font-family: sora;
+        text-decoration: none;
       }
     }
 
