@@ -35,3 +35,60 @@ color: black;
 box-sizing: border-box;
 
 `
+
+
+export const CheckboxDiv = styled.div`
+margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    margin-bottom: 12px;
+
+    > label {
+      font-family: Sora, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+    }
+    >input{
+      accent-color: rgb(148, 83, 200);
+    }
+  }
+  >h3{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    padding-left: 10px;
+  }
+`;
+
+export const ButtonsDiv = styled.div `
+display: flex;
+justify-content: space-between;
+align-items: center;
+>svg{
+  color: rgb(148,83,200);
+    height: 14px;
+    width: 14px;
+    border: 1px solid rgba(148, 83, 200);
+    border-radius: 10px;
+    padding: 8px;
+}
+`
+export const ColoredButton = styled.button ` 
+width: 120px;
+height: 30px;
+border-radius: 10px;
+background-color: ${props => props.backGroundColor};
+font-size: 0.75rem;
+font-weight: 400;
+border: none;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+`

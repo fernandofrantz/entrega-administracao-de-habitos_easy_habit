@@ -46,7 +46,7 @@ export const Homepage = () => {
       })
     );
     };
-useEffect(()=> sethabits(),[])
+// useEffect(()=> {sethabits(); setTomorrowsHabits()},[])
   // }, []);
 
   return (
@@ -58,14 +58,7 @@ useEffect(()=> sethabits(),[])
         <BlackLine />
 
         <SectionCategories>
-          {/* 
-categorys.map((item, index) => (
-                <ContainerHabits
-                  key={index}
-                  category={item}
-                  list={habits}
-                  sequence={index}
-                /> */}
+          
           {todaysHabits ? (
             <ContainerHabits
               category={"Today's habits"}
@@ -88,52 +81,7 @@ categorys.map((item, index) => (
             <h2>Crie uma meta para amanhã</h2>
           )}
         </SectionCategories>
-        {/* <main>
-          <div>
-            <h2>Today's habits</h2>
-          </div>
-          <div>
-            <ul>
-              {habits &&
-                habits
-                  .filter((item) => {
-                    const { frequency } = item;
-                    const splited = frequency.split(",");
-                    if (splited.includes(today.toString())) {
-                      return item;
-                    }
-                  })
-                  .map((item, index) => (
-                    <li key={index}>
-                      <CardHabits item={item} />
-                    </li>
-                  ))}
-            </ul>
-          </div>
-          <div>
-            <h2>Tomorrow's habits</h2>
-            <div>
-              <ul>
-                <ul>
-                  {habits &&
-                    habits
-                      .filter((item) => {
-                        const { frequency } = item;
-                        const splited = frequency.split(",");
-                        if (splited.includes(tomorrow.toString())) {
-                          return item;
-                        }
-                      })
-                      .map((item, index) => (
-                        <li key={index}>
-                          <CardHabits item={item} />
-                        </li>
-                      ))}
-                </ul>
-              </ul>
-            </div>
-          </div>
-        </main> */}
+       
       </Main>
       <NavigationMenu />
     </Body>
