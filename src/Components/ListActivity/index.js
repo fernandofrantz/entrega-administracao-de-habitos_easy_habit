@@ -6,6 +6,7 @@ import { ActivityContext } from "../../Providers/Activity";
 import { useGroups } from "../../Providers/Groups";
 import { MdCreateNewFolder } from "react-icons/md";
 import { ActivityTitle } from "./styles";
+import { UlStyled } from "../List/style";
 
 const ListActivity = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const ListActivity = () => {
         }
       </ActivityTitle>
 
-      <ul>
+      <UlStyled>
         {activities.map((item) => (
           <li key={item.id}>
             <div>
@@ -35,7 +36,7 @@ const ListActivity = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </UlStyled>
         
       {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
       

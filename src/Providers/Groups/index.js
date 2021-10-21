@@ -13,9 +13,6 @@ export const GroupsProvider = ({ children }) => {
 
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
-  useEffect(() => {
-    getSubscribes();
-  }, []);
 
   const getSubscribes = () => {
     if (token) {
@@ -29,6 +26,11 @@ export const GroupsProvider = ({ children }) => {
         .catch((error) => console.log(error));
     }
   };
+
+  useEffect(() => {
+    getSubscribes();
+  }, []);
+
 
   const createGroup = (data) => {
     api

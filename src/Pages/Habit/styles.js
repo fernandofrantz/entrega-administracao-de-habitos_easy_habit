@@ -41,5 +41,4 @@ export const Section = styled.section`
   width: 80vw;
   margin: 0 auto;
   padding-top: 1.7rem;
-  /* border-top: 1px solid black; */
 `;

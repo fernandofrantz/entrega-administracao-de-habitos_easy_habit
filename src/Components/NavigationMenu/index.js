@@ -5,6 +5,7 @@ import {
   MdPeopleAlt,
   MdPerson,
 } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
 import { Container, MenuList } from "./styles";
 
 export default function NavigationMenu() {
@@ -14,12 +15,12 @@ export default function NavigationMenu() {
         <MenuList>
           <li>
             <Link to="/">
-              <MdBookmarks />
+              <AiFillHome/>
             </Link>
           </li>
           <li>
             <Link to="/habit">
-              <MdPublishedWithChanges />
+              <MdBookmarks />
             </Link>
           </li>
           <li>

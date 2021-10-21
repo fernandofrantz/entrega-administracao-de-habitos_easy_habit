@@ -5,6 +5,7 @@ import { GoalsContext } from "../../Providers/Goals";
 import { useGroups } from "../../Providers/Groups";
 import { CardGoals } from "../CardGoals";
 import FormGoal from "../FormGoals";
+import { UlStyled } from "../List/style";
 import { GoalTitle } from "./styles";
 
 const ListGoals = () => {
@@ -26,7 +27,7 @@ const ListGoals = () => {
         />
       )} 
       </GoalTitle >
-      <ul>
+      <UlStyled>
         {goals.map((item, index) => (
           <li key={index}>
             <div>
@@ -34,7 +35,7 @@ const ListGoals = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </UlStyled>
 
       
       

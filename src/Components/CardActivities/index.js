@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { ActivityContext } from "../../Providers/Activity";
-import { ButtonsBox, Container } from "../CardHabits/styles";
+import { ButtonsBox } from "../CardHabits/styles";
+import { Container } from "../DetailsGroup/styles"
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import FormActivities from "../FormActivities";
 
@@ -13,7 +14,6 @@ export const CardActivities = ({ item, editable }) => {
   return (
     <Container>
       <h2>{item.title}</h2>
-      <p> {item.realization_time} </p>
       {editable && (
         <ButtonsBox>
           <MdModeEdit onClick={() => setShowFormEdit(!showFormEdit)} />

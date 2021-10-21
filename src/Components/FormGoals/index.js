@@ -16,9 +16,9 @@ const FormGoal = ({ idGroup, idGoal, type}) => {
 
   return (
     <FormPage>
-      <div className="iconContainer" onClick={() => setShowForm(false)}>
+      {/* <div className="iconContainer" onClick={() => setShowForm(false)}>
         <IoMdArrowRoundBack />
-      </div>
+      </div> */}
       <form
         onSubmit={() => {
           type === "register" ? createGoal(idGroup) : editeGoal(idGoal);
@@ -43,7 +43,7 @@ const FormGoal = ({ idGroup, idGoal, type}) => {
         </div>
 
         <button type="submit">
-          {type === "register" ? "Create new goal" : "Edit"}
+          {type === "register" ? "Create new goal" : "Edit/Exit"}
         </button>
       </form>
     </FormPage>

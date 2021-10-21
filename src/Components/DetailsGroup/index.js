@@ -10,13 +10,13 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdModeEdit } from "react-icons/md";
 import { Body, Main } from "../../Pages/Habit/styles";
 import { BlackLine, Header } from "../StylesComponents/HeaderHabitsAndGroupPages/styles";
-import { ButtonSubs, DescriptionGroup, DetailsContainer, GroupTitle } from "./styles"
+import { ButtonSubs, DescriptionGroup, DetailsContainer, GroupTitle, ListDetails } from "./styles"
 import ListActivity from "../../Components/ListActivity";
 import ListGoals from "../../Components/ListGoals";
 
 const DetailsGroup = () => {
 
-    const { id, color } = useParams();
+    const { id } = useParams();
     const history = useHistory();
 
     const [showEditOption, setShowEditOption] = useState(false);
@@ -65,13 +65,13 @@ const DetailsGroup = () => {
                 </div>
                 {!showOptionCreate && (
                     <>
-                    <ButtonSubs backGroundColor={"green"} onClick={() => subscribeToGroup(id)}>Subscribe</ButtonSubs>
+                    <ButtonSubs backGroundColor={"#7ceb7c"} onClick={() => subscribeToGroup(id)}>Subscribe</ButtonSubs>
                     </>
                 )}
 
                 {showOptionCreate && (
                     <>
-                    <ButtonSubs backGroundColor={"red"} onClick={() => handleUnsubscribe(id)}>Unsubscribe</ButtonSubs>
+                    <ButtonSubs backGroundColor={"#f58080"} onClick={() => handleUnsubscribe(id)}>Unsubscribe</ButtonSubs>
                     </>
                 )}
                 </Header>
@@ -79,9 +79,9 @@ const DetailsGroup = () => {
                 <BlackLine />
 
                 <DetailsContainer>    
-
+                
                 <GroupTitle 
-                    backgroundColor={"#d84a4a"}>
+                    backgroundColor={"#ff8b29"}>
                         {nameGroup}
                         {showEditOption && (
                             <MdModeEdit onClick={() => setShowEditForm(!showEditForm)} />
@@ -93,10 +93,12 @@ const DetailsGroup = () => {
                 {showEditForm && (
                     <FormGroup type={"edit"} setNameGroup={setNameGroup} />
                 )}
-
-                <ListGoals/>
-
-                <ListActivity  />
+                <ListDetails>
+                    
+                    <ListGoals/>
+                    <ListActivity />
+                   
+                </ListDetails>
 
                 </DetailsContainer>
             </Main>

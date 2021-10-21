@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGroups } from "../../Providers/Groups";
-import { FormPage } from "./style";
+import { Form, FormPage } from "./style";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useParams } from "react-router";
 
@@ -43,7 +43,7 @@ export const FormGroup = ({
         <IoMdArrowRoundBack />
       </div>
 
-      <form onSubmit={type === "register" ? newGroup : newEditGroup}>
+      <Form onSubmit={type === "register" ? newGroup : newEditGroup}>
         <div className="effect"></div>
         <div className="inputContainer">
           <input
@@ -71,7 +71,7 @@ export const FormGroup = ({
         <button type="submit">
           {type === "register" ? "Create new group" : "Editar"}
         </button>
-      </form>
+      </Form>
     </FormPage>
   );
 };

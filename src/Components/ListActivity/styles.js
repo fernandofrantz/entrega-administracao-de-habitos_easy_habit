@@ -6,5 +6,5 @@ export const ActivityTitle = styled.h2`
     text-align: center;
     background-color: #ef7070;
     position: relative;
-    padding: 16px;
+    padding: 8px;
 `;

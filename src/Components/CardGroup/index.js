@@ -6,8 +6,8 @@ import { CardStyled, GroupName, TitleGroup } from "./style";
 
 export const CardGroup = ({ item, themColor }) => {
   const history = useHistory();
-  const handleDirection = (id, color) => {
-    history.push(`/group/${id}/${color}`);
+  const handleDirection = (id) => {
+    history.push(`/group/${id}/`);
   };
   const { id, name, users_on_group, activities, goals } = item;
 

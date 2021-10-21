@@ -18,6 +18,13 @@ export const FormPage = styled.div`
     left: 15px;
   }
 
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   form {
     background-color: #ededed;
     width: 100%;
@@ -64,4 +71,8 @@ export const FormPage = styled.div`
       transform: translate(-50%);
     }
   }
+`;
+
+export const Form = styled.form`
+  margin-right: 60px;
 `;

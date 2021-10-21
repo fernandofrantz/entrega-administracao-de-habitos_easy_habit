@@ -19,11 +19,10 @@ export const Login = () => {
           <div>
             <FormLogin />
           </div>
-
           <div className="LinkBox">
-            <span>Dont have an accout? </span>
+            <span>Don't have an accout? </span>
             <Link to="/register" className="link">
-              Sgnin up
+              Sign up
             </Link>
           </div>
         </div>

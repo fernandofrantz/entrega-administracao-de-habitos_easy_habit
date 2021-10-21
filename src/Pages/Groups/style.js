@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const UlStyled = styled.ul`
-  width: 100%;
-  margin: 0 auto;
+  list-style: none;
   background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const InputSearch = styled.input`
@@ -30,4 +32,17 @@ export const ContainerInput = styled.div`
     background-color: transparent;
     right: 0;
   }
+`;
+
+export const Li = styled.li`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const H2 = styled.h2`
+  margin: 20px;
+  font-size: 20px;
+  font-family: sora;
 `;

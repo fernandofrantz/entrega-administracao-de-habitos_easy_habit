@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 import FormGoal from "../FormGoals";
 import { MdModeEdit, MdDelete } from "react-icons/md";
-import { ButtonsBox, Container } from "../CardHabits/styles";
+import { ButtonsBox} from "../CardHabits/styles";
+import { Container } from "../DetailsGroup/styles"
 
 export const CardGoals = ({ item, editable }) => {
   const [showFormEdit, setShowFormEdit] = useState(false);
