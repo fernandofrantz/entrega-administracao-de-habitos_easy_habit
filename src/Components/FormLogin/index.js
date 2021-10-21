@@ -55,7 +55,7 @@ export const FormLogin = () => {
         />
         <br />
 
-        <input placeholder="Senha" type="text" {...register("password")} />
+        <input placeholder="Senha" type="password" {...register("password")} />
 
         <br />
         <button type="submit">Submit</button>
