@@ -18,9 +18,9 @@ export const Register = () => {
           <div className="SetLogin">
             <Link to="/login">
               <AiOutlineLeft />
+              <span>Back to login</span>
             </Link>
           </div>
-          <span>Back to login </span>
         </div>
         <RegisterLots />
       </div>

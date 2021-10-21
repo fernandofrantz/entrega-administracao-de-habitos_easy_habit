@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const CategoryBox = styled.div`
   width: 100%;
-  >ul+ul{
-      margin-top: 17px;
+  > ul + ul {
+    margin-top: 17px;
   }
   box-sizing: border-box;
 `;
@@ -15,7 +15,6 @@ export const CategoryTitle = styled.h2`
   background-color: ${(props) => props.backGroundColor};
   font-size: 0.75rem;
   line-height: 30px;
-
 `;
 
 export const HabitsByCategory = styled.ul`
@@ -24,11 +23,35 @@ export const HabitsByCategory = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
+  list-style: none;
 
-  >li+li{
-      margin-top:8px;
+  > li + li {
+    margin-top: 8px;
   }
-  :nth-last-child(){
-      margin-bottom: 17px;
+  :nth-last-child() {
+    margin-bottom: 17px;
+  }
+`;
+
+export const Li = styled.li`
+  @media screen and (min-width: 320px) {
+    margin-right: -20px;
+  }
+
+  @media screen and (min-width: 375px) {
+    margin-right: 20px;
+  }
+
+  @media screen and (min-width: 425px) {
+    margin-right: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 60px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-right: 350px;
   }
 `;
