@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useHabits } from "../../Providers/Habits";
-import { MdModeEdit, MdDelete } from "react-icons/md";
+import { MdModeEdit, MdDelete, MdClose } from "react-icons/md";
 import { ButtonsBox, CategoryColor, Container } from "./styles";
-// import { FormCreateHabits } from "../FormCreateHabits";
-import { FormHabitsEdit } from "../EditHabts/Index";
-
+import FormHabitsEdit from "../EditHabits/index";
 
 export const CardHabits = ({ item, editable, backGroundColor }) => {
   const [showForm, setShowForm] = useState(false);
@@ -13,14 +11,18 @@ export const CardHabits = ({ item, editable, backGroundColor }) => {
     <Container>
       <CategoryColor backGroundColor={backGroundColor} />
       <h2>{item.title}</h2>
-      {showForm && <FormHabitsEdit type={"edit"} idHabit={item.id} />}
+      {showForm && <FormHabitsEdit type={"edit"} idHabit={item.id} setShowForm={setShowForm}/>}
       {editable && (
         <ButtonsBox>
-          <MdModeEdit onClick={() => setShowForm(!showForm)} />
+          <MdModeEdit onClick={() => setShowForm(true)} />
 
-          <MdDelete style={{marginLeft:'1rem'}} onClick={() => deleteHabits(item.id)} />
+          <MdDelete
+            style={{ marginLeft: "1rem" }}
+            onClick={() => deleteHabits(item.id)}
+          />
         </ButtonsBox>
       )}
     </Container>
   );
 };
+// export default CardHabits;

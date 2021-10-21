@@ -6,11 +6,9 @@ import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../Providers/User";
 
-//import { api } from "../../Services/api";
 
 export const FormLogin = () => {
   const { setAuth } = useUser();
-  //const [auth, setAuth] = useState(false);
   const history = useHistory();
 
   const formSchema = yup.object().shape({

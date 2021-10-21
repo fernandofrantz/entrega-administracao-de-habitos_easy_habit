@@ -3,6 +3,8 @@ import { GrGroup } from "react-icons/gr";
 import { GiStairsGoal } from "react-icons/gi";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { CardStyled, GroupName, TitleGroup } from "./style";
+
+
 export const CardGroup = ({ item }) => {
   const history = useHistory();
   const handleDirection = (id) => {

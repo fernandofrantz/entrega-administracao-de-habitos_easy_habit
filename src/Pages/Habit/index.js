@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FormCreateHabits } from "../../Components/FormCreateHabits";
+import ContainerHabits from "../../Components/ContainerHabits";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
@@ -11,12 +12,14 @@ import {
   Header,
 } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
-import ContainerHabits from "../../Components/ContainerHabits";
+import FormEditHabits from "../../Components/EditHabits";
 
 export const Habit = () => {
   const { auth } = useUser();
   const { habits } = useHabits();
   const [showForm, setShowForm] = useState(false);
+  // const [ colorIndex, setColorIndex ] = useState(-1);
+  // const arrayColors = [ '#e88a8a', '#9fdaef', '#FFE6A6', '#85CC85' ];
   const history = useHistory();
 
   if (!auth) {
@@ -27,41 +30,44 @@ export const Habit = () => {
     .map((item) => item.category)
     .filter((item, index, arr) => arr.indexOf(item) === index);
 
+  // const habitsColor = () =>{
+  //   if(colorIndex > 3){
+  //     setColorIndex(-1)
+  //   }
+  //   setColorIndex(colorIndex + 1);
+  //   console.log(arrayColors[colorIndex])
+  //   return arrayColors[colorIndex];
+  // }
+
+  // // console.log(colorString);
+  // console.log(colorIndex, "index da cor")
+
   return (
     <Body>
       <Main>
         <Header>
-          <button onClick={() => setShowForm(!showForm)}>asadasd</button>
+          {/* <button onClick={() => setShowForm(!showForm)}>asadasd</button> */}
 
           <HeaderButtons
-            children={`Create habit`}
-            icon={GoPlus}
+            children={!showForm ? "Create a habit" : "Show habits"}
+            icon={!showForm ? GoPlus : GoTriangleDown}
             backGroundColor={"#BCDFAB"}
-            onClick={() => setShowForm(!showForm)}
+            buttonFunction={setShowForm}
+            state={showForm}
           />
 
           <HeaderButtons
             children={"Categories"}
             icon={GoTriangleDown}
             backGroundColor={"#BCDFAB"}
-            onClick={() => console.log("mostrar as categorias dos hábitos")}
+            buttonFunction={() =>
+              console.log("mostrar as categorias dos hábitos")
+            }
           />
         </Header>
         <BlackLine />
-        <Section>
           <SectionCategories>
             {showForm && <FormCreateHabits />}
-            {/* <ul>
-              {habits &&
-                habits.map((item, index) => (
-                  <li key={index}>
-                    <CardHabits item={item} editable />
-                  </li>
-                ))}
-            </ul> */}
-
-            {/* #9fdaef */}
-            {/* #e88a8a */}
 
             {categorys &&
               categorys.map((item, index) => (
@@ -69,11 +75,10 @@ export const Habit = () => {
                   key={index}
                   category={item}
                   list={habits}
-                  backGroundColor={"#9fdaef "}
+                  sequence={index}
                 />
               ))}
           </SectionCategories>
-        </Section>
       </Main>
 
       <NavigationMenu />

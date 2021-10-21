@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const CategoryBox = styled.div`
-  width: 270px;
+  width: 100%;
   >ul+ul{
       margin-top: 17px;
   }
+  box-sizing: border-box;
 `;
 
 export const CategoryTitle = styled.h2`
-  width: 100%;
   height: 30px;
   padding-left: 12px;
   border-radius: 15px 15px 0 0;
@@ -19,7 +19,7 @@ export const CategoryTitle = styled.h2`
 `;
 
 export const HabitsByCategory = styled.ul`
-  width: 270px;
+  /* width: 270px; */
   padding-top: 18px;
   display: flex;
   flex-direction: column;
