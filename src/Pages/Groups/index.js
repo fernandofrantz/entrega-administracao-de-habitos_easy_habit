@@ -58,7 +58,7 @@ export const Group = () => {
             icon={GoPlus}
             backGroundColor={"#BCDFAB"}
             buttonFunction={setShowFormGroup}
-            state={showFormGroup}
+            param={!showFormGroup}
           />
           <ContainerInput>
             <InputSearch
@@ -83,19 +83,21 @@ export const Group = () => {
             )}
 
             <H2>Meus grupos</H2>
-            {categorys &&
-              categorys.map((item, index) => {
-                const themeSelect = colors[index];
-                return (
-                  <li key={index}>
-                    <ContainerGroup
-                      item={item}
-                      list={myGroups}
-                      themColor={themeSelect}
-                    />
-                  </li>
-                );
-              })}
+            <List>
+              {categorys &&
+                categorys.map((item, index) => {
+                  const themeSelect = colors[index];
+                  return (
+                    <li key={index}>
+                      <ContainerGroup
+                        item={item}
+                        list={myGroups}
+                        themColor={themeSelect}
+                      />
+                    </li>
+                  );
+                })}
+            </List>
 
             <H2>Your search:</H2>
             <List>

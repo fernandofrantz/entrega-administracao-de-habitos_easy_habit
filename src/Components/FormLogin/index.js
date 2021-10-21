@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../Providers/User";
 import { Link } from "react-router-dom";
+
 export const FormLogin = () => {
   const { setAuth } = useUser();
   const history = useHistory();
@@ -59,10 +60,12 @@ export const FormLogin = () => {
 
         <br />
         <button type="submit">Submit</button>
+        <div className="about">
+          <Link to="/about">
+            <h3>About Us</h3>
+          </Link>
+        </div>
       </form>
-      <Link className="about" to="/about">
-        About Us
-      </Link>
     </div>
   );
 };

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import imgCorrendoCasal from "../Login/imgCorrendoCasal.png";
+
 export const LoginPageStyle = styled.div`
   background-image: url(${imgCorrendoCasal});
   .about {
-    font-size: 2vh;
+    width: 20%;
     margin-left: 45%;
   }
-  @media only screen and (max-width: 767px) {
+  @media only screen and (min-width: 320px) {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -14,7 +15,6 @@ export const LoginPageStyle = styled.div`
     align-contents: center;
     background-size: 450% 120%;
     background-position: top 92% right 57%;
-
     .LinkBox {
       border-radius: 10px 0px 0px 10px;
       padding-bottom: 3%;
@@ -37,7 +37,7 @@ export const LoginPageStyle = styled.div`
     }
 
     .formLogin {
-      border-radius: 0% 8% 8% 0%;
+      border-radius: 0px 20px 20px 0px;
       padding-top: 10%;
       width: 150%;
       background: #eaeaeacc;
@@ -68,65 +68,61 @@ export const LoginPageStyle = styled.div`
     }
   }
 
-  @media only screen and (min-width: 768px) {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    align-contents: center;
-    background-size: 450% 120%;
-    background-position: top 92% right 57%;
+  @media only screen and (min-width: 425px) {
     .LinkBox {
-      border-radius: 3%;
-      padding-bottom: 3%;
-      padding-top: 3%;
-      padding-left: 3%;
-      width: 30%;
-      margin-top: 5%;
-      position: fixed;
-      right: 0pt;
-      background-color: #eaeaeacc;
-      opacity: 0.6;
-      span {
-        font-size: 110%;
-      }
-      .link {
-        font-size: 95%;
-        font-family: sora;
-        text-decoration: none;
-      }
+      width: 70%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .LinkBox {
+      width: 50%;
+      font-size: 22px;
     }
 
     .formLogin {
-      border-radius: 0% 8% 8% 0%;
-      padding-top: 10%;
-      width: 60vh;
-      background: #eaeaeacc;
-      opacity: 0.8;
+      width: 180%;
+    }
 
-      h1 {
-        font-size: 6vh;
-        margin: 3%;
-        margin-left: 15%;
-      }
+    input {
+      font-size: 20px;
+      margin: 10px 0px 10px 0px;
+    }
 
-      input {
-        border: solid #bebebe;
-        width: 80%;
-        border-radius: 10%;
-        height: 8vh;
-        margin-top: 3%;
-        margin-left: 10%;
-      }
-      button {
-        width: 50%;
-        height: 5vh;
-        opacity: 0.8;
-        margin: 5%;
-        margin-left: 28%;
-        border: solid C985FF 1px;
-        border-radius: 15%;
-      }
+    button {
+      border: solid black 2px;
+      font-size: 20px;
     }
   }
+
+  @media only screen and (min-width: 1440px) {
+    .LinkBox {
+      width: 50%;
+      font-size: 35px;
+    }
+
+    .formLogin {
+      width: 200%;
+      font-family: sora;
+      padding: 40px 0px 40px 0px;
+    }
+
+    input {
+      font-size: 30px;
+      font-family: sora;
+      margin: 10px 0px 10px 0px;
+    }
+
+    button {
+      font-family: sora;
+      border: solid black 3px;
+      font-size: 30px;
+    }
+  }
+`;
+
+export const CenteredDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

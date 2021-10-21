@@ -1,4 +1,4 @@
-import { AboutComponent } from "../../Components/AboutComponent/indexx";
+import { AboutComponent } from "../../Components/AboutComponent/";
 import { StyleAbout } from "./style";
 
 export const About = () => {

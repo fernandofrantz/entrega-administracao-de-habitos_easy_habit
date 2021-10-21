@@ -19,7 +19,6 @@ export const Login = () => {
           <div>
             <FormLogin />
           </div>
-
           <div className="LinkBox">
             <span>Don't have an accout? </span>
             <Link to="/register" className="link">

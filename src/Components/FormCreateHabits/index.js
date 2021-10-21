@@ -6,9 +6,15 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
-import { ContainerForm, InputHabits } from "./styles";
+import {
+  CheckboxDiv,
+  ColoredButton,
+  ContainerForm,
+  InputHabits,
+} from "./styles";
+import HeaderButtons from "../StylesComponents/HeaderButtons";
 
-export const FormCreateHabits = () => {
+export const FormCreateHabits = ({ setShowForm }) => {
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
     category: yup.string().required("Category required"),
@@ -34,6 +40,8 @@ export const FormCreateHabits = () => {
       })
       .then((response) => toast.success("criado com sucesso"))
       .catch((err) => toast.error(err + ""));
+
+    setShowForm(false);
   };
   const {
     register,
@@ -65,127 +73,148 @@ export const FormCreateHabits = () => {
           {...register("category")}
         />
         <br />
-        <laber> Monday </laber>
-        <input
-          type="checkbox"
-          value="1"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+        <CheckboxDiv>
+          <h3>Choose your weekly frequency:</h3>
+          <div>
+            <label> Monday </label>
+            <input
+              type="checkbox"
+              value="1"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <label> Tuesday </label>
-        <input
-          type="checkbox"
-          value="2"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label> Tuesday </label>
+            <input
+              type="checkbox"
+              value="2"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <laber> Wednesday </laber>
-        <input
-          type="checkbox"
-          value="3"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label> Wednesday </label>
+            <input
+              type="checkbox"
+              value="3"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <laber> Tursday </laber>
-        <input
-          type="checkbox"
-          value="4"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label> Tursday </label>
+            <input
+              type="checkbox"
+              value="4"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <laber> Friday </laber>
-        <input
-          type="checkbox"
-          value="5"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label> Friday </label>
+            <input
+              type="checkbox"
+              value="5"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <laber> Saturday </laber>
-        <input
-          type="checkbox"
-          value="6"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
-        <laber> Sunday </laber>
-        <input
-          type="checkbox"
-          value="0"
-          onClick={(evt) => {
-            const localInfo = list.find((element) => {
-              return element === evt.target.value;
-            });
+          <div>
+            <label> Saturday </label>
+            <input
+              type="checkbox"
+              value="6"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
 
-            if (localInfo !== undefined) {
-              const localItem = list.filter((element) => {
-                return element !== evt.target.value;
-              });
-              setList(localItem);
-            } else setList(list.concat(evt.target.value));
-          }}
-        />
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label> Sunday </label>
+            <input
+              type="checkbox"
+              value="0"
+              onClick={(evt) => {
+                const localInfo = list.find((element) => {
+                  return element === evt.target.value;
+                });
+
+                if (localInfo !== undefined) {
+                  const localItem = list.filter((element) => {
+                    return element !== evt.target.value;
+                  });
+                  setList(localItem);
+                } else setList(list.concat(evt.target.value));
+              }}
+            />
+          </div>
+        </CheckboxDiv>
+
         <br />
-        <button type="submit">Add habit</button>
+        <ColoredButton type="submit" backGroundColor={"rgb(148,83,200)"}>
+          Add habit
+        </ColoredButton>
       </form>
     </ContainerForm>
   );
