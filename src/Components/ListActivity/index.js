@@ -4,7 +4,7 @@ import { CardActivities } from "../../Components/CardActivities";
 import FormActivities from "../../Components/FormActivities";
 import { ActivityContext } from "../../Providers/Activity";
 
-const ListActivity = ({ showOptionCreate, handleUnsubscribe }) => {
+const ListActivity = ({ showOptionCreate }) => {
 
   const { id } = useParams();
 
@@ -24,9 +24,6 @@ const ListActivity = ({ showOptionCreate, handleUnsubscribe }) => {
       <section>
       {showOptionCreate && (
         <button onClick={() => setShowFormActivity(!showFormActivity)}>criar atividade</button>
-      )}
-      {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
       )}
       {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
       </section>
