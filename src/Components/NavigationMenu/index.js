@@ -15,7 +15,7 @@ export default function NavigationMenu() {
         <MenuList>
           <li>
             <Link to="/">
-              <AiFillHome/>
+              <AiFillHome />
             </Link>
           </li>
           <li>

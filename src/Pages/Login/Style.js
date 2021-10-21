@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import imgCorrendoCasal from "../Login/imgCorrendoCasal.png";
+
 export const LoginPageStyle = styled.div`
   background-image: url(${imgCorrendoCasal});
 
@@ -115,4 +116,10 @@ export const LoginPageStyle = styled.div`
       font-size: 30px;
     }
   }
+`;
+
+export const CenteredDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

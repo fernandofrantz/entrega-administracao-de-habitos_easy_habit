@@ -46,6 +46,7 @@ export const Homepage = () => {
       })
     );
   };
+
   // useEffect(() => {
   //   sethabits();
   //   setTomorrowsHabits();

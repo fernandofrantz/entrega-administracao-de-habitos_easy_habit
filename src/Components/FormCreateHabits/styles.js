@@ -24,7 +24,6 @@ export const InputHabits = styled.input`
   border: none;
   border-inline: 1.5px solid #bebebe;
   padding: 10px;
-
   font-size: 12px;
   font-weight: 400;
   color: black;

@@ -14,8 +14,6 @@ export const Perfil = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
- 
-
   useEffect(() => {
     const { user_id } = jwt_decode(JSON.parse(localStorage.getItem("@EH")));
 
