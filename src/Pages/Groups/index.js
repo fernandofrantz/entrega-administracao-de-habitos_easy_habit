@@ -58,7 +58,7 @@ export const Group = () => {
             icon={GoPlus}
             backGroundColor={"#BCDFAB"}
             buttonFunction={setShowFormGroup}
-            state={showFormGroup}
+            param={!showFormGroup}
           />
           <ContainerInput>
             <InputSearch

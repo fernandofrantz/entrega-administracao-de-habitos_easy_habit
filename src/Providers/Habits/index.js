@@ -14,7 +14,7 @@ export const HabitProvider = ({ children }) => {
       })
       .then((response) => setHabits(response.data))
       .catch((err) => console.log(err));
-  }, [habits]);
+  }, [token]);
 
   const createHabits = (data) => {
     api
@@ -27,7 +27,6 @@ export const HabitProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  //update habits
   const updateHabits = (dataToUpdate, habitId) => {
     api
       .patch(`/habits/${habitId}/`, dataToUpdate, {
@@ -40,7 +39,6 @@ export const HabitProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  //delete habit
   const deleteHabits = (habitId) => {
     api
       .delete(`/habits/${habitId}/`, {

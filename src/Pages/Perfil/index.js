@@ -11,24 +11,10 @@ import userGray from "../../assets/userPic.png";
 export const Perfil = () => {
   const { Logout } = useUser();
   const [editMode, setEditMode] = useState(false);
-  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  // const randomPicture = () =>{
-  //   const randomPage = Math.floor(Math.random() * 34) + 1;
-  //   axios.get(`https://rickandmortyapi.com/api/character/?page=${randomPage}`)
-  //   .then(response => {
-  //     const randomCharacter = Math.floor(Math.random() * response.results.length);
-  //     console.log(randomCharacter)
-  //     setImage(response.results[randomCharacter].image);
-  //   })
-  //   .catch(_ => setImage("../../assets/userPic.png") );
-  // }
-
-  // randomPicture()
-
-  // setImage("../../assets/userPic.png")
+ 
 
   useEffect(() => {
     const { user_id } = jwt_decode(JSON.parse(localStorage.getItem("@EH")));

@@ -9,12 +9,8 @@ export const GroupsProvider = ({ children }) => {
   const [listGroup, setListGroup] = useState([]);
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
-  useEffect(() => {
-    getSubscribes();
-  }, []);
 
   const getSubscribes = () => {
-    //{ params: { null: null } },
     if (token) {
       api
         .get("/groups/subscriptions/", {
@@ -27,21 +23,10 @@ export const GroupsProvider = ({ children }) => {
     }
   };
 
-  /* const subscribeToGroup = (groupId) => {
-    api
-      .post(`/groups/${groupId}/subscribe/`, null, {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((res) => {
-        setMyGroups([...myGroups, res]);
+  useEffect(() => {
+    getSubscribes();
+  }, []);
 
-  const removeSubiscrebedGroup = listGroup.filter(
-          (item) => item.name !== res.name
-        );
-        setListGroup(removeSubiscrebedGroup);
-      })
-      .catch((error) => console.log(error));
-  }; */
 
   const createGroup = (data) => {
     api
