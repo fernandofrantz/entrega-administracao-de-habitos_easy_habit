@@ -27,7 +27,7 @@ export const Homepage = () => {
   }
 
   // useEffect(() => {
-    const sethabits = () => {
+  const sethabits = () => {
     setTodaysHabits(
       habits.filter((item) => {
         const { frequency } = item;
@@ -45,8 +45,8 @@ export const Homepage = () => {
         if (splited.includes(tomorrow.toString())) return item;
       })
     );
-    };
-useEffect(()=> sethabits(),[])
+  };
+  useEffect(() => sethabits(), []);
   // }, []);
 
   return (
@@ -77,7 +77,7 @@ categorys.map((item, index) => (
             <h2>Crie uma meta</h2>
           )}
 
-          {tomorrowsHabits !==[]? (
+          {tomorrowsHabits !== [] ? (
             <ContainerHabits
               category={"Tomorrow's habits"}
               list={tomorrowsHabits}

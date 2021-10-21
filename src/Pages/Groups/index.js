@@ -5,11 +5,12 @@ import { FormGroup } from "../../Components/FormGroup";
 import { List } from "../../Components/List";
 import NavigationMenu from "../../Components/NavigationMenu";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
-import { Header } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import { useGroups } from "../../Providers/Groups";
+import { Header } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
 import { Body, Main, Section, SectionCategories } from "../Habit/styles";
-import { UlStyled } from "./style";
-import { GoPlus, GoTriangleDown } from "react-icons/go";
+import { ContainerInput, HeaderStyled, InputSearch, UlStyled } from "./style";
+import { GoPlus } from "react-icons/go";
+import { BsSearch } from "react-icons/bs";
 
 export const Group = () => {
   const [searchCategory, setSearchCategory] = useState("");
@@ -52,11 +53,18 @@ export const Group = () => {
             buttonFunction={setShowFormGroup}
             state={showFormGroup}
           />
-          <HeaderButtons
-            children={"Categories"}
-            icon={GoTriangleDown}
-            backGroundColor={"#BCDFAB"}
-          />
+          <ContainerInput>
+            <InputSearch
+              backGroundColor={"#BCDFAB"}
+              placeholder="Search for group"
+              type="text"
+              value={searchCategory}
+              onChange={(event) => setSearchCategory(event.target.value)}
+            />
+            <button onClick={() => searchGroup(searchCategory)}>
+              <BsSearch />
+            </button>
+          </ContainerInput>
         </Header>
         <Section>
           <SectionCategories>
@@ -83,15 +91,7 @@ export const Group = () => {
                   );
                 })}
             </ul>
-            <input
-              placeholder="Buscar por categoria"
-              type="text"
-              value={searchCategory}
-              onChange={(event) => setSearchCategory(event.target.value)}
-            />
-            <button onClick={() => searchGroup(searchCategory)}>
-              Buscar por
-            </button>
+
             <List>
               {listGroup &&
                 listGroup.map((item, index) => (
