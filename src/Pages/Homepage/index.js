@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-// import { CardHabits } from "../../Components/CardHabits";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
@@ -22,12 +21,12 @@ export const Homepage = () => {
   const [todaysHabits, setTodaysHabits] = useState([]);
   const [tomorrowsHabits, setTomorrowsHabits] = useState([]);
 
+
   if (!auth) {
     history.push("/login");
   }
 
-  // useEffect(() => {
-    const sethabits = () => {
+  const sethabits = () => {
     setTodaysHabits(
       habits.filter((item) => {
         const { frequency } = item;
@@ -45,9 +44,9 @@ export const Homepage = () => {
         if (splited.includes(tomorrow.toString())) return item;
       })
     );
-    };
-// useEffect(()=> {sethabits(); setTomorrowsHabits()},[])
-  // }, []);
+  };
+
+  useEffect(() => sethabits(), [habits]);
 
   return (
     <Body>
@@ -58,11 +57,11 @@ export const Homepage = () => {
         <BlackLine />
 
         <SectionCategories>
-          
           {todaysHabits ? (
             <ContainerHabits
               category={"Today's habits"}
               list={todaysHabits}
+
               sequence={5}
               homePage
             />
@@ -70,7 +69,7 @@ export const Homepage = () => {
             <h2>Crie uma meta</h2>
           )}
 
-          {tomorrowsHabits !==[]? (
+          {tomorrowsHabits !== [] ? (
             <ContainerHabits
               category={"Tomorrow's habits"}
               list={tomorrowsHabits}
@@ -81,7 +80,6 @@ export const Homepage = () => {
             <h2>Crie uma meta para amanhã</h2>
           )}
         </SectionCategories>
-       
       </Main>
       <NavigationMenu />
     </Body>

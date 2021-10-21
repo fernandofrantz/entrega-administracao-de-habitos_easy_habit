@@ -11,7 +11,7 @@ const ContainerHabits = ({ category, list, sequence, setShowEditForm, homePage }
       <HabitsByCategory>
         {homePage ?
         list.map(item=> <li key={item.id}>
-          <CardHabits item={item} editable backGroundColor={arrayColors[sequence]} setShowEditForm={setShowEditForm}/>
+          <CardHabits item={item} editable={false} backGroundColor={arrayColors[sequence]} setShowEditForm={setShowEditForm}/>
         </li> )
         :
         list

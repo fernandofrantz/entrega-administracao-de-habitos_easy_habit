@@ -9,7 +9,7 @@ export const Body = styled.article`
 export const Main = styled.main`
   width: 100%;
   height: 100vh;
-  padding: 2.1rem;
+  padding: 30px;
   box-sizing: border-box;
 `;
 
@@ -23,7 +23,7 @@ text-shadow: 2px 2px 8px #52346a3d;
 export const SectionCategories = styled.section`
   width: 100%;
   height: 375px;
-  margin-top: 1.7rem;
+  margin-top: 28px;
   border-radius: 15px;
   background-color: #ededed;
   overflow: auto;

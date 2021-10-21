@@ -6,13 +6,14 @@ import FormHabitsEdit from "../EditHabits/index";
 
 export const CardHabits = ({ item, editable, backGroundColor }) => {
   const [showForm, setShowForm] = useState(false);
+  const [done, setDone ] = useState(false)
   const { deleteHabits } = useHabits();
   return (
     <Container>
       <CategoryColor backGroundColor={backGroundColor} />
-      <h2>{item.title}</h2>
+      <h2 done={done}>{item.title}</h2>
       {showForm && <FormHabitsEdit type={"edit"} idHabit={item.id} setShowForm={setShowForm}/>}
-      {editable && (
+      {editable ? (
         <ButtonsBox>
           <MdModeEdit onClick={() => setShowForm(true)} />
 
@@ -21,7 +22,10 @@ export const CardHabits = ({ item, editable, backGroundColor }) => {
             onClick={() => deleteHabits(item.id)}
           />
         </ButtonsBox>
-      )}
+      ):
+      <ButtonsBox>
+        <MdModeEdit onClick={()=> setDone(!done)}/>
+        </ButtonsBox>}
     </Container>
   );
 };

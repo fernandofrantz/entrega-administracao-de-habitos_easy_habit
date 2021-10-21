@@ -22,9 +22,12 @@ export const HabitsByCategory = styled.ul`
   /* width: 270px; */
   padding-top: 18px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-evenly;
 
+ 
   >li+li{
       margin-top:8px;
   }
