@@ -22,10 +22,13 @@ export const LoginPageStyle = styled.div`
       right: 0;
       background-color: #eaeaeacc;
       span {
-        font-size: 110%;
+        font-size: 95%;
+        font-family: sora;
       }
       .link {
-        font-size: 110%;
+        font-size: 95%;
+        font-family: sora;
+        text-decoration: none;
       }
     }
 
@@ -45,7 +48,7 @@ export const LoginPageStyle = styled.div`
         border: solid #bebebe;
         width: 70%;
         border-radius: 10px;
-        height: 8vh;
+        height: 6vh;
         margin-top: 3%;
         margin-left: 15%;
       }
