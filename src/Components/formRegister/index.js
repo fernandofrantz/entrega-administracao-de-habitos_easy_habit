@@ -5,14 +5,10 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
 import { api } from "../../Services/api";
-import jwt_decode from "jwt-decode";
 import { useUser } from "../../Providers/User";
 import { useHistory } from "react-router-dom";
 
 const RegisterLots = () => {
-  const [names, setNames] = useState("");
-  const [passwords, setPasswords] = useState("");
-  const [emails, setEmails] = useState("");
   const { setAuth } = useUser();
   const history = useHistory();
   const formSchema = yup.object().shape({
@@ -47,12 +43,8 @@ const RegisterLots = () => {
       .post("/users/", evts)
       .then((ob) => {
         toast.success("Account created successfully!");
-        const ToLogin = { username: evt.username, password: evt.password };
-        api.post("/sessions/", ToLogin).then((response) => {
-          const token = response.data.access;
 
-          history.push("/login");
-        });
+        history.push("/login");
       })
       .catch((Result) => {
         toast.error(Result + "");
@@ -66,7 +58,7 @@ const RegisterLots = () => {
   }, [errors]);
   return (
     <div className="Register">
-      <h3>Formulario de inscrição</h3>
+      <h3>Sign Up</h3>
       <form className="form" onSubmit={handleSubmit(send)}>
         <input placeholder="Nome" {...register("username")} />
         <br />
@@ -94,3 +86,4 @@ const RegisterLots = () => {
 };
 
 export default RegisterLots;
+
