@@ -3,16 +3,32 @@ import { useParams } from "react-router";
 import { CardActivities } from "../../Components/CardActivities";
 import FormActivities from "../../Components/FormActivities";
 import { ActivityContext } from "../../Providers/Activity";
+import { useGroups } from "../../Providers/Groups";
+import { MdCreateNewFolder } from "react-icons/md";
+import { ActivityTitle } from "./styles";
+import { UlStyled } from "../List/style";
 
-const ListActivity = ({ showOptionCreate }) => {
+const ListActivity = () => {
   const { id } = useParams();
 
-  const { activities, showFormActivity, setShowFormActivity } =
-    useContext(ActivityContext);
+  const { activities, showFormActivity, setShowFormActivity } = useContext(ActivityContext);
+  const { showOptionCreate } = useGroups()
 
   return (
     <>
-      <ul>
+      <ActivityTitle> 
+        Activities
+
+        {showOptionCreate && 
+          <MdCreateNewFolder
+            backgroundColor={"#ef7070"} 
+            style={{ position: "absolute", right: 0, marginRight: "16px"}} 
+            onClick={() => setShowFormActivity(!showFormActivity)} 
+          />  
+        }
+      </ActivityTitle>
+
+      <UlStyled>
         {activities.map((item) => (
           <li key={item.id}>
             <div>
@@ -20,15 +36,10 @@ const ListActivity = ({ showOptionCreate }) => {
             </div>
           </li>
         ))}
-      </ul>
-      <section>
-        {showOptionCreate && (
-          <button onClick={() => setShowFormActivity(!showFormActivity)}>
-            criar atividade
-          </button>
-        )}
-        {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
-      </section>
+      </UlStyled>
+        
+      {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
+      
     </>
   );
 };

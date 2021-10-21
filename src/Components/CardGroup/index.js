@@ -3,7 +3,7 @@ import { GrGroup } from "react-icons/gr";
 import { GiStairsGoal } from "react-icons/gi";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { CardStyled, GroupName, TitleGroup } from "./style";
-import { useState } from "react";
+
 export const CardGroup = ({ item, themColor }) => {
   const history = useHistory();
   const handleDirection = (id) => {
@@ -32,7 +32,7 @@ export const CardGroup = ({ item, themColor }) => {
   }
 
   return (
-    <CardStyled onClick={() => handleDirection(id)}>
+    <CardStyled onClick={() => handleDirection(id, titleColor)}>
       <GroupName color={groupName}>
         <TitleGroup fontColor={titleColor}>{name}</TitleGroup>
       </GroupName>

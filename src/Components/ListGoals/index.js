@@ -1,17 +1,33 @@
 import { useContext } from "react";
+import { MdCreateNewFolder } from "react-icons/md";
 import { useParams } from "react-router";
 import { GoalsContext } from "../../Providers/Goals";
+import { useGroups } from "../../Providers/Groups";
 import { CardGoals } from "../CardGoals";
 import FormGoal from "../FormGoals";
+import { UlStyled } from "../List/style";
+import { GoalTitle } from "./styles";
 
-const ListGoals = ({ showOptionCreate, handleUnsubscribe }) => {
+const ListGoals = () => {
   const { id } = useParams();
 
   const { goals, showForm, setShowForm } = useContext(GoalsContext);
+  const { showOptionCreate } = useGroups()
 
   return (
     <>
-      <ul>
+     <GoalTitle> 
+       Goals
+
+       {showOptionCreate && (
+        <MdCreateNewFolder 
+          backgroundColor={"#87c3d6"}
+          style={{ position: "absolute", right: 0, marginRight: "16px"}} 
+          onClick={() => setShowForm(!showForm)} 
+        />
+      )} 
+      </GoalTitle >
+      <UlStyled>
         {goals.map((item, index) => (
           <li key={index}>
             <div>
@@ -19,14 +35,10 @@ const ListGoals = ({ showOptionCreate, handleUnsubscribe }) => {
             </div>
           </li>
         ))}
-      </ul>
+      </UlStyled>
 
-      {showOptionCreate && (
-        <button onClick={() => setShowForm(!showForm)}>criar meta</button>
-      )}
-      {showOptionCreate && (
-        <button onClick={() => handleUnsubscribe(id)}>unsubscribe</button>
-      )}
+      
+      
       {showForm && (
         <FormGoal idGroup={id} type={"register"} setShowForm={setShowForm} />
       )}

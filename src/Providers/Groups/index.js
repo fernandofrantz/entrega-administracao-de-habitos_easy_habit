@@ -1,12 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../Services/api";
 
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
+
   const [myGroups, setMyGroups] = useState([]);
   const [listGroup, setListGroup] = useState([]);
+  const [showOptionCreate, setShowOptionCreate] = useState(false);
+
   const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
   const getSubscribes = () => {
@@ -57,6 +61,30 @@ export const GroupsProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  const subscribeToGroup = (groupId) => {
+    api
+      .post(`/groups/${groupId}/subscribe/`, null, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Sucesso ao se inscrever");
+        setShowOptionCreate(true);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
+  const handleUnsubscribe = (groupId) => {
+    api
+      .delete(`/groups/${groupId}/unsubscribe/`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Unsubscribed successfully");
+        setShowOptionCreate(false);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
   return (
     <GroupsContext.Provider
       value={{
@@ -68,6 +96,10 @@ export const GroupsProvider = ({ children }) => {
         createGroup,
         searchGroup,
         editGroup,
+        subscribeToGroup,
+        handleUnsubscribe,
+        showOptionCreate,
+        setShowOptionCreate,
       }}
     >
       {children}
