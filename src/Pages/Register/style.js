@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import habtRegister from "./habtRegister.jpeg";
 
-export const StyleRegiter = styled.div`
+export const StyleRegister = styled.div`
   background-image: url(${habtRegister});
+  background-size: cover;
+
 
   @media only screen and (min-width: 320px) {
     .linkLogin {
@@ -149,4 +151,4 @@ export const StyleRegiter = styled.div`
   }
 
 }
-`;
+`

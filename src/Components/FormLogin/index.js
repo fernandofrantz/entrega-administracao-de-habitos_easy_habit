@@ -60,9 +60,12 @@ export const FormLogin = () => {
 
         <br />
         <button type="submit">Submit</button>
-        <Link className="about" to="/about">
-          <h3>About Us</h3>
-        </Link>
+  
+        <div className="about">
+          <Link to="/about">
+            <h3>About Us</h3>
+          </Link>
+        </div>
       </form>
     </div>
   );

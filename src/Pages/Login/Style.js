@@ -3,6 +3,14 @@ import imgCorrendoCasal from "../Login/imgCorrendoCasal.png";
 
 export const LoginPageStyle = styled.div`
   background-image: url(${imgCorrendoCasal});
+  .about {
+    text-align: center;
+    padding-bottom: 10px;
+    >a{
+      text-decoration: none;
+      color: #551A8B;
+    }
+  }
 
   @media only screen and (min-width: 320px) {
     height: 100vh;

@@ -7,7 +7,7 @@ import { CardStyled, GroupName, TitleGroup } from "./style";
 export const CardGroup = ({ item, themColor }) => {
   const history = useHistory();
   const handleDirection = (id) => {
-    history.push(`/group/${id}/`);
+    history.push(`/detailgroup/${id}`);
   };
   const { id, name, users_on_group, activities, goals } = item;
 
@@ -32,7 +32,7 @@ export const CardGroup = ({ item, themColor }) => {
   }
 
   return (
-    <CardStyled onClick={() => handleDirection(id, titleColor)}>
+    <CardStyled onClick={() => handleDirection(id)}>
       <GroupName color={groupName}>
         <TitleGroup fontColor={titleColor}>{name}</TitleGroup>
       </GroupName>

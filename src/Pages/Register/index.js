@@ -1,9 +1,11 @@
 import { useUser } from "../../Providers/User";
 import RegisterLots from "../../Components/formRegister";
 import { useHistory } from "react-router";
-import { StyleRegiter } from "./style";
+import { StyleRegister } from "./style";
 import { Link } from "react-router-dom";
 import { AiOutlineLeft } from "react-icons/ai";
+
+
 export const Register = () => {
   const history = useHistory();
   const { Login, auth, setAuth } = useUser();
@@ -12,7 +14,7 @@ export const Register = () => {
   }
 
   return (
-    <StyleRegiter>
+    <StyleRegister>
       <div className="finalBox">
         <div className="linkLogin">
           <div className="SetLogin">
@@ -24,6 +26,6 @@ export const Register = () => {
         </div>
         <RegisterLots />
       </div>
-    </StyleRegiter>
+    </StyleRegister>
   );
 };

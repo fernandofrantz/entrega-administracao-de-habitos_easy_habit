@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import DetailsGroup from "../Components/DetailsGroup";
 import { About } from "../Pages/About";
 import { DetailGroup } from "../Pages/DetailGroup";
 import { Group } from "../Pages/Groups";
@@ -26,7 +27,12 @@ export const Routers = () => {
       <Route path="/group">
         <Group />
       </Route>
-      <Route path="/group/:id">
+      {/* <Route path="/group/:id">
+      
+        <DetailGroup />
+        {/* <DetailsGroup/> */}
+      {/* </Route> */} 
+      <Route path="/detailgroup/:id">
         <DetailGroup />
       </Route>
       <Route path="/perfil">
