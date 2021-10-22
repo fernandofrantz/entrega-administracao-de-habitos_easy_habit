@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-// import { CardHabits } from "../../Components/CardHabits";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
@@ -22,11 +21,11 @@ export const Homepage = () => {
   const [todaysHabits, setTodaysHabits] = useState([]);
   const [tomorrowsHabits, setTomorrowsHabits] = useState([]);
 
+
   if (!auth) {
     history.push("/login");
   }
 
-  // useEffect(() => {
   const sethabits = () => {
     setTodaysHabits(
       habits.filter((item) => {
@@ -47,11 +46,7 @@ export const Homepage = () => {
     );
   };
 
-  // useEffect(() => {
-  //   sethabits();
-  //   setTomorrowsHabits();
-  // }, []),
-  //   [];
+  useEffect(() => sethabits(), [habits]);
 
   return (
     <Body>
@@ -66,6 +61,7 @@ export const Homepage = () => {
             <ContainerHabits
               category={"Today's habits"}
               list={todaysHabits}
+
               sequence={5}
               homePage
             />

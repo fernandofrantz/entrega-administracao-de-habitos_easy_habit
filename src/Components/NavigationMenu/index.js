@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   MdBookmarks,
-  MdPublishedWithChanges,
   MdPeopleAlt,
   MdPerson,
 } from "react-icons/md";

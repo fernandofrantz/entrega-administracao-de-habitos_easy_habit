@@ -1,6 +1,5 @@
 import { CardGroup } from "../CardGroup";
 import { GroupCategory, UlStyled } from "./style";
-import { useState } from "react";
 
 export const ContainerGroup = ({ item, list, themColor }) => {
   let title = "";

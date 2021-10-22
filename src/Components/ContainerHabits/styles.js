@@ -21,30 +21,14 @@ export const HabitsByCategory = styled.ul`
   /* width: 270px; */
   padding-top: 18px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  text-decoration: none;
-  list-style: none;
+  justify-content: space-evenly;
 
-  > li + li {
-    margin-top: 8px;
-  }
-  :nth-last-child() {
-    margin-bottom: 17px;
-  }
-`;
-
-export const Li = styled.li`
-  @media screen and (min-width: 320px) {
-    margin-right: -20px;
-  }
-
-  @media screen and (min-width: 375px) {
-    margin-right: 20px;
-  }
-
-  @media screen and (min-width: 425px) {
-    margin-right: 30px;
+ 
+  >li+li{
+      margin-top:8px;
   }
 
   @media screen and (min-width: 768px) {

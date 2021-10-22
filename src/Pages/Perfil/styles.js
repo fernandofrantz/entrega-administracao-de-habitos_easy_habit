@@ -70,7 +70,7 @@ export const Main = styled.main`
     height: 1.2rem;
     font-size: 0.6rem;
     font-weight: 400px;
-    color: rgba(137, 163, 255, 1);
+    color: rgb(69 83 131);
     cursor: pointer;
   }
 
@@ -78,12 +78,12 @@ export const Main = styled.main`
     width: fit-content;
     height: fit-content;
     background: transparent;
-    color: black;
+    color: rgb(69 83 131);
     border: none;
-    > svg {
-      height: 1.5rem;
-      width: 1.5rem;
-      cursor: pointer;
-    }
+    cursor: pointer;
+    font-family: sora , sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    margin-top: 12px;
   }
 `;

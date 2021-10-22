@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const FormPage = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  min-height: 100vh;
+  position: absolute;
+  top: 140px;
+  height: 375px;
+  width: 100%;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -17,14 +16,20 @@ export const FormPage = styled.div`
     top: 15px;
     left: 15px;
   }
-
+  div.effect {
+    display: flex;
+    align-items: center;
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-
   form {
     background-color: #ededed;
     width: 100%;
@@ -69,6 +74,9 @@ export const FormPage = styled.div`
       width: 240px;
       left: 50%;
       transform: translate(-50%);
+      font-family: sora, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
     }
   }
 `;

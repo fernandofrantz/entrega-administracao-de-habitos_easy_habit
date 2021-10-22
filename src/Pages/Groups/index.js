@@ -82,7 +82,7 @@ export const Group = () => {
               />
             )}
 
-            <H2>Meus grupos</H2>
+            <H2>My subscriptions</H2>
             <List>
               {categorys &&
                 categorys.map((item, index) => {

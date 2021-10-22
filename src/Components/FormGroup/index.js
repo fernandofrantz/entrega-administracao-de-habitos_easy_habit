@@ -39,12 +39,14 @@ export const FormGroup = ({
 
   return (
     <FormPage>
-      <div className="iconContainer" onClick={() => setShowFormGroup(false)}>
-        <IoMdArrowRoundBack />
-      </div>
+      
 
       <Form onSubmit={type === "register" ? newGroup : newEditGroup}>
-        <div className="effect"></div>
+        <div className="effect">
+        <div className="iconContainer" onClick={() => setShowFormGroup(false)}>
+        <IoMdArrowRoundBack />
+      </div>
+        </div>
         <div className="inputContainer">
           <input
             placeholder="Title"

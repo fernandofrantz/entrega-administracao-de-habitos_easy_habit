@@ -13,6 +13,7 @@ export const Container = styled.div`
     text-align: left;
     font-size: 0.8rem;
     font-weight: 400;
+    text-decoration-line: ${props => props.done};
   }
   @media only screen and (min-width: 375px) {
     height: 40px;
