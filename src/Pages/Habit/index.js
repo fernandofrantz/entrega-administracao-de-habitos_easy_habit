@@ -38,15 +38,6 @@ export const Habit = () => {
             buttonFunction={setShowForm}
             param={!showForm}
           />
-
-          <HeaderButtons
-            children={"Categories"}
-            icon={GoTriangleDown}
-            backGroundColor={"#BCDFAB"}
-            buttonFunction={() =>
-              console.log("mostrar as categorias dos hábitos")
-            }
-          />
         </Header>
         <BlackLine />
         <SectionCategories>
