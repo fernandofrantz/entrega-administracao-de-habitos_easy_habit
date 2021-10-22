@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 
-import { ActivityContext } from "../../Providers/Activity";
-import { GoalsContext } from "../../Providers/Goals";
-import { useGroups } from "../../Providers/Groups";
-import { api } from "../../Services/api";
+import { ActivityContext } from "../../../Providers/Activity";
+import { GoalsContext } from "../../../Providers/Goals";
+import { useGroups } from "../../../Providers/Groups";
+import { api } from "../../../Services/api";
 import jwt_decode from "jwt-decode";
 
-import { FormGroup } from "../../Components/Groups_Components/Form_Group_create-edit";
+import { FormGroup } from "../../Groups_Components/Form_Group_create-edit";
 import {
   ButtonSubs,
   DescriptionGroup,
@@ -15,17 +15,18 @@ import {
   GroupTitle,
   ListDetails,
 } from "./styles";
-import ListActivity from "../../Components/ListActivity";
-import ListGoals from "../../Components/ListGoals";
+import ListActivity from "../ListActivity";
+import ListGoals from "../ListGoals";
 
-import { IoMdArrowRoundBack } from "react-icons/io";
+// import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdModeEdit } from "react-icons/md";
 import {
   BlackLine,
   Header,
   Body,
   Main,
-} from "../StylesComponents/GeneralTemplatePages/styles";
+} from "../../StylesComponents/GeneralTemplatePages/styles";
+import HeaderButtons from "../../StylesComponents/HeaderButtons";
 
 const DetailsGroup = () => {
   const { id } = useParams();
@@ -36,6 +37,7 @@ const DetailsGroup = () => {
   const [nameGroup, setNameGroup] = useState("");
   const [categoryGroup, setcategoryGroup] = useState("");
   const [descriptionGroup, setDescriptionGroup] = useState("");
+  const [isGoals, setIsGoals] = useState(true);
 
   const { setActivities } = useContext(ActivityContext);
   const { setGoals } = useContext(GoalsContext);
@@ -78,7 +80,11 @@ const DetailsGroup = () => {
       <Main>
         <Header>
           <div onClick={backPageGroup} className="iconContainer">
-            <IoMdArrowRoundBack />
+            {/* <IoMdArrowRoundBack /> */}
+            <HeaderButtons
+              children={"Back to all groups"}
+              buttonFunction={backPageGroup}
+            />
           </div>
           {!showOptionCreate && (
             <>
@@ -106,6 +112,13 @@ const DetailsGroup = () => {
         <BlackLine />
 
         <DetailsContainer>
+          {showEditForm && (
+            <FormGroup
+              type={"edit"}
+              setNameGroup={setNameGroup}
+              setShowEditForm={setShowEditForm}
+            />
+          )}
           <GroupTitle backgroundColor={"#cda2ef"}>
             {nameGroup}
             {showEditOption && (
@@ -115,13 +128,13 @@ const DetailsGroup = () => {
 
           <DescriptionGroup>{descriptionGroup}</DescriptionGroup>
 
-          {showEditForm && (
-            <FormGroup type={"edit"} setNameGroup={setNameGroup} />
+          {!showEditForm && (
+            <>
+              <ListDetails>
+                {isGoals ? <ListGoals setIsGoals={setIsGoals}/> : <ListActivity setIsGoals={setIsGoals}/>}
+              </ListDetails>
+            </>
           )}
-          <ListDetails>
-            <ListGoals />
-            <ListActivity />
-          </ListDetails>
         </DetailsContainer>
       </Main>
     </Body>

@@ -7,6 +7,7 @@ export const DetailsContainer = styled.section`
     box-sizing: border-box;
     border-radius: 15px;
     margin-top: 12px;
+    position: relative;
 `
 
 export const GroupTitle = styled.h2`
@@ -33,13 +34,19 @@ export const ButtonSubs = styled.button`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    box-sizing: border-box;
+
+    @media only screen and (min-width: 768px ){
+        height: 45px;
+        font-size: 16px;
+    }
 `
 
 export const DescriptionGroup = styled.p `
     overflow-wrap: break-word;
-    height: 50px;
-    padding: 16px;
-    margin-bottom: 20px;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 16px;
     font-size: 12px;
     font-weight: 400;
 `
@@ -48,7 +55,7 @@ export const ListDetails = styled.div`
     width: 100%;
     height: 250px;
     overflow: auto;
-    background-color: gray;
+    /* background-color: gray; */
     border-radius: 0 0 15px 15px;
     position: relative;
 `

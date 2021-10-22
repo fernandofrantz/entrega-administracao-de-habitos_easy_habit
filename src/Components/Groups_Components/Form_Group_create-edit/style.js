@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const FormPage = styled.div`
   width: 100%;
-  
+  position: absolute;
+  top:0;
   background-color: #ededed;
   display: flex;
   justify-content: center;
@@ -29,7 +30,6 @@ export const FormPage = styled.div`
 export const Form = styled.form`
   width: 100%;
   height: 373px;
-  position: relative;
   border-radius: 15px;
   display: flex;
   flex-direction:column;

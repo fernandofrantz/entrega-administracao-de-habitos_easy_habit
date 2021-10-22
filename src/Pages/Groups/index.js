@@ -13,8 +13,7 @@ import {
   Main,
   BlackLine,
 } from "../../Components/StylesComponents/GeneralTemplatePages/styles";
-import { SectionCategories } from "../Habit/styles";
-import { ContainerInput, H2, InputSearch, Li } from "./style";
+import { ContainerInput, H2, InputSearch, Li, SectionCategories } from "./style";
 import { GoPlus } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 

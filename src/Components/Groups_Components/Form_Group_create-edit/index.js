@@ -5,7 +5,7 @@ import { Form, FormPage, Input } from "./style";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useParams } from "react-router";
 
-export const FormGroup = ({ type, setNameGroup, setShowFormGroup }) => {
+export const FormGroup = ({ type, setNameGroup, setShowFormGroup, setShowEditForm }) => {
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -38,8 +38,7 @@ export const FormGroup = ({ type, setNameGroup, setShowFormGroup }) => {
     <FormPage>
       <Form onSubmit={type === "register" ? newGroup : newEditGroup}>
         <div className="effect">
-            {/* <IoMdArrowRoundBack onClick={() => setShowFormGroup(false)}/> */}
-
+          {/* <IoMdArrowRoundBack onClick={() => setShowFormGroup(false)}/> */}
         </div>
         <div className="inputContainer">
           <Input
@@ -64,11 +63,37 @@ export const FormGroup = ({ type, setNameGroup, setShowFormGroup }) => {
             required={type === "register" ? true : false}
           />
         </div>
-        <button type="submit">
-          {type === "register" ? "Create new group" : "Editar"}
-        </button>
-        <h3 style={{color:'#c986ff', fontSize:'12px', cursor:"pointer", marginTop:"16px"}} onClick={()=>setShowFormGroup(false)}>Cancel</h3>
-
+        {type === "register" ? (
+          <>
+            <button type="submit">Create new group</button>
+            <h3
+              style={{
+                color: "#c986ff",
+                fontSize: "12px",
+                cursor: "pointer",
+                marginTop: "16px",
+              }}
+              onClick={() => setShowFormGroup(false)}
+            >
+              Cancel
+            </h3>
+          </>
+        ) : (
+          <>
+            <button type="submit">Edit group's infos</button>
+            <h3
+              style={{
+                color: "#c986ff",
+                fontSize: "12px",
+                cursor: "pointer",
+                marginTop: "16px",
+              }}
+              onClick={() => setShowEditForm(false)}
+            >
+              Cancel
+            </h3>
+          </>
+        )}
       </Form>
     </FormPage>
   );

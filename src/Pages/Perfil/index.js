@@ -1,7 +1,7 @@
-import EditProfile from "../../Components/EditProfile";
+import EditProfile from "../../Components/Edit_Profile";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { Body, LogoutCircle, Main } from "./styles";
-import { MdLogout, MdCancel } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 import { useUser } from "../../Providers/User";
 import { useEffect, useState } from "react";
 import axios from "axios";

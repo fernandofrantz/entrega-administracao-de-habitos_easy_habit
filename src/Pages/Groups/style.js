@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const SectionCategories = styled.section`
+position: relative;
+  width: 100%;
+  height: 80%;
+  border-radius: 15px;
+  background-color: #ededed;
+  overflow: auto;
+  box-sizing: border-box;
+  > div + div {
+    margin-top: 16px;
+  }
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 export const UlStyled = styled.ul`
   list-style: none;
   background-color: #ededed;
