@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
-import { CardGroup } from "../../Components/CardGroup";
-import ContainerGroup from "../../Components/ContainerGroups";
-import { FormGroup } from "../../Components/FormGroup";
+import { useGroups } from "../../Providers/Groups";
+
+import { CardGroup } from "../../Components/Groups_Components/Card_Unit_Group";
+import ContainerGroup from "../../Components/Groups_Components/Container_Groups";
+import { FormGroup } from "../../Components/Groups_Components/Form_Group_create-edit";
 import { List } from "../../Components/List";
 import NavigationMenu from "../../Components/NavigationMenu";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
-import { useGroups } from "../../Providers/Groups";
-import { Header,Body, Main, } from "../../Components/StylesComponents/GeneralTemplatePages/styles";
-import { Section, SectionCategories } from "../Habit/styles";
 import {
-  ContainerInput,
-  H2,
-  HeaderStyled,
-  InputSearch,
-  Li,
-  UlStyled,
-} from "./style";
+  Header,
+  Body,
+  Main,
+  BlackLine,
+} from "../../Components/StylesComponents/GeneralTemplatePages/styles";
+import { SectionCategories } from "../Habit/styles";
+import { ContainerInput, H2, InputSearch, Li } from "./style";
 import { GoPlus } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 
@@ -72,43 +71,42 @@ export const Group = () => {
             </button>
           </ContainerInput>
         </Header>
-        <Section>
-          <SectionCategories>
-            {showFormGroup && (
-              <FormGroup
-                type={"register"}
-                setShowFormGroup={setShowFormGroup}
-              />
-            )}
+        <BlackLine />
 
-            <H2>My subscriptions</H2>
-            <List>
-              {categorys &&
-                categorys.map((item, index) => {
-                  const themeSelect = colors[index];
-                  return (
-                    <li key={index}>
-                      <ContainerGroup
-                        item={item}
-                        list={myGroups}
-                        themColor={themeSelect}
-                      />
-                    </li>
-                  );
-                })}
-            </List>
+        <SectionCategories>
+          {showFormGroup ? (
+            <FormGroup type={"register"} setShowFormGroup={setShowFormGroup} />
+          ) : (
+            <>
+              <H2>My subscriptions</H2>
+              <List>
+                {categorys &&
+                  categorys.map((item, index) => {
+                    const themeSelect = colors[index];
+                    return (
+                      <li key={index}>
+                        <ContainerGroup
+                          item={item}
+                          list={myGroups}
+                          themColor={themeSelect}
+                        />
+                      </li>
+                    );
+                  })}
+              </List>
 
-            <H2>Your search:</H2>
-            <List>
-              {listGroup &&
-                listGroup.map((item, index) => (
-                  <Li key={index}>
-                    <CardGroup item={item} />
-                  </Li>
-                ))}
-            </List>
-          </SectionCategories>
-        </Section>
+              <H2>Your search:</H2>
+              <List>
+                {listGroup &&
+                  listGroup.map((item, index) => (
+                    <Li key={index}>
+                      <CardGroup item={item} />
+                    </Li>
+                  ))}
+              </List>
+            </>
+          )}
+        </SectionCategories>
       </Main>
       <NavigationMenu />
     </Body>

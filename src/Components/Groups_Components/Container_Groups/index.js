@@ -1,4 +1,4 @@
-import { CardGroup } from "../CardGroup";
+import { CardGroup } from "../Card_Unit_Group";
 import { GroupCategory, UlStyled } from "./style";
 
 export const ContainerGroup = ({ item, list, themColor }) => {

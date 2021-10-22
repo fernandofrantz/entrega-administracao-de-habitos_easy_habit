@@ -15,6 +15,10 @@ export const InputSearch = styled.input`
   border: none;
   padding-left: 15px;
   background-color: ${({ backGroundColor }) => backGroundColor};
+box-sizing: border-box;
+  @media only screen and (min-width: 768px){
+    height: 45px;
+  }
 `;
 
 export const ContainerInput = styled.div`

@@ -25,9 +25,9 @@ export const DivCategory = styled.div`
   }
 `;
 
-export const Section = styled.section`
-  max-height: 100%;
-  width: 80vw;
-  margin: 0 auto;
-  padding-top: 1.7rem;
-`;
+// export const Section = styled.section`
+//   max-height: 100%;
+//   width: 80vw;
+//   margin: 0 auto;
+//   padding-top: 1.7rem;
+// `;

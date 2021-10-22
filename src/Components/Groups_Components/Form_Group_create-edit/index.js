@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { useGroups } from "../../Providers/Groups";
-import { Form, FormPage } from "./style";
+import { useGroups } from "../../../Providers/Groups";
+
+import { Form, FormPage, Input } from "./style";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useParams } from "react-router";
 
-export const FormGroup = ({
-  type,
-  setNameGroup,
-  setShowFormGroup,
-}) => {
+export const FormGroup = ({ type, setNameGroup, setShowFormGroup }) => {
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -39,31 +36,28 @@ export const FormGroup = ({
 
   return (
     <FormPage>
-      
-
       <Form onSubmit={type === "register" ? newGroup : newEditGroup}>
         <div className="effect">
-        <div className="iconContainer" onClick={() => setShowFormGroup(false)}>
-        <IoMdArrowRoundBack />
-      </div>
+            {/* <IoMdArrowRoundBack onClick={() => setShowFormGroup(false)}/> */}
+
         </div>
         <div className="inputContainer">
-          <input
-            placeholder="Title"
+          <Input
+            placeholder="Title to Group"
             type="text"
             value={groupName}
             onChange={(event) => setGroupName(event.target.value)}
             required={type === "register" ? true : false}
           />
-          <input
+          <Input
             placeholder="Description"
             type="text"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             required={type === "register" ? true : false}
           />
-          <input
-            placeholder="category"
+          <Input
+            placeholder="Category"
             type="text"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
@@ -73,6 +67,8 @@ export const FormGroup = ({
         <button type="submit">
           {type === "register" ? "Create new group" : "Editar"}
         </button>
+        <h3 style={{color:'#c986ff', fontSize:'12px', cursor:"pointer", marginTop:"16px"}} onClick={()=>setShowFormGroup(false)}>Cancel</h3>
+
       </Form>
     </FormPage>
   );

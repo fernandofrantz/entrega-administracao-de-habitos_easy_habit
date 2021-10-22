@@ -7,7 +7,7 @@ import { useGroups } from "../../Providers/Groups";
 import { api } from "../../Services/api";
 import jwt_decode from "jwt-decode";
 
-import { FormGroup } from "../FormGroup";
+import { FormGroup } from "../../Components/Groups_Components/Form_Group_create-edit";
 import {
   ButtonSubs,
   DescriptionGroup,
