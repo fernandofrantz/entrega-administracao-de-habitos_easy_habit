@@ -1,54 +1,110 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../Services/api";
 
-export const GroupsContext = createContext()
+export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
 
-    const [myGroups, setMyGroups] = useState([]);
-    const [listGroup, setListGroup] = useState([]);
+  const [myGroups, setMyGroups] = useState([]);
+  const [listGroup, setListGroup] = useState([]);
+  const [showOptionCreate, setShowOptionCreate] = useState(false);
 
-    useEffect(() => {
-        api
-            .get("/groups/subscriptions/")
-            .then(res => setMyGroups([res]))
-            .catch(error => console.log(error))
-    }, [])
+  const token = JSON.parse(localStorage.getItem("@EH")) || "";
 
-    const subscribeToGroup = (groupId) => {
-        api
-            .post(`/groups/${groupId}/subscribe/`)
-            .then(res => {
-                setMyGroups([...myGroups, res])
-
-                const removeSubiscrebedGroup = listGroup.filter(item => item.name !== res.name)
-                setListGroup(removeSubiscrebedGroup)
-            })
-            .catch(error => console.log(error))
+  const getSubscribes = () => {
+    if (token) {
+      api
+        .get("/groups/subscriptions/", {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => {
+          setMyGroups(res.data);
+        })
+        .catch((error) => console.log(error));
     }
+  };
 
-    const createGroup = (data) => {
-        api
-            .post("/groups/", data)
-            .then(res => setMyGroups([...myGroups, res]))
-            .catch(error => console.log(error))
-    }
+  useEffect(() => {
+    getSubscribes();
+  }, []);
 
-    const searchGroup = (category) => {
-        api
-            .get("/groups/", category)
-            .then(res => {
-                const filteredGroup = myGroups.filter(item => item.id !== res.results.id)
+  const createGroup = (data) => {
+    api
+      .post("/groups/", data, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((res) => {
+        setMyGroups([...myGroups, res.data]);
+      })
+      .catch((error) => console.log(error));
+  };
 
-                setListGroup([filteredGroup])
-            })
-            .catch(error => console.log(error))
-    }
+  const editGroup = (idGroup, data) => {
+    api
+      .patch(`/groups/${idGroup}/`, data, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((res) => {
+        setMyGroups([...myGroups, res.data]);
+      })
+      .catch((error) => console.log(error));
+  };
 
-    return (
-        <GroupsContext.Provider value={{ myGroups, setMyGroups, listGroup, setListGroup, subscribeToGroup, createGroup, searchGroup }}>
-            {children}
-        </GroupsContext.Provider>
-    )
-}
+  const searchGroup = (category) => {
+    api
+      .get(`/groups/`, { params: { category: category ? category : null } })
+      .then((res) => {
+        setListGroup(res.data.results);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const subscribeToGroup = (groupId) => {
+    api
+      .post(`/groups/${groupId}/subscribe/`, null, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Sucesso ao se inscrever");
+        setShowOptionCreate(true);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
+  const handleUnsubscribe = (groupId) => {
+    api
+      .delete(`/groups/${groupId}/unsubscribe/`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Unsubscribed successfully");
+        setShowOptionCreate(false);
+      })
+      .catch(() => toast.error("Erro ao se inscrever no grupo"));
+  };
+
+  return (
+    <GroupsContext.Provider
+      value={{
+        myGroups,
+        setMyGroups,
+        listGroup,
+        getSubscribes,
+        setListGroup,
+        createGroup,
+        searchGroup,
+        editGroup,
+        subscribeToGroup,
+        handleUnsubscribe,
+        showOptionCreate,
+        setShowOptionCreate,
+      }}
+    >
+      {children}
+    </GroupsContext.Provider>
+  );
+};
+
+export const useGroups = () => useContext(GroupsContext);

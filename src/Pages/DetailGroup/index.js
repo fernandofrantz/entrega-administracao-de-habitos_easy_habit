@@ -1,13 +1,16 @@
-import { useParams } from "react-router";
 import NavigationMenu from "../../Components/NavigationMenu";
+import DetailsGroup from "../../Components/DetailsGroup";
+import { Body, Main } from "../Habit/styles";
 
 export const DetailGroup = () => {
-  const { id } = useParams();
-  return <div>
-    <h2>
-      detalhe do grupo {id}
-      </h2>
-    <NavigationMenu/>
 
-      </div>;
+  return (
+    <Body>
+      
+
+      <DetailsGroup />
+
+      <NavigationMenu />
+    </Body>
+  );
 };

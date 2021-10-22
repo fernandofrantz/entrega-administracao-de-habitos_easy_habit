@@ -1,9 +1,25 @@
-import { RegisterLots } from "./Components/registro/Registers";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { Routers } from "./Routes";
+import GlobalStyle from "./globalStyles";
 
 function App() {
   return (
-    <div className="App">
-      <RegisterLots />
+    <div>
+      <GlobalStyle />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Routers />
     </div>
   );
 }

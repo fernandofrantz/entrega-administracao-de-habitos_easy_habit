@@ -1,4 +1,6 @@
 import { Route, Switch } from "react-router-dom";
+import DetailsGroup from "../Components/DetailsGroup";
+import { About } from "../Pages/About";
 import { DetailGroup } from "../Pages/DetailGroup";
 import { Group } from "../Pages/Groups";
 import { Habit } from "../Pages/Habit";
@@ -12,25 +14,27 @@ export const Routers = () => {
     <Switch>
       <Route exact path="/">
         <Homepage />
-        <div></div>
       </Route>
-      <Route exact path="/login">
+      <Route path="/login">
         <Login />
       </Route>
-      <Route exact path="/register">
+      <Route path="/register">
         <Register />
       </Route>
-      <Route exact path="/habit">
+      <Route path="/habit">
         <Habit />
       </Route>
-      <Route exact path="/group">
+      <Route path="/group">
         <Group />
       </Route>
-      <Route exact path="/group/:id">
-        {/* <DetailGroup /> */}
+      <Route path="/detailgroup/:id">
+        <DetailGroup />
       </Route>
-      <Route exact path="/perfil">
-        {/* <Perfil /> */}
+      <Route path="/perfil">
+        <Perfil />
+      </Route>
+      <Route path="/about">
+        <About />
       </Route>
     </Switch>
   );
