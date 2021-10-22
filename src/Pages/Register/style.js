@@ -2,9 +2,12 @@ import styled from "styled-components";
 import habtRegister from "./habtRegister.jpeg";
 
 export const StyleRegister = styled.div`
-  background-image: url(${habtRegister});
-  background-size: cover;
-
+    background: rgb(201, 133, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(201, 133, 255, 1) 0%,
+    rgba(190, 197, 255, 1) 100%
+  );
 
   @media only screen and (min-width: 320px) {
     .linkLogin {

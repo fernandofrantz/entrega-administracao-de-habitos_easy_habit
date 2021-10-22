@@ -10,10 +10,10 @@ import { useUser } from "../../Providers/User";
 import { useHistory } from "react-router-dom";
 
 const RegisterLots = () => {
-  const [names, setNames] = useState("");
-  const [passwords, setPasswords] = useState("");
-  const [emails, setEmails] = useState("");
-  const { setAuth } = useUser();
+  // const [names, setNames] = useState("");
+  // const [passwords, setPasswords] = useState("");
+  // const [emails, setEmails] = useState("");
+  // const { setAuth } = useUser();
   const history = useHistory();
   const formSchema = yup.object().shape({
     username: yup

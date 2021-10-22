@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import imgCorrendoCasal from "../About/imgCorrendoCasal.png";
+
 export const StyleAbout = styled.div`
-  background-image: url(${imgCorrendoCasal});
-  background-size: 440% 120%;
-  background-position: top 100% right 57%;
+    background: rgb(201, 133, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(201, 133, 255, 1) 0%,
+    rgba(190, 197, 255, 1) 100%
+  );
 
   width: 100vw;
   height: 100vh;

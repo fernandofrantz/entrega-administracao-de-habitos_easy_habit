@@ -2,7 +2,7 @@ import { FormLogin } from "../../Components/FormLogin";
 import { useHistory } from "react-router-dom";
 import { useUser } from "../../Providers/User";
 import { Link } from "react-router-dom";
-import { LoginPageStyle, Tom } from "./Style";
+import { LoginPageStyle, LinkBox } from "./Style";
 
 export const Login = () => {
   const history = useHistory();
@@ -19,12 +19,12 @@ export const Login = () => {
           <div>
             <FormLogin />
           </div>
-          <div className="LinkBox">
+          <LinkBox className="LinkBox">
             <span>Don't have an accout? </span>
             <Link to="/register" className="link">
               Sign up
             </Link>
-          </div>
+          </LinkBox>
         </div>
       </LoginPageStyle>
     </div>

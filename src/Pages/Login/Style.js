@@ -1,45 +1,32 @@
 import styled from "styled-components";
-import imgCorrendoCasal from "../Login/imgCorrendoCasal.png";
 
 export const LoginPageStyle = styled.div`
-  background-image: url(${imgCorrendoCasal});
-  .about {
+  background: rgb(201, 133, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(201, 133, 255, 1) 0%,
+    rgba(190, 197, 255, 1) 100%
+  );
+  height: 100vh;
+  width: 100vw;
+  > .about {
     text-align: center;
     padding-bottom: 10px;
-    >a{
+    > a {
       text-decoration: none;
-      color: #551A8B;
+      color: #551a8b;
       font-size: 16px;
     }
   }
+  
 
   @media only screen and (min-width: 320px) {
-    height: 100vh;
-    width: 100%;
     display: flex;
     align-items: center;
     align-contents: center;
     background-size: 450% 120%;
     background-position: top 92% right 57%;
-    .LinkBox {
-      border-radius: 10px 0px 0px 10px;
-      padding-bottom: 3%;
-      padding-top: 3%;
-      padding-left: 3%;
-      width: 80%;
-      margin-top: 10%;
-      position: fixed;
-      right: 0;
-      background-color: #eaeaeacc;
-      span {
-        font-size: 95%;
-        font-family: sora;
-      }
-      .link {
-        font-size: 95%;
-        font-family: sora;
-        text-decoration: none;
-      }
+    
     }
 
     .formLogin {
@@ -65,27 +52,17 @@ export const LoginPageStyle = styled.div`
       button {
         width: 50%;
         height: 5vh;
-        margin: 5%;
+        margin: 12px;
         margin-left: 28%;
-        border: solid C985FF 1px;
+        /* border: solid C985FF 1px; */
         border-radius: 15px;
         background-color: #bcdfab;
       }
     }
   }
 
-  @media only screen and (min-width: 425px) {
-    .LinkBox {
-      width: 70%;
-    }
-  }
-
+  
   @media only screen and (min-width: 768px) {
-    .LinkBox {
-      width: 50%;
-      font-size: 22px;
-    }
-
     .formLogin {
       width: 180%;
     }
@@ -132,3 +109,29 @@ export const CenteredDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const LinkBox = styled.div `
+border-radius: 10px 0px 0px 10px;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  padding-left: 3%;
+  width: 80%;
+  margin-top: 10%;
+  position: fixed;
+  right: 0;
+  background-color: #eaeaeacc;
+  >span {
+    font-size: 95%;
+    font-family: sora;
+  }
+  >.link {
+    font-size: 95%;
+    font-family: sora;
+    text-decoration: none;
+  }
+  @media only screen and (min-width: 768px) {
+      width: 50%;
+      font-size: 22px;
+    }
+`
+  
