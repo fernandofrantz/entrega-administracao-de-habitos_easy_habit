@@ -7,6 +7,7 @@ import { Homepage } from "../Pages/Homepage";
 import { Login } from "../Pages/Login";
 import { Perfil } from "../Pages/Perfil";
 import { Register } from "../Pages/Register";
+import { VaiDiabo } from "../Pages/VaiDiabo";
 
 export const Routers = () => {
   return (
@@ -26,9 +27,15 @@ export const Routers = () => {
       <Route path="/group">
         <Group />
       </Route>
+
       <Route path="/group/:id">
         <DetailGroup />
       </Route>
+
+      <Route>
+        <VaiDiabo />
+      </Route>
+
       <Route path="/perfil">
         <Perfil />
       </Route>

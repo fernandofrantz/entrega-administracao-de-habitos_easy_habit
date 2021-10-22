@@ -11,21 +11,21 @@ import { UlStyled } from "../List/style";
 const ListActivity = () => {
   const { id } = useParams();
 
-  const { activities, showFormActivity, setShowFormActivity } = useContext(ActivityContext);
-  const { showOptionCreate } = useGroups()
+  const { activities, showFormActivity, setShowFormActivity } =
+    useContext(ActivityContext);
+  const { showOptionCreate } = useGroups();
 
   return (
     <>
-      <ActivityTitle> 
+      <ActivityTitle>
         Activities
-
-        {showOptionCreate && 
+        {showOptionCreate && (
           <MdCreateNewFolder
-            backgroundColor={"#ef7070"} 
-            style={{ position: "absolute", right: 0, marginRight: "16px"}} 
-            onClick={() => setShowFormActivity(!showFormActivity)} 
-          />  
-        }
+            backgroundColor={"#ef7070"}
+            style={{ position: "absolute", right: 0, marginRight: "16px" }}
+            onClick={() => setShowFormActivity(!showFormActivity)}
+          />
+        )}
       </ActivityTitle>
 
       <UlStyled>
@@ -37,11 +37,9 @@ const ListActivity = () => {
           </li>
         ))}
       </UlStyled>
-        
+
       {showFormActivity && <FormActivities idGroup={id} type={"register"} />}
-      
     </>
   );
 };
-
 export default ListActivity;

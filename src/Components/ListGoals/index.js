@@ -10,23 +10,21 @@ import { GoalTitle } from "./styles";
 
 const ListGoals = () => {
   const { id } = useParams();
-
   const { goals, showForm, setShowForm } = useContext(GoalsContext);
-  const { showOptionCreate } = useGroups()
+  const { showOptionCreate } = useGroups();
 
   return (
     <>
-     <GoalTitle> 
-       Goals
-
-       {showOptionCreate && (
-        <MdCreateNewFolder 
-          backgroundColor={"#87c3d6"}
-          style={{ position: "absolute", right: 0, marginRight: "16px"}} 
-          onClick={() => setShowForm(!showForm)} 
-        />
-      )} 
-      </GoalTitle >
+      <GoalTitle>
+        Goals
+        {showOptionCreate && (
+          <MdCreateNewFolder
+            backgroundColor={"#87c3d6"}
+            style={{ position: "absolute", right: 0, marginRight: "16px" }}
+            onClick={() => setShowForm(!showForm)}
+          />
+        )}
+      </GoalTitle>
       <UlStyled>
         {goals.map((item, index) => (
           <li key={index}>
@@ -37,13 +35,10 @@ const ListGoals = () => {
         ))}
       </UlStyled>
 
-      
-      
       {showForm && (
         <FormGoal idGroup={id} type={"register"} setShowForm={setShowForm} />
       )}
     </>
   );
 };
-
 export default ListGoals;

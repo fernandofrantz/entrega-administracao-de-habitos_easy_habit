@@ -23,7 +23,7 @@ import {
 import ListActivity from "../../Components/ListActivity";
 import ListGoals from "../../Components/ListGoals";
 
-const DetailsGroup = () => {
+export const VaiDiabo = () => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -122,4 +122,3 @@ const DetailsGroup = () => {
     </Main>
   );
 };
-export default DetailsGroup;

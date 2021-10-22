@@ -3,16 +3,16 @@ import { GoalsContext } from "../../Providers/Goals";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FormPage } from "./styles";
 
-const FormGoal = ({ idGroup, idGoal, type}) => {
-  const { title, 
-          setTitle, 
-          dificult, 
-          setDificult, 
-          setShowForm,
-          createGoal, 
-          editeGoal } = useContext(GoalsContext);
-
-          
+const FormGoal = ({ idGroup, idGoal, type }) => {
+  const {
+    title,
+    setTitle,
+    dificult,
+    setDificult,
+    setShowForm,
+    createGoal,
+    editeGoal,
+  } = useContext(GoalsContext);
 
   return (
     <FormPage>
