@@ -133,7 +133,7 @@ export const FormCreateHabits = ({ setShowForm }) => {
             />
           </div>
           <div>
-            <label> Tursday </label>
+            <label> Thursday </label>
             <input
               type="checkbox"
               value="4"
