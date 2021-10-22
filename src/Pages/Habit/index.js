@@ -38,29 +38,20 @@ export const Habit = () => {
             buttonFunction={setShowForm}
             param={!showForm}
           />
-
-          <HeaderButtons
-            children={"Categories"}
-            icon={GoTriangleDown}
-            backGroundColor={"#BCDFAB"}
-            buttonFunction={() =>
-              console.log("mostrar as categorias dos hábitos")
-            }
-          />
         </Header>
         <BlackLine />
-//         <SectionCategories>
-//           {showForm && <FormCreateHabits setShowForm={setShowForm} />}
-//           {categorys &&
-//             categorys.map((item, index) => (
-//               <ContainerHabits
-//                 key={index}
-//                 category={item}
-//                 list={habits}
-//                 sequence={index}
-//               />
-//             ))}
-//         </SectionCategories>
+        <SectionCategories>
+          {showForm && <FormCreateHabits setShowForm={setShowForm} />}
+          {categorys &&
+            categorys.map((item, index) => (
+              <ContainerHabits
+                key={index}
+                category={item}
+                list={habits}
+                sequence={index}
+              />
+            ))}
+        </SectionCategories>
       </Main>
 
       <NavigationMenu />
