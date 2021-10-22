@@ -9,6 +9,7 @@ export const LoginPageStyle = styled.div`
     >a{
       text-decoration: none;
       color: #551A8B;
+      font-size: 16px;
     }
   }
 
