@@ -1,21 +1,26 @@
 import styled from "styled-components";
 
 export const ContainerEditForm = styled.article`
-  width: 270px;
+ width: 230px;
   height: 375px;
   padding: 16px;
   border-radius: 15px;
   background-color: #ededed;
   position: absolute;
-  top: 118px;
-  left: 50vw;
+  top:90px;
   z-index: 2;
-  transform: translatex(-50%);
   > h3 {
     font-size: 12px;
     font-weight: 400;
     text-align: left;
     padding-left: 10px;
+  }
+  
+  box-shadow: 0px 90px 100px 100px #FFFFFF;
+
+  @media only screen and (min-width: 768px){
+ >h3{
+   font-size: 16px; }
   }
 `;
 
@@ -23,12 +28,13 @@ export const CheckboxDiv = styled.div`
   margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
   > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 40%;
+    width: 90px;
     margin-bottom: 12px;
 
     > label {
@@ -40,18 +46,28 @@ export const CheckboxDiv = styled.div`
       accent-color: rgb(148, 83, 200);
     }
   }
-`;
+  > h3 {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    padding-left: 10px;
+  }
 
-export const ButtonsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  > svg {
-    color: rgb(148, 83, 200);
-    height: 14px;
-    width: 14px;
-    border: 1px solid rgba(148, 83, 200);
-    border-radius: 10px;
-    padding: 8px;
+  @media only screen and (min-width: 768px){
+    flex-direction: column;
+ >div{
+  width: 150px;
+   >label {
+     font-size: 16px; }
+    }
+  }
+  >h3 {
+    font-size: 16px;
   }
 `;
+
+export const ButtonsDiv = styled.div ` 
+display: flex;
+flex-direction: column;
+align-items: center;
+`

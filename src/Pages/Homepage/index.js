@@ -2,25 +2,26 @@ import { useHistory } from "react-router-dom";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
-import { AppTitle, Body, Main, SectionCategories } from "./styles";
+import { AppTitle, SectionCategories } from "./styles";
 import {
   BlackLine,
   Header,
-} from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
+  Body,
+  Main,
+} from "../../Components/StylesComponents/GeneralTemplatePages/styles";
 import { useEffect, useState } from "react";
-import ContainerHabits from "../../Components/ContainerHabits";
+import ContainerHabits from "../../Components/Habits_Components/Container_Habits";
 
 export const Homepage = () => {
   const { auth } = useUser();
   const { habits } = useHabits();
   const history = useHistory();
-  let newDate = new Date();
-  const today = newDate.getDay();
-  const tomorrow = today === 6 ? 0 : today + 1;
-
   const [todaysHabits, setTodaysHabits] = useState([]);
   const [tomorrowsHabits, setTomorrowsHabits] = useState([]);
 
+  let newDate = new Date();
+  const today = newDate.getDay();
+  const tomorrow = today === 6 ? 0 : today + 1;
 
   if (!auth) {
     history.push("/login");
@@ -36,7 +37,6 @@ export const Homepage = () => {
         }
       })
     );
-
     setTomorrowsHabits(
       habits.filter((item) => {
         const { frequency } = item;
@@ -47,6 +47,7 @@ export const Homepage = () => {
   };
 
   useEffect(() => sethabits(), [habits]);
+  // console.log(tomorrowsHabits)
 
   return (
     <Body>
@@ -61,24 +62,22 @@ export const Homepage = () => {
             <ContainerHabits
               category={"Today's habits"}
               list={todaysHabits}
-
-              sequence={5}
+              themeColor={"#cda2ef"}
               homePage
             />
           ) : (
-            <h2>Crie uma meta</h2>
+            <h2 onClick={()=> history.push("/habit")} style={{cursor:"pointer"}}>Set up a new habit for today!</h2>
           )}
 
-          {tomorrowsHabits !== [] ? (
+  
             <ContainerHabits
               category={"Tomorrow's habits"}
               list={tomorrowsHabits}
-              sequence={2}
+              themeColor={"#d9c3ea"}
               homePage
             />
-          ) : (
-            <h2>Crie uma meta para amanhã</h2>
-          )}
+            
+            {tomorrowsHabits === [] && <p>oioi</p>}
         </SectionCategories>
       </Main>
       <NavigationMenu />

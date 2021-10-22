@@ -3,7 +3,7 @@ import { useHabits } from "../../../Providers/Habits";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { ButtonsBox, CategoryColor, Container } from "./styles";
 // import { FormCreateHabits } from "../FormCreateHabits";
-import FormEditHabits from "../Form_Edit_Habits/index";
+import FormEditHabits from "../Form_Edit_Habits";
 
 
 export const CardHabits = ({ item, editable, backGroundColor }) => {

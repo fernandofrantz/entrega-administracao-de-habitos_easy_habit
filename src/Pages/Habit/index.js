@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormCreateHabits } from "../../Components/FormCreateHabits";
-import ContainerHabits from "../../Components/ContainerHabits";
+import { FormCreateHabits } from "../../Components/Habits_Components/Form_Create_Habits"
+import ContainerHabits from "../../Components/Habits_Components/Container_Habits";
 import NavigationMenu from "../../Components/NavigationMenu";
 import { useHabits } from "../../Providers/Habits";
 import { useUser } from "../../Providers/User";
 import { GoPlus, GoTriangleDown } from "react-icons/go";
-import { Body, Main, SectionCategories } from "./styles";
+import {  SectionCategories } from "./styles";
 import {
   BlackLine,
-  Header,
-} from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
+  Header,Body, Main,
+} from "../../Components/StylesComponents/GeneralTemplatePages/styles";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
 
 export const Habit = () => {
@@ -23,9 +23,28 @@ export const Habit = () => {
     history.push("/login");
   }
 
-  const categorys = habits
+  const categories = habits
     .map((item) => item.category)
     .filter((item, index, arr) => arr.indexOf(item) === index);
+
+    const selectColor = (list) => {
+    let count = 0;
+    const loop = list.map(() => {
+      let result = "";
+      if (count === 0) result = "#e88a8a";
+      if (count === 1) result = "#9fdaef";
+      if (count === 2) result = "#FFE6A6";
+      if (count === 3) result = "#85CC85";
+      if (count === 4) result = "#FFB8A6";
+      if (count === 5) result = "#cda2ef";
+      count++;
+      if (count > 3) count = 0;
+      return result;
+    });
+
+    return loop;
+  };
+  const colors = selectColor(categories);
 
   return (
     <Body>
@@ -34,23 +53,24 @@ export const Habit = () => {
           <HeaderButtons
             children={!showForm ? "Create a habit" : "Show habits"}
             icon={!showForm ? GoPlus : GoTriangleDown}
-            backGroundColor={"#BCDFAB"}
             buttonFunction={setShowForm}
             param={!showForm}
           />
         </Header>
         <BlackLine />
         <SectionCategories>
-          {showForm && <FormCreateHabits setShowForm={setShowForm} />}
-          {categorys &&
-            categorys.map((item, index) => (
+          {showForm ? <FormCreateHabits setShowForm={setShowForm} />
+          :
+          (categories &&
+            categories.map((item, index) => (
               <ContainerHabits
-                key={index}
-                category={item}
-                list={habits}
-                sequence={index}
+              key={index}
+              category={item}
+              list={habits}
+              themeColor={colors[index]}
               />
-            ))}
+              )))
+            }
         </SectionCategories>
       </Main>
 

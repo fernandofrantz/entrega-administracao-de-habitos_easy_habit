@@ -6,8 +6,8 @@ import { List } from "../../Components/List";
 import NavigationMenu from "../../Components/NavigationMenu";
 import HeaderButtons from "../../Components/StylesComponents/HeaderButtons";
 import { useGroups } from "../../Providers/Groups";
-import { Header } from "../../Components/StylesComponents/HeaderHabitsAndGroupPages/styles";
-import { Body, Main, Section, SectionCategories } from "../Habit/styles";
+import { Header,Body, Main, } from "../../Components/StylesComponents/GeneralTemplatePages/styles";
+import { Section, SectionCategories } from "../Habit/styles";
 import {
   ContainerInput,
   H2,
@@ -56,13 +56,12 @@ export const Group = () => {
           <HeaderButtons
             children={`Create Group`}
             icon={GoPlus}
-            backGroundColor={"#BCDFAB"}
             buttonFunction={setShowFormGroup}
             param={!showFormGroup}
           />
           <ContainerInput>
             <InputSearch
-              backGroundColor={"#BCDFAB"}
+              backGroundColor={"#cda2ef"}
               placeholder="Search for group"
               type="text"
               value={searchCategory}

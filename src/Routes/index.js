@@ -1,5 +1,4 @@
 import { Route, Switch } from "react-router-dom";
-import DetailsGroup from "../Components/DetailsGroup";
 import { About } from "../Pages/About";
 import { DetailGroup } from "../Pages/DetailGroup";
 import { Group } from "../Pages/Groups";

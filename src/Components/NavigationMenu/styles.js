@@ -7,12 +7,12 @@ export const Container = styled.footer`
   border-radius: 10px 10px 0 0;
   position: fixed;
   bottom: 0;
+  left: 0;
 `;
 
 export const MenuList = styled.ul`
   margin: 0;
-  padding: 0 1rem;
-
+  padding: 0 12px;
   display: flex;
   justify-content: space-between;
 

@@ -4,15 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.min.css";
-import { api } from "../../Services/api";
+import { api } from "../../../Services/api";
 import jwt_decode from "jwt-decode";
 import {
   CheckboxDiv,
   ColoredButton,
   ContainerForm,
   InputHabits,
+  ButtonsDiv
 } from "./styles";
-import HeaderButtons from "../StylesComponents/HeaderButtons";
 
 export const FormCreateHabits = ({ setShowForm }) => {
   const formSchema = yup.object().shape({
@@ -212,10 +212,15 @@ export const FormCreateHabits = ({ setShowForm }) => {
         </CheckboxDiv>
 
         <br />
-        <ColoredButton type="submit" backGroundColor={"rgb(148,83,200)"}>
+        <ButtonsDiv>
+
+        <ColoredButton type="submit" backGroundColor={"#cda2ef"}>
           Add habit
         </ColoredButton>
+        <h3 style={{color:'rgb(148, 83, 200)', fontSize:'12px', cursor:"pointer", marginTop:"16px"}} onClick={()=>setShowForm(false)}>Cancel</h3>
+        </ButtonsDiv>
       </form>
     </ContainerForm>
+
   );
 };

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ActivityContext } from "../../Providers/Activity";
-import { ButtonsBox } from "../CardHabits/styles";
+import { ButtonsBox } from "../Habits_Components/Card_Unit_Habit/styles";
 import { Container } from "../DetailsGroup/styles"
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import FormActivities from "../FormActivities";

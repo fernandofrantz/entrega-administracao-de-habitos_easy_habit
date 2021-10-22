@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useHabits } from "../../Providers/Habits";
+import { useHabits } from "../../../Providers/Habits";
 import jwt_decode from "jwt-decode";
-import { InputHabits } from "../FormCreateHabits/styles";
+import { InputHabits } from "../Form_Create_Habits/styles";
 import { ButtonsDiv, CheckboxDiv, ContainerEditForm } from "./styles";
-import { Cancel } from "@material-ui/icons";
-import { MdModeEdit, MdClose } from "react-icons/md";
-import HeaderButtons from "../StylesComponents/HeaderButtons";
+import { MdModeEdit } from "react-icons/md";
+import HeaderButtons from "../../StylesComponents/HeaderButtons";
 
 const FormEditHabits = ({ idHabit, setShowForm }) => {
   const token = JSON.parse(localStorage.getItem("@EH"));
@@ -190,10 +189,11 @@ const FormEditHabits = ({ idHabit, setShowForm }) => {
         <HeaderButtons
           children={"Edit"}
           icon={MdModeEdit}
-          backGroundColor={"#C986FF"}
+          backGroundColor={"#cda2ef"}
           buttonFunction={edit}
         />
-        <MdClose onClick={() => setShowForm(false)}></MdClose>
+        <h3 style={{color:'rgb(148, 83, 200)', fontSize:'12px', cursor:"pointer", marginTop:"16px"}} onClick={()=>setShowForm(false)}>Cancel</h3>
+
       </ButtonsDiv>
     </ContainerEditForm>
   );

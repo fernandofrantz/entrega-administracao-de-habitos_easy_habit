@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const Body = styled.article`
   height: 100vh;
   width: 100vw;
-  /* background-image: ; */
+  /* background-image: ; */ 
   background-color: rgba(201, 133, 255, 0.2);
+  
   box-sizing: border-box;
 
   > header {

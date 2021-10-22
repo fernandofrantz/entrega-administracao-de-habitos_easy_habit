@@ -1,6 +1,6 @@
 import NavigationMenu from "../../Components/NavigationMenu";
 import DetailsGroup from "../../Components/DetailsGroup";
-import { Body, Main } from "../Habit/styles";
+import { Body, Main } from "../../Components/StylesComponents/GeneralTemplatePages/styles"
 
 export const DetailGroup = () => {
 

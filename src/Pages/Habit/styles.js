@@ -1,22 +1,8 @@
 import styled from "styled-components";
 
-export const Body = styled.article`
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-`;
-
-export const Main = styled.main`
-  width: 100%;
-  height: 100vh;
-  padding: 2.1rem;
-  box-sizing: border-box;
-`;
-
 export const SectionCategories = styled.section`
-  margin-top: 1.7rem;
   width: 100%;
-  height: 375px;
+  height: 80%;
   border-radius: 15px;
   background-color: #ededed;
   overflow: auto;
@@ -24,6 +10,9 @@ export const SectionCategories = styled.section`
   > div + div {
     margin-top: 16px;
   }
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const DivCategory = styled.div`

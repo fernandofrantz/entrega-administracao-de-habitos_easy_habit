@@ -1,18 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
+
 import { ActivityContext } from "../../Providers/Activity";
 import { GoalsContext } from "../../Providers/Goals";
 import { useGroups } from "../../Providers/Groups";
-import jwt_decode from "jwt-decode";
 import { api } from "../../Services/api";
+import jwt_decode from "jwt-decode";
+
 import { FormGroup } from "../FormGroup";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import { MdModeEdit } from "react-icons/md";
-import { Body, Main } from "../../Pages/Habit/styles";
-import {
-  BlackLine,
-  Header,
-} from "../StylesComponents/HeaderHabitsAndGroupPages/styles";
 import {
   ButtonSubs,
   DescriptionGroup,
@@ -22,6 +17,15 @@ import {
 } from "./styles";
 import ListActivity from "../../Components/ListActivity";
 import ListGoals from "../../Components/ListGoals";
+
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { MdModeEdit } from "react-icons/md";
+import {
+  BlackLine,
+  Header,
+  Body,
+  Main,
+} from "../StylesComponents/GeneralTemplatePages/styles";
 
 const DetailsGroup = () => {
   const { id } = useParams();
@@ -79,7 +83,7 @@ const DetailsGroup = () => {
           {!showOptionCreate && (
             <>
               <ButtonSubs
-                backGroundColor={"#7ceb7c"}
+                backGroundColor={"#cda2ef"}
                 onClick={() => subscribeToGroup(id)}
               >
                 Subscribe
@@ -90,7 +94,7 @@ const DetailsGroup = () => {
           {showOptionCreate && (
             <>
               <ButtonSubs
-                backGroundColor={"#f58080"}
+                backGroundColor={"#cecece"}
                 onClick={() => handleUnsubscribe(id)}
               >
                 Unsubscribe
@@ -102,7 +106,7 @@ const DetailsGroup = () => {
         <BlackLine />
 
         <DetailsContainer>
-          <GroupTitle backgroundColor={"#ff8b29"}>
+          <GroupTitle backgroundColor={"#cda2ef"}>
             {nameGroup}
             {showEditOption && (
               <MdModeEdit onClick={() => setShowEditForm(!showEditForm)} />

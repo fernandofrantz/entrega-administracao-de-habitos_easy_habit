@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 import FormGoal from "../FormGoals";
 import { MdModeEdit, MdDelete } from "react-icons/md";
-import { ButtonsBox} from "../CardHabits/styles";
+import { ButtonsBox} from "../Habits_Components/Card_Unit_Habit/styles";
 import { Container } from "../DetailsGroup/styles"
 
 export const CardGoals = ({ item, editable }) => {
